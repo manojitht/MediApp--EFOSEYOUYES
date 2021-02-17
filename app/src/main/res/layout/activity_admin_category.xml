@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminFolder.AdminCategoryActivity"
+    >
+
+    <TextView
+        android:id="@+id/textBaby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baby Items"
+        app:layout_constraintBottom_toTopOf="@+id/medi_pills"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_cardio"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textMask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mask"
+        app:layout_constraintBottom_toTopOf="@+id/medi_pills"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_cardio"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textHandwash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Handwash"
+        app:layout_constraintBottom_toTopOf="@+id/medi_ophtalmology"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_pills"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textFacial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Facial"
+        app:layout_constraintBottom_toTopOf="@+id/medi_ophtalmology"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_pills"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textNutrients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nutrients"
+        app:layout_constraintBottom_toTopOf="@+id/medi_vitamins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_ophtalmology"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Device"
+        app:layout_constraintBottom_toTopOf="@+id/medi_vitamins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_ophtalmology"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textDrone"
+        android:layout_width="42dp"
+        android:layout_height="24dp"
+        android:text="Drone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_vitamins"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textBalm"
+        android:layout_width="42dp"
+        android:layout_height="24dp"
+        android:text="Balm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_vitamins"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/medi_drone"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.567"
+        app:srcCompat="@drawable/drone" />
+
+    <ImageView
+        android:id="@+id/medi_balm"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.567"
+        app:srcCompat="@drawable/balm" />
+
+    <ImageView
+        android:id="@+id/medi_vitamins"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.567"
+        app:srcCompat="@drawable/vitamin" />
+
+    <ImageView
+        android:id="@+id/medi_drinks"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.386"
+        app:srcCompat="@drawable/drink" />
+
+    <ImageView
+        android:id="@+id/medi_thermometer"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.386"
+        app:srcCompat="@drawable/thermometer" />
+
+    <ImageView
+        android:id="@+id/medi_ophtalmology"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.387"
+        app:srcCompat="@drawable/ophtalmology" />
+
+    <ImageView
+        android:id="@+id/medi_soap"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.211"
+        app:srcCompat="@drawable/soap" />
+
+    <ImageView
+        android:id="@+id/medi_shampoo"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/shampoo" />
+
+    <ImageView
+        android:id="@+id/medi_pills"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.211"
+        app:srcCompat="@drawable/pills" />
+
+    <ImageView
+        android:id="@+id/medi_newborn"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.017"
+        app:srcCompat="@drawable/newborn" />
+
+    <ImageView
+        android:id="@+id/medi_mask"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.017"
+        app:srcCompat="@drawable/mask" />
+
+    <TextView
+        android:id="@+id/slogan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Add Products"
+        android:textAlignment="center"
+        android:textSize="26sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/medi_cardio"
+        android:layout_width="69dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan"
+        app:layout_constraintVertical_bias="0.017"
+        app:srcCompat="@drawable/cardiogram" />
+
+    <TextView
+        android:id="@+id/TextSyrup"
+        android:layout_width="42dp"
+        android:layout_height="24dp"
+        android:text="Syrup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_vitamins"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textOptical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Optical"
+        app:layout_constraintBottom_toTopOf="@+id/medi_vitamins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_ophtalmology"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textTablets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tablets"
+        app:layout_constraintBottom_toTopOf="@+id/medi_ophtalmology"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_pills"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textCardio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cardiology"
+        app:layout_constraintBottom_toTopOf="@+id/medi_pills"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medi_cardio"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

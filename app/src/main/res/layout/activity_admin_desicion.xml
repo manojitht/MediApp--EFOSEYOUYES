@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminFolder.AdminDecisionActivity"
+    android:background="@color/colorPurple">
+
+
+    <Button
+        android:id="@+id/maintain_admin_products"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="236dp"
+        android:background="@drawable/buttonwhite"
+        android:fontFamily="@font/poppins_light"
+        android:text="Maintain products"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBalm"
+        app:layout_constraintVertical_bias="0.189"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/add_admin_products"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="316dp"
+        android:background="@drawable/buttonwhite"
+        android:fontFamily="@font/poppins_light"
+        android:text="Add products"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBalm"
+        app:layout_constraintVertical_bias="0.189"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/admin_logout"
+        android:layout_width="329dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/buttonwhite"
+        android:fontFamily="@font/poppins_light"
+        android:text="logout"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBalm"
+        app:layout_constraintVertical_bias="0.619"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/check_new_orders"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="156dp"
+        android:background="@drawable/buttonwhite"
+        android:fontFamily="@font/poppins_light"
+        android:text="check new orders"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBalm"
+        app:layout_constraintVertical_bias="0.189"
+        android:textAllCaps="false"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_layer_name"
+        android:layout_width="413dp"
+        android:layout_height="210dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="admin.json"
+        app:lottie_loop="true"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aldrich"
+        android:text="Welcome Admin! Select what you want to do.... "
+        android:textColor="#DDECEE"
+        app:layout_constraintBottom_toTopOf="@+id/add_admin_products"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lottie_layer_name"
+        app:layout_constraintVertical_bias="0.179" />
+
+    <Button
+        android:id="@+id/show_graph"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:background="@drawable/buttonwhite"
+        android:fontFamily="@font/poppins_light"
+        android:text="Show Analytical Graph"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lottie_layer_name"
+        app:layout_constraintVertical_bias="0.419"
+        android:textAllCaps="false"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

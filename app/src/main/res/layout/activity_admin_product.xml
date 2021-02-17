@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminFolder.AdminProductActivity">
+
+
+    <ImageView
+        android:id="@+id/image_finder"
+        android:layout_width="207dp"
+        android:layout_height="175dp"
+        android:layout_centerHorizontal="true"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/camera"
+        app:layout_constraintBottom_toTopOf="@+id/text_clicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/product_name"
+        android:layout_width="354dp"
+        android:layout_height="58dp"
+        android:layout_below="@id/image_finder"
+        android:background="@drawable/input_text"
+        android:hint="Product name...."
+        android:inputType="textMultiLine"
+        android:padding="20dp"
+        android:textColorHint="@color/colorBlue"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/product_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_clicker"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/product_price"
+        android:layout_width="354dp"
+        android:layout_height="58dp"
+        android:layout_below="@id/product_name"
+        android:background="@drawable/input_text"
+        android:hint="Product price..."
+        android:inputType="textMultiLine"
+        android:padding="20dp"
+        android:textColorHint="@color/colorBlue"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/product_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_name"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/product_description"
+        android:layout_width="354dp"
+        android:layout_height="58dp"
+        android:layout_below="@id/product_price"
+        android:background="@drawable/input_text"
+        android:hint="Product descrip.. (max 100 words)"
+        android:inputType="textMultiLine"
+        android:padding="20dp"
+        android:textColorHint="@color/colorBlue"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/click_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_price"
+        app:layout_constraintVertical_bias="0.103"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/click_add"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/product_description"
+        android:background="@drawable/buttons"
+        android:padding="20px"
+        android:text="ADD PRODUCT"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_description"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/text_clicker"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/image_finder"
+        android:text="Click the camera icon to select image"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/product_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_finder"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
