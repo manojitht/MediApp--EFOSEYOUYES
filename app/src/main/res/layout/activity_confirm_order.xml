@@ -65,7 +65,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="Fill in the shipment details!"
         android:textAlignment="center"
-        android:textColor="@color/colorGrey"
+        android:textColor="@color/colorBlack"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
     <Button
         android:id="@+id/shipment_confirm"
         android:layout_width="188dp"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:background="@drawable/buttonblue"
         android:fontFamily="@font/poppins_light"
         android:text="Ship to house"
@@ -111,12 +111,12 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="225dp"
-        android:layout_height="175dp"
+        android:layout_width="269dp"
+        android:layout_height="155dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shipment_confirm"
         app:layout_constraintVertical_bias="0.387"
-        app:srcCompat="@drawable/undraw_empty_cart_co35" />
+        app:srcCompat="@drawable/undraw_message_sent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
