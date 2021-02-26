@@ -30,11 +30,10 @@
         android:text="Loading...."
         android:textAlignment="center"
         android:textColor="@color/colorLightBlue"
-        android:textStyle="italic|bold"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,52 +9,64 @@
     <EditText
         android:id="@+id/shipment_address"
         android:layout_width="357dp"
-        android:layout_height="48dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_input"
         android:ems="10"
+        android:fontFamily="@font/poppins_light"
         android:hint="Address"
+        android:textColorHint="@color/colorBlue"
         android:inputType="textPersonName"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintVertical_bias="0.409" />
 
     <EditText
         android:id="@+id/shipment_city"
         android:layout_width="357dp"
-        android:layout_height="48dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_input"
         android:ems="10"
+        android:fontFamily="@font/poppins_light"
         android:hint="City Name"
+        android:textColorHint="@color/colorBlue"
         android:inputType="textPersonName"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.256" />
+        app:layout_constraintVertical_bias="0.289" />
 
     <EditText
         android:id="@+id/shipment_PhNumber"
         android:layout_width="357dp"
-        android:layout_height="48dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_input"
         android:ems="10"
+        android:fontFamily="@font/poppins_light"
         android:hint="Phone Number"
+        android:textColorHint="@color/colorBlue"
         android:inputType="textPersonName"
+        android:padding="15dp"
         android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.178" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="368dp"
         android:layout_height="27dp"
-        android:text="Fill in the Shipment details"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Fill in the shipment details!"
         android:textAlignment="center"
-        android:textColor="#1E3DE4"
+        android:textColor="@color/colorGrey"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.627"
@@ -65,43 +77,46 @@
     <EditText
         android:id="@+id/shipment_name"
         android:layout_width="357dp"
-        android:layout_height="48dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_input"
         android:ems="10"
+        android:fontFamily="@font/poppins_light"
         android:hint="Name"
+        android:textColorHint="@color/colorBlue"
         android:inputType="textPersonName"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintVertical_bias="0.065" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_layer_name"
-        android:layout_width="281dp"
-        android:layout_height="173dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="shipment.json"
-        app:lottie_loop="true"
-        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/shipment_confirm"
-        android:layout_width="268dp"
+        android:layout_width="188dp"
         android:layout_height="55dp"
-        android:text="Ship to House"
-        android:textSize="18dp"
-        android:textStyle="bold|italic"
-        android:background="@drawable/buttons"
+        android:background="@drawable/buttonblue"
+        android:fontFamily="@font/poppins_light"
+        android:text="Ship to house"
+        android:textAllCaps="false"
         android:textColor="@color/colorWhite"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottie_layer_name"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintTop_toBottomOf="@+id/shipment_address"
+        app:layout_constraintVertical_bias="0.145" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="225dp"
+        android:layout_height="175dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shipment_confirm"
+        app:layout_constraintVertical_bias="0.387"
+        app:srcCompat="@drawable/undraw_empty_cart_co35" />
 </androidx.constraintlayout.widget.ConstraintLayout>
