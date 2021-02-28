@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".ConfirmOrderActivity">
 
     <EditText
@@ -15,6 +16,7 @@
         android:fontFamily="@font/poppins_light"
         android:hint="Address"
         android:textColorHint="@color/colorBlue"
+        android:textSize="14dp"
         android:inputType="textPersonName"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,6 +34,7 @@
         android:fontFamily="@font/poppins_light"
         android:hint="City Name"
         android:textColorHint="@color/colorBlue"
+        android:textSize="14dp"
         android:inputType="textPersonName"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +53,7 @@
         android:hint="Phone Number"
         android:textColorHint="@color/colorBlue"
         android:inputType="textPersonName"
+        android:textSize="14dp"
         android:padding="15dp"
         android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,6 +87,7 @@
         android:fontFamily="@font/poppins_light"
         android:hint="Name"
         android:textColorHint="@color/colorBlue"
+        android:textSize="14dp"
         android:inputType="textPersonName"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -94,14 +99,14 @@
 
     <Button
         android:id="@+id/shipment_confirm"
-        android:layout_width="188dp"
+        android:layout_width="138dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonblue"
         android:fontFamily="@font/poppins_light"
         android:text="Ship to house"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="18dp"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
