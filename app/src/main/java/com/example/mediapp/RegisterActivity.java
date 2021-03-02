@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText InputName, InputEmail, InputPassword, InputAddress;
     private ProgressDialog loadingBar;
     private LottieAnimationView lottieAnimationView;
-    private TextView textclick;
+    private TextView text_click;
 
     public LoadingDialog loadingDialog = new LoadingDialog(RegisterActivity.this);
 
@@ -48,9 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
         InputAddress = (EditText) findViewById(R.id.password_address);
         loadingBar = new ProgressDialog(this);
         lottieAnimationView = findViewById(R.id.lottie_layer_name);
-        textclick = (TextView) findViewById(R.id.textclick);
+        text_click = (TextView) findViewById(R.id.text_click);
 
-        textclick.setOnClickListener(new View.OnClickListener() {
+        text_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
