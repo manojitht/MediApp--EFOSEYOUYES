@@ -29,7 +29,7 @@ import io.paperdb.Paper;
 public class LoginActivity extends AppCompatActivity {
 
     private Button LoginButton;
-    private TextView ForgotPassword;
+    private TextView ForgotPassword, return_register;
     private EditText InputLoginName, InputLoginPassword;
     private ProgressDialog loadingBar;
     private LottieAnimationView lottieAnimationViewLogin;
@@ -55,8 +55,17 @@ public class LoginActivity extends AppCompatActivity {
         imAdmin = (Button) findViewById(R.id.admin_panel);
         notAdmin = (Button) findViewById(R.id.customer_user);
         checkboxRemember = (CheckBox) findViewById(R.id.remember_me);
+        return_register = (TextView) findViewById(R.id.return_register);
         Paper.init(this);
         notAdmin.setVisibility(View.INVISIBLE);
+
+        return_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
