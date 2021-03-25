@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if (!type.equals("Admin")){
             usernameView.setText(GetData.superOnlineUsers.getName());
-            Picasso.get().load(GetData.superOnlineUsers.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+            Picasso.get().load(GetData.superOnlineUsers.getImage()).placeholder(R.drawable.undraw_male_avatar).into(profileImageView);
         }
 
         recyclerView = findViewById(R.id.recyler_menu);
@@ -111,7 +111,7 @@ public class HomeActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
 //                holder.Description.setText(model.getDescription());
                 holder.txtProductName.setText(model.getProductName());
-                holder.productPrice.setText("Price "+model.getPrice()+"$");
+                holder.productPrice.setText("Rs: "+model.getPrice()+" LKR");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
 

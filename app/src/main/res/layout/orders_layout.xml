@@ -9,17 +9,18 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:background="@color/colorLightBlue">
+        android:background="@color/colorLightGrey">
 
         <TextView
             android:id="@+id/order_cart_items_username"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:text="Username"
-            android:textSize="14dp"
-            android:textColor="@color/colorWhite"
             android:layout_marginLeft="5dp"
-            android:textStyle="bold"/>
+            android:fontFamily="@font/poppins_light"
+            android:text="Username"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/phone_number_order"
@@ -27,64 +28,69 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/poppins_light"
             android:text="Contact Number"
             android:textAlignment="textEnd"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="14dp"
-            android:layout_marginRight="5dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/order_total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total Price"
-            android:textSize="14dp"
-            android:textColor="@color/colorWhite"
-            android:layout_marginLeft="5dp"
-            android:gravity="center"
             android:layout_below="@id/order_cart_items_username"
-            android:textStyle="bold"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Total Price"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/order_address_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Address, City"
-            android:textSize="14dp"
-            android:textColor="@color/colorWhite"
-            android:layout_marginLeft="5dp"
-            android:gravity="center"
             android:layout_below="@id/order_total_price"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Address, City"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/order_date_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date Time"
-            android:textSize="14dp"
-            android:textColor="@color/colorWhite"
-            android:layout_marginLeft="5dp"
-            android:gravity="center"
             android:layout_below="@id/order_address_city"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"/>
-        
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Date Time"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
         <Button
             android:id="@+id/show_all_products"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
             android:layout_below="@id/order_date_time"
-            android:background="@color/colorYellow"
-            android:textColor="@color/colorLightBlue"
-            android:textStyle="bold|italic"
-            android:text="View Order"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/buttonurple"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="View Order"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
 
     </RelativeLayout>
 

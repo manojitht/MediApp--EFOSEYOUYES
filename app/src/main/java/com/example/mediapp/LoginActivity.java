@@ -110,10 +110,10 @@ public class LoginActivity extends AppCompatActivity {
         String Password = InputLoginPassword.getText().toString();
 
         if (TextUtils.isEmpty((CharSequence) Name)) {
-            Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "username cannot be empty", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty((CharSequence) Password)){
-            Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "password cannot be empty", Toast.LENGTH_SHORT).show();
         }else {
 //            final LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
             loadingDialog.startLoadingDialog();

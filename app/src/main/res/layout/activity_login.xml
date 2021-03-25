@@ -40,7 +40,7 @@
     <EditText
         android:id="@+id/Login_password"
         android:layout_width="314dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_lock_open_24"
         android:drawablePadding="12dp"
@@ -74,7 +74,7 @@
     <EditText
         android:id="@+id/Login_name"
         android:layout_width="314dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_person_outline_24"
         android:drawablePadding="12dp"
@@ -118,7 +118,7 @@
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:text="forgot password ?"
-        android:textColor="#403F3F"
+        android:textColor="@color/colorPurple"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
