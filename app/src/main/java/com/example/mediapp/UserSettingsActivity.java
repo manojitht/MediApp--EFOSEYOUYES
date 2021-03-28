@@ -226,18 +226,19 @@ public class UserSettingsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("name").exists()){
-//                        String image = dataSnapshot.child("image").getValue().toString(); // This works on the real physical device
+                        //String image = dataSnapshot.child("image").getValue().toString(); // This works on the real physical device
                         String name = dataSnapshot.child("name").getValue().toString();
                         String email = dataSnapshot.child("email").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
 
-//                        Picasso.get().load(image).into(settingsProfileImage);     // This works on the real physical device
+                        Picasso.get().load(GetData.superOnlineUsers.getImage()).placeholder(R.drawable.undraw_male_avatar).into(settingsProfileImage); // This works on the real physical device
                         userName.setText(name);
                         eMail.setText(email);
                         homeAddress.setText(address);
                     }
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

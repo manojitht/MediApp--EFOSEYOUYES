@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AdminOrdersActivity extends AppCompatActivity {
 
     private RecyclerView ordersList;
-    private DatabaseReference ordersRef;
+    private DatabaseReference ordersRef, ordersRefA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_orders);
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
+        ordersRefA = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View");
 
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
@@ -122,5 +123,6 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
     private void RemoveOrder(String uID) {
         ordersRef.child(uID).removeValue();
+        ordersRefA.child(uID).removeValue();
     }
 }

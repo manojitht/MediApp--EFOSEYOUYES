@@ -115,6 +115,7 @@ public class CartActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                           if (task.isSuccessful()){
+                                              cartListRef.child("Admin View").child(GetData.superOnlineUsers.getName()).child("Products").child(model.getPid()).removeValue();
                                               Toast.makeText(CartActivity.this, "Things removed successfully!", Toast.LENGTH_SHORT).show();
                                               Intent intent = new Intent(CartActivity.this, HomeActivity.class);
                                               startActivity(intent);
