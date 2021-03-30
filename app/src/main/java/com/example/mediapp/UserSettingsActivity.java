@@ -65,7 +65,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         setSecurity = (Button) findViewById(R.id.set_security_questions);
         changeAvatar = (TextView) findViewById(R.id.avatar_changer);
         
-        userInfoDiasplay(settingsProfileImage, userName, eMail, homeAddress);
+        userInfoDisplay(settingsProfileImage, userName, eMail, homeAddress);
 
 
         close.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +217,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         }
     }
 
-    private void userInfoDiasplay(final CircleImageView settingsProfileImage, final EditText userName, final EditText eMail, final EditText homeAddress) {
+    private void userInfoDisplay(final CircleImageView settingsProfileImage, final EditText userName, final EditText eMail, final EditText homeAddress) {
 
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName());
 

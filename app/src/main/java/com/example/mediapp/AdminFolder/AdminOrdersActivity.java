@@ -51,7 +51,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                 holder.userName.setText("Name: " + model.getCname());
                 holder.userPhoneNumber.setText("Contact: " + model.getPhone());
                 holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount() + " LKR");
-                holder.userDateTime.setText("Date & Time: " + model.getDate() + " " + model.getTime());
+                holder.userDateTime.setText("Date: " + model.getDate());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress() + " " + model.getCity());
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
