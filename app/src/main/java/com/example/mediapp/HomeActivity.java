@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.mediapp.AdminFolder.AdminMaintainProductsActivity;
+import com.example.mediapp.AdminFolder.AdminOrdersActivity;
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.Products;
 import com.example.mediapp.ViewHolder.ProductViewHolder;
@@ -179,6 +180,11 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.action_search:
                 Intent intent3 = new Intent(HomeActivity.this, SearchActivity.class);
                 startActivity(intent3);
+                return true;
+
+            case R.id.action_orders:
+                Intent intent4 = new Intent(HomeActivity.this, Show_orders.class);
+                startActivity(intent4);
                 return true;
 
             default:

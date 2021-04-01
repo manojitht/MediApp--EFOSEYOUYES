@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".Show_orders">
+
+    <RelativeLayout
+        android:id="@+id/order_card"
+        android:layout_width="375dp"
+        android:layout_height="312dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403">
+
+        <Button
+            android:id="@+id/cancel_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_date_time"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/buttonred"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Cancel order"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/order_username"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/phone_number_order"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/poppins_light"
+            android:textAlignment="textEnd"
+            android:textColor="@color/colorYellow"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_total_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_username"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:textColor="@color/colorRed"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_address_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_total_price"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_address_city"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:textColor="@color/colorPurple"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/view_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_date_time"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/buttonsyello"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="View Order"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/popup_order_image"
+        android:layout_width="380dp"
+        android:layout_height="378dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/order_received"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/popup_message"
+        android:layout_width="317dp"
+        android:layout_height="80dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="center"
+        android:text="Sorry, you didn't place any orders yet!"
+        android:textColor="#7A53D8"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

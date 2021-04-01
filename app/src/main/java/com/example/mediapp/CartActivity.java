@@ -58,6 +58,9 @@ public class CartActivity extends AppCompatActivity {
         textMessage = (TextView) findViewById(R.id.text_message);
         front_image1 = (ImageView) findViewById(R.id.front_image1);
 
+
+
+
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,6 +156,7 @@ public class CartActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     String shippingState = dataSnapshot.child("status").getValue().toString();
+                    DatabaseReference userStatus = FirebaseDatabase.getInstance().getReference().child("User View");
                     String userName = dataSnapshot.child("Cname").getValue().toString();
 
                     if (shippingState.equals("Shipped")){
@@ -178,7 +182,7 @@ public class CartActivity extends AppCompatActivity {
                         front_image1.setVisibility(View.VISIBLE);
                         textMessage.setText("Sorry you didn't purchase any items yet!");
                         NextProcessBtn.setVisibility(View.GONE);
-
+                        totalAmountTxt.setVisibility(View.GONE);
                     }
                 }
             }

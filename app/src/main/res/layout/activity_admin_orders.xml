@@ -10,18 +10,19 @@
         android:id="@+id/lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorLightBlue"
+        android:background="@color/colorWhite"
         android:layout_alignParentTop="true"
         >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Orders"
-            android:textColor="@color/colorWhite"
-            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="New orders"
             android:textAlignment="center"
-            android:layout_marginTop="30dp"/>
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
 
 
     </RelativeLayout>

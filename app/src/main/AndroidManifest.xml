@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminFolder.AdminGraphView"></activity>
+        <activity android:name=".ViewOrderCx"></activity>
+        <activity android:name=".Show_orders" />
+        <activity android:name=".AdminFolder.AdminGraphView" />
         <activity android:name=".DesicionActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".AdminFolder.AdminMaintainProductsActivity" />
