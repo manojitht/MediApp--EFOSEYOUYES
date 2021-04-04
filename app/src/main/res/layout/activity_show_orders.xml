@@ -131,7 +131,7 @@
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
         android:text="Sorry, you didn't place any orders yet!"
-        android:textColor="#7A53D8"
+        android:textColor="@color/colorLightBlue"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
