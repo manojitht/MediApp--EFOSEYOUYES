@@ -37,10 +37,10 @@ public class CartActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private Button NextProcessBtn;
+    private Button NextProcessBtn, CalculateTotal;
     private TextView totalAmountTxt, textMessage;
     private ImageView front_image1;
-    private int overTotalPrice = 0;
+    private int overTotalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,20 +52,24 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
+        CalculateTotal = (Button) findViewById(R.id.calculate_process_button);
         NextProcessBtn = (Button) findViewById(R.id.next_process_button);
         totalAmountTxt = (TextView) findViewById(R.id.total_price_text);
         textMessage = (TextView) findViewById(R.id.text_message);
         front_image1 = (ImageView) findViewById(R.id.front_image1);
 
-
+        CalculateTotal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                totalAmountTxt.setText("Total Amount = " + overTotalPrice + " LKR");
+                CalculateTotal.setVisibility(View.INVISIBLE);
+            }
+        });
 
 
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                totalAmountTxt.setText("Total Amount = " + overTotalPrice + " LKR");
                 Intent intent = new Intent(CartActivity.this, ConfirmOrderActivity.class);
                 intent.putExtra("Total Price", String.valueOf(overTotalPrice));
                 startActivity(intent);

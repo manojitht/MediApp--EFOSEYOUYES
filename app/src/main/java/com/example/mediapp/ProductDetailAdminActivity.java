@@ -50,8 +50,8 @@ public class ProductDetailAdminActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
-                holder.txtProductQuantity.setText("Quantity = "+model.getQuantity());
-                holder.txtProductPrice.setText("Price = " + model.getPrice());
+                holder.txtProductQuantity.setText("Quantity = "+model.getQuantity() + " Pcs");
+                holder.txtProductPrice.setText("Price = " + model.getPrice() + " LKR");
                 holder.txtProductname.setText(model.getPname());
             }
 

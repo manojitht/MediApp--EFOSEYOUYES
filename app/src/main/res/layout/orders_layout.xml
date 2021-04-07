@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:background="@color/colorPurple">
+        android:background="@drawable/buttonurple">
 
         <TextView
             android:id="@+id/order_cart_items_username"
@@ -74,8 +74,8 @@
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
             android:text="Date Time"
-            android:textColor="@color/colorLightGrey"
-            android:textSize="14dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="12dp"
             android:textStyle="bold" />
 
         <Button

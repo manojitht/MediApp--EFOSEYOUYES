@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:background="@color/colorOrange">
+        android:background="@drawable/buttonsyello">
 
         <TextView
             android:id="@+id/cart_items_productname"
@@ -19,7 +19,7 @@
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/poppins_light"
             android:text="Product name"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -33,7 +33,7 @@
             android:fontFamily="@font/poppins_light"
             android:text="Product Quantity"
             android:textAlignment="textEnd"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="Product name"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="14dp"
             android:textStyle="bold" />
 

@@ -61,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
 //                holder.Description.setText(model.getDescription());
                 holder.txtProductName.setText(model.getProductName());
-                holder.productPrice.setText("Price "+model.getPrice()+"$");
+                holder.productPrice.setText("Price "+model.getPrice()+" LKR");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {

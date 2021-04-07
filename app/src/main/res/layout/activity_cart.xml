@@ -18,11 +18,13 @@
             android:id="@+id/total_price_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:paddingTop="25dp"
+            android:layout_marginTop="0dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Total Price"
             android:textAlignment="center"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/buttonknightblue"
             android:textSize="20dp" />
 
     </RelativeLayout>
@@ -92,9 +94,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorRed"
+        android:background="@drawable/buttoncartlayn"
         android:fontFamily="@font/poppins_medium"
         android:text="Check out"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/calculate_process_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/buttoncartlay"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Calculate total"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="20dp" />

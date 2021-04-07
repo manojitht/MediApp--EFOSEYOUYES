@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ViewDetailActivity">
 
+
     <ImageView
         android:id="@+id/details_image_view"
         android:layout_width="match_parent"
@@ -20,9 +21,9 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Product details"
-        android:textColor="@color/colorGrey"
-        android:textSize="20dp"
+        android:text="Product name"
+        android:textColor="@color/colorPurple"
+        android:textSize="17dp"
         android:textStyle="bold" />
 
     <TextView
@@ -36,7 +37,7 @@
         android:gravity="center"
         android:text="Product price"
         android:textColor="@color/colorOrange"
-        android:textSize="20dp"
+        android:textSize="14dp"
         android:textStyle="bold" />
 
     <TextView
@@ -47,11 +48,11 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
-        android:fontFamily="@font/poppins_light"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="left"
         android:text="Product description"
         android:textColor="@color/colorBlack"
-        android:textSize="18dp" />
+        android:textSize="12dp" />
 
 
     <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
@@ -76,7 +77,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="134dp"
-        android:background="@drawable/buttons"
+        android:background="@drawable/buttonblue"
         android:fontFamily="@font/poppins_light"
         android:text="@string/add_to_cart"
         android:textColor="@color/colorWhite"

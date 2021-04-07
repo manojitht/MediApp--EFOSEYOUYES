@@ -13,8 +13,8 @@
     <string name="menu_slideshow">Cart</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Settings">Settings</string>
-    <string name="Orders">Orders</string>
-    <string name="Cart">Cart</string>
+    <string name="Orders">My Orders</string>
+    <string name="Cart">My Cart</string>
     <string name="Logout">Log out</string>
     <string name="Search">Search Product</string>
     <!-- TODO: Remove or change this placeholder text -->
