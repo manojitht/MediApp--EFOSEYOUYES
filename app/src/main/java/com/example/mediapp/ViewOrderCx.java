@@ -66,44 +66,6 @@ public class ViewOrderCx extends AppCompatActivity {
 
                 int oneTypeProductPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;
-
-//                holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        CharSequence options[] = new CharSequence[]{
-//                                "Edit",
-//                                "Remove"
-//                        };
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(ViewOrderCx.this);
-//                        builder.setTitle("Cart Options:");
-//
-//                        builder.setItems(options, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                if (i == 0){
-//                                    Intent intent = new Intent(ViewOrderCx.this, ViewDetailActivity.class);
-//                                    intent.putExtra("pid", model.getPid());
-//                                    startActivity(intent);
-//                                }
-//                                if (i == 1){
-//                                    cartListRef.child("User View").child(GetData.superOnlineUsers.getName()).child("Products").child(model.getPid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<Void> task) {
-//                                            if (task.isSuccessful()){
-//                                                cartListRef.child("Admin View").child(GetData.superOnlineUsers.getName()).child("Products").child(model.getPid()).removeValue();
-//                                                Toast.makeText(ViewOrderCx.this, "Things removed successfully!", Toast.LENGTH_SHORT).show();
-//                                                Intent intent = new Intent(ViewOrderCx.this, HomeActivity.class);
-//                                                startActivity(intent);
-//                                            }
-//                                        }
-//                                    });
-//                                }
-//                            }
-//                        });
-//                        builder.show();
-//                    }
-//                });
-
             }
 
             @NonNull

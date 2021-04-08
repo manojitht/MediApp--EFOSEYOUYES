@@ -29,7 +29,7 @@
         android:layout_height="45dp"
         android:background="@drawable/buttonwhite"
         android:fontFamily="@font/poppins_medium"
-        android:text="Show graphs"
+        android:text="Show sales report"
         android:textAllCaps="false"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"

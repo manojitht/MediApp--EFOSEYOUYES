@@ -32,11 +32,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Show_orders extends AppCompatActivity {
 
-    private DatabaseReference ordersRef, ordersCancel, ordersCancelAdmin;
+    private DatabaseReference ordersRef, ordersCancel, ordersCancelAdmin, salesDataRemove;
     private TextView Username, Contact, Address, Price, Date, popMessage, DescriptionDate, HeaderText;
     private Button viewOrder, cancelOrder;
     private RelativeLayout order_card;
@@ -62,6 +65,7 @@ public class Show_orders extends AppCompatActivity {
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         ordersCancel = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
+        salesDataRemove = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName());
         ordersCancelAdmin = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View").child(GetData.superOnlineUsers.getName());
         order_card.setVisibility(View.GONE);
         popup_image.setVisibility(View.VISIBLE);// sets default in invisible mode.
@@ -83,6 +87,7 @@ public class Show_orders extends AppCompatActivity {
             public void onClick(View view) {
                 ordersCancel.removeValue();
                 ordersCancelAdmin.removeValue();
+                salesDataRemove.removeValue();
                 Toast.makeText(Show_orders.this, "Your order has been cancelled!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Show_orders.this, HomeActivity.class);
                 startActivity(intent);
@@ -116,7 +121,7 @@ public class Show_orders extends AppCompatActivity {
                         Address.setText("Address: " + address);
                         Price.setText("Price: " + price + " LKR");
                         DescriptionDate.setText("Dear customer you have placed the order in the following date and time that was provided below.");
-                        Date.setText("Ordered Date: " + date + ", Time: " + time);
+                        Date.setText("Date: " + date + ", Time: " + time);
                     }
                 }
             }

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.AdminOrders;
 import com.example.mediapp.ProductDetailAdminActivity;
 import com.example.mediapp.R;
@@ -74,7 +75,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                 "No"
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(AdminOrdersActivity.this);
-                        builder.setTitle("Have you shipped this item to the customer?");
+                        builder.setTitle("Have you shipped this order to the customer?");
 
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
@@ -125,4 +126,5 @@ public class AdminOrdersActivity extends AppCompatActivity {
         ordersRef.child(uID).removeValue();
         ordersRefA.child(uID).removeValue();
     }
+
 }

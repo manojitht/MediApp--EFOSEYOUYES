@@ -76,9 +76,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(callForDate.getTime());
 
-        final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
+        final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName()); //creation of the "Orders" child
 
-        HashMap<String, Object> ordersMap = new HashMap<>();
+        HashMap<String, Object> ordersMap = new HashMap<>(); ///creating the object as hash map
         ordersMap.put("totalAmount", totalAmount);
         ordersMap.put("Cname", ShipName.getText().toString());
         ordersMap.put("phone", ShipPhone.getText().toString());
@@ -87,6 +87,18 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("date", saveCurrentDate);
         ordersMap.put("time", saveCurrentTime);
         ordersMap.put("status", "Not Shipped");
+
+        final DatabaseReference salesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName()); //creation of the "Orders" child
+
+        HashMap<String, Object> orderSales = new HashMap<>(); ///creating the object as hash map
+        orderSales.put("totalAmount", totalAmount);
+        orderSales.put("Cname", ShipName.getText().toString());
+        orderSales.put("phone", ShipPhone.getText().toString());
+        orderSales.put("address", ShipAddress.getText().toString());
+        orderSales.put("city", ShipCity.getText().toString());
+        orderSales.put("date", saveCurrentDate);
+        orderSales.put("time", saveCurrentTime);
+        salesData.updateChildren(orderSales);
 
         ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
