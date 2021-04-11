@@ -1,4 +1,4 @@
-package com.example.mediapp;
+package com.example.mediapp.AdminFolder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,24 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mediapp.Model.Cart;
+import com.example.mediapp.R;
 import com.example.mediapp.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ProductDetailAdminActivity extends AppCompatActivity {
+public class AdminSoldProducts extends AppCompatActivity {
 
     private RecyclerView itemsList;
     RecyclerView.LayoutManager layoutManager;
-    private DatabaseReference itemsRef;
+    private DatabaseReference salesItemsRef;
 
     private String userID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_detail_admin);
+        setContentView(R.layout.activity_admin_sold_products);
 
         userID = getIntent().getStringExtra("uid");
 
@@ -37,14 +38,14 @@ public class ProductDetailAdminActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         itemsList.setLayoutManager(layoutManager);
 
-        itemsRef = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View").child(userID).child("Products");
+        salesItemsRef = FirebaseDatabase.getInstance().getReference().child("Sold products").child("customers").child(userID).child("products");// creates the child in sales data
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>().setQuery(itemsRef, Cart.class).build();
+        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>().setQuery(salesItemsRef, Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override

@@ -1,4 +1,4 @@
-package com.example.mediapp.AdminFolder;
+package com.example.mediapp.Model;
 
 public class MonthSalesData {
     String month;

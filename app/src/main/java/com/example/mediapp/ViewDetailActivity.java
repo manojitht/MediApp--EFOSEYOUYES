@@ -85,6 +85,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         saveCurrentTime = currentDate.format(callForDate.getTime());
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+        final DatabaseReference soldProducts = FirebaseDatabase.getInstance().getReference().child("Sold products");
 
         final HashMap<String, Object> cartMap = new HashMap<>();
         cartMap.put("pid", productId);
@@ -103,6 +104,7 @@ public class ViewDetailActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
+                                soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(productId).updateChildren(cartMap); // making the sold products records to admin
                                 Toast.makeText(ViewDetailActivity.this, "Added to cart successfully!", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(ViewDetailActivity.this, HomeActivity.class);
@@ -110,6 +112,17 @@ public class ViewDetailActivity extends AppCompatActivity {
                             }
                         }
                     });
+//                    soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if (task.isSuccessful()){
+//                                Toast.makeText(ViewDetailActivity.this, "Added to cart successfully!", Toast.LENGTH_SHORT).show();
+//
+//                                Intent intent = new Intent(ViewDetailActivity.this, HomeActivity.class);
+//                                startActivity(intent);
+//                            }
+//                        }
+//                    });
                 }
             }
         });

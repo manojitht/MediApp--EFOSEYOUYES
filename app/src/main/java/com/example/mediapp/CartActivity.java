@@ -123,6 +123,8 @@ public class CartActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                           if (task.isSuccessful()){
                                               cartListRef.child("Admin View").child(GetData.superOnlineUsers.getName()).child("Products").child(model.getPid()).removeValue();
+                                              final DatabaseReference soldProducts = FirebaseDatabase.getInstance().getReference().child("Sold products"); // declaring the child of Sold products
+                                              soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(model.getPid()).removeValue();// removes product from sold products
                                               Toast.makeText(CartActivity.this, "Things removed successfully!", Toast.LENGTH_SHORT).show();
                                               Intent intent = new Intent(CartActivity.this, HomeActivity.class);
                                               startActivity(intent);

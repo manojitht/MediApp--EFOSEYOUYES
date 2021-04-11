@@ -39,7 +39,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Show_orders extends AppCompatActivity {
 
-    private DatabaseReference ordersRef, ordersCancel, ordersCancelAdmin, salesDataRemove;
+    private DatabaseReference ordersRef, ordersCancel, ordersCancelAdmin, salesDataRemove, salesProductsRemove;
     private TextView Username, Contact, Address, Price, Date, popMessage, DescriptionDate, HeaderText;
     private Button viewOrder, cancelOrder;
     private RelativeLayout order_card;
@@ -67,6 +67,7 @@ public class Show_orders extends AppCompatActivity {
         ordersCancel = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
         salesDataRemove = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName());
         ordersCancelAdmin = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View").child(GetData.superOnlineUsers.getName());
+        salesProductsRemove = FirebaseDatabase.getInstance().getReference().child("Sold products").child("customers").child(GetData.superOnlineUsers.getName());
         order_card.setVisibility(View.GONE);
         popup_image.setVisibility(View.VISIBLE);// sets default in invisible mode.
         popMessage.setVisibility(View.VISIBLE);
@@ -88,6 +89,7 @@ public class Show_orders extends AppCompatActivity {
                 ordersCancel.removeValue();
                 ordersCancelAdmin.removeValue();
                 salesDataRemove.removeValue();
+                salesProductsRemove.removeValue();
                 Toast.makeText(Show_orders.this, "Your order has been cancelled!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Show_orders.this, HomeActivity.class);
                 startActivity(intent);

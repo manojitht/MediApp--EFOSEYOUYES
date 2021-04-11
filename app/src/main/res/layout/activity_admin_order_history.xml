@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AdminFolder.AdminOrderHistory">
+
+        <RelativeLayout
+            android:id="@+id/laysearch"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorGrey"
+            android:layout_alignParentTop="true"
+            >
+
+            <EditText
+                android:id="@+id/search_date_from"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/custom_input"
+                android:drawablePadding="12dp"
+                android:fontFamily="@font/poppins_light"
+                android:gravity="center"
+                android:hint="Date from"
+                android:padding="12dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColorHint="#5B5D5E"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/search_date_to"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_toRightOf="@id/search_date_from"
+                android:background="@drawable/custom_input"
+                android:drawablePadding="12dp"
+                android:fontFamily="@font/poppins_light"
+                android:gravity="center"
+                android:hint="Date to"
+                android:padding="12dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColorHint="#5B5D5E"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/search_date_to"
+                android:background="@drawable/buttonsyello"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="7dp"
+                android:text="Get records"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorYellow"
+            android:layout_below="@id/laysearch">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+

@@ -44,13 +44,14 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Check();
-//                loadingDialog.startLoadingDialog();
+                loadingDialog.startLoadingDialog();
             }
         });
 
     }
 
     private void Check() {
+
         if (TextUtils.isEmpty(ShipName.getText().toString())){
             Toast.makeText(ConfirmOrderActivity.this, "Please provide your name!", Toast.LENGTH_SHORT).show();
         }
@@ -88,7 +89,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("time", saveCurrentTime);
         ordersMap.put("status", "Not Shipped");
 
-        final DatabaseReference salesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName()); //creation of the "Orders" child
+        final DatabaseReference salesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName()); //creation of the "Sales Data" child
 
         HashMap<String, Object> orderSales = new HashMap<>(); ///creating the object as hash map
         orderSales.put("totalAmount", totalAmount);

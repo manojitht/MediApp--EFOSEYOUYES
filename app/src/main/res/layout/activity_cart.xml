@@ -96,7 +96,7 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/buttoncartlayn"
         android:fontFamily="@font/poppins_medium"
-        android:text="Check out"
+        android:text="Make order"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="20dp" />
@@ -107,7 +107,7 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/buttoncartlay"
         android:fontFamily="@font/poppins_medium"
-        android:text="Calculate total"
+        android:text="Checkout"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="20dp" />
