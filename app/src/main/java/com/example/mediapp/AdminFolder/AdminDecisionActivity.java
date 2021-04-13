@@ -67,7 +67,7 @@ public class AdminDecisionActivity extends AppCompatActivity {
         ShowGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminDecisionActivity.this, AdminOrderHistory.class);
+                Intent intent = new Intent(AdminDecisionActivity.this, ReportDecision.class);
                 startActivity(intent);
             }
         });

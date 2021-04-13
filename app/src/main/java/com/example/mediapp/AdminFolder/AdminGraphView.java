@@ -42,10 +42,10 @@ public class AdminGraphView extends AppCompatActivity {
             labelsName.add(month);
         }
 
-        BarDataSet barDataSet = new BarDataSet(barEntryArrayList, "Months");
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        BarDataSet barDataSet = new BarDataSet(barEntryArrayList, "Weeks");
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         Description description = new Description();
-        description.setText("Year: 2021");
+        description.setText("Month: April");
         barChart.setDescription(description);
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
@@ -65,17 +65,9 @@ public class AdminGraphView extends AppCompatActivity {
 
     private void takeMonthSales(){
         monthSalesDataArrayList.clear();
-        monthSalesDataArrayList.add(new MonthSalesData("January", 26525));
-        monthSalesDataArrayList.add(new MonthSalesData("February", 65925));
-        monthSalesDataArrayList.add(new MonthSalesData("March", 65925));
-        monthSalesDataArrayList.add(new MonthSalesData("April", 26925));
-        monthSalesDataArrayList.add(new MonthSalesData("May", 2595));
-        monthSalesDataArrayList.add(new MonthSalesData("June", 25925));
-        monthSalesDataArrayList.add(new MonthSalesData("July", 36525));
-        monthSalesDataArrayList.add(new MonthSalesData("August", 265925));
-        monthSalesDataArrayList.add(new MonthSalesData("September", 9655));
-        monthSalesDataArrayList.add(new MonthSalesData("October", 5625));
-        monthSalesDataArrayList.add(new MonthSalesData("November", 81625));
-        monthSalesDataArrayList.add(new MonthSalesData("December", 96625));
+        monthSalesDataArrayList.add(new MonthSalesData("1st Week", 26525));
+        monthSalesDataArrayList.add(new MonthSalesData("2nd Week", 85925));
+        monthSalesDataArrayList.add(new MonthSalesData("3rd Week", 65925));
+        monthSalesDataArrayList.add(new MonthSalesData("4th Week", 36925));
     }
 }
