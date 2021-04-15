@@ -10,7 +10,7 @@
         android:id="@+id/laysearch"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorLightBlue"
+        android:background="@color/colorPurple"
         android:layout_alignParentTop="true"
         >
 
@@ -27,7 +27,7 @@
             android:drawablePadding="12dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textColorHint="@color/colorSkyBlue"
+            android:textColorHint="@color/colorPurple"
             android:textSize="14dp"
             android:textStyle="bold"
             android:drawableStart="@drawable/ic_baseline_search_24"/>
@@ -39,11 +39,11 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/search_product_name"
-            android:background="@drawable/buttonred"
+            android:background="@drawable/buttonsyello"
             android:fontFamily="@font/poppins_medium"
             android:padding="7dp"
             android:text="Search"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textAllCaps="false"
             android:textSize="13dp"
             android:textStyle="bold"

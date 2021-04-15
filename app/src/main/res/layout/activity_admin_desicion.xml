@@ -87,11 +87,11 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="339dp"
+        android:layout_width="359dp"
         android:layout_height="26dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="Welcome Admin! Select what you want to do...."
+        android:text="Welcome Admin! Select what you want to do"
         android:textColor="#EFEAF1"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
