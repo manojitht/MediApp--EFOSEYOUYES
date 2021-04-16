@@ -1,5 +1,6 @@
 package com.example.mediapp.AdminFolder;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 
 public class AdminGraphView extends AppCompatActivity {
@@ -29,6 +31,9 @@ public class AdminGraphView extends AppCompatActivity {
     BarChart barChart;
     ArrayList<BarEntry> barEntryArrayList;
     ArrayList<String> labelsName;
+    DatabaseReference GetRecord;
+    String setMonth;
+
 
     ArrayList<MonthSalesData> monthSalesDataArrayList = new ArrayList<>();
 
@@ -53,7 +58,7 @@ public class AdminGraphView extends AppCompatActivity {
         BarDataSet barDataSet = new BarDataSet(barEntryArrayList, "Weeks");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         Description description = new Description();
-        description.setText("Month: April");
+        description.setText("Month: " );
         barChart.setDescription(description);
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
@@ -72,26 +77,30 @@ public class AdminGraphView extends AppCompatActivity {
     }
 
 
-    private void takeMonthSales(){
 
-//        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference().child("items");
-//        ValueEventListener eventListener = new ValueEventListener() {
+
+    public void takeMonthSales(){
+
+//        GetRecord = FirebaseDatabase.getInstance().getReference().child("Graph").child("Record");
+//        GetRecord.addValueEventListener(new ValueEventListener() {
 //            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    String name = ds.getKey();
-//                }
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                String month = dataSnapshot.child("Month").getValue().toString();
+//                String firstWeek = dataSnapshot.child("1st week").getValue().toString();
+//                String secondWeek = dataSnapshot.child("2nd week").getValue().toString();
+//                String thirdWeek = dataSnapshot.child("3rd week").getValue().toString();
+//                String fourthWeek = dataSnapshot.child("4th week").getValue().toString();
+//                int first = Integer.parseInt(firstWeek);
 //            }
 //
 //            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                Log.d("TAG", databaseError.getMessage()); //Don't ignore potential errors!
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
 //            }
-//        };
-//        itemsRef.addListenerForSingleValueEvent(eventListener);
+//        });
 
         monthSalesDataArrayList.clear();
-        monthSalesDataArrayList.add(new MonthSalesData("1st Week", 7575));
+        monthSalesDataArrayList.add(new MonthSalesData("1st Week", 8589));
         monthSalesDataArrayList.add(new MonthSalesData("2nd Week", 85925));
         monthSalesDataArrayList.add(new MonthSalesData("3rd Week", 65925));
         monthSalesDataArrayList.add(new MonthSalesData("4th Week", 36925));

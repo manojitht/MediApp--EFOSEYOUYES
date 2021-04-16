@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import com.example.mediapp.R;
 
 public class ReportDecision extends AppCompatActivity {
-    private Button ShowSalesReport, PointOutGraph, TodaySalesRevenue;
+    private Button ShowSalesReport, PointOutGraph, WeekSalesRevenue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class ReportDecision extends AppCompatActivity {
 
         ShowSalesReport = findViewById(R.id.show_sales_report);
         PointOutGraph = findViewById(R.id.graph_generator);
-        TodaySalesRevenue = findViewById(R.id.enter_weekly_sales);
+        WeekSalesRevenue = findViewById(R.id.enter_weekly_sales);
 
         ShowSalesReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +34,14 @@ public class ReportDecision extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ReportDecision.this, AdminGraphView.class);
+                startActivity(intent);
+            }
+        });
+
+        WeekSalesRevenue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportDecision.this, AdminReportSales.class);
                 startActivity(intent);
             }
         });
