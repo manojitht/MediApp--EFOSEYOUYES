@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.security.PublicKey;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -91,6 +92,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         cartMap.put("pid", productId);
         cartMap.put("pname", productOfName.getText().toString());
         cartMap.put("price", productOfPrice.getText().toString());
+        cartMap.put("image", ProductImage.toString());
         cartMap.put("date", productId);
         cartMap.put("time", productId);
         cartMap.put("quantity", integerButton.getNumber());

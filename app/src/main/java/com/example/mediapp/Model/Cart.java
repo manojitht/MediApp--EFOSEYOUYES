@@ -1,17 +1,18 @@
 package com.example.mediapp.Model;
 
 public class Cart {
-    private String pid, pname, price, quantity, discount;
+    private String pid, pname, price, quantity, discount, image;
 
     public Cart() {
     }
 
-    public Cart(String pid, String pname, String price, String quantity, String discount) {
+    public Cart(String pid, String pname, String price, String quantity, String discount, String image) {
         this.pid = pid;
         this.pname = pname;
         this.price = price;
         this.quantity = quantity;
         this.discount = discount;
+        this.image = image;
     }
 
     public String getPid() {
@@ -52,5 +53,13 @@ public class Cart {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

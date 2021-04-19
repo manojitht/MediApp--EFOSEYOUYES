@@ -5,19 +5,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
     app:cardElevation="15dp">
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
         android:background="@drawable/buttonsyello">
 
+        <ImageView
+            android:id="@+id/cart_items_productimage"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"/>
+
         <TextView
             android:id="@+id/cart_items_productname"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginLeft="5dp"
-            android:fontFamily="@font/poppins_light"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="left"
             android:text="Product name"
             android:textColor="@color/colorBlack"
             android:textSize="14dp"
@@ -25,28 +37,32 @@
 
         <TextView
             android:id="@+id/cart_items_productquantity"
-            android:layout_width="160dp"
+            android:layout_width="155dp"
             android:layout_height="wrap_content"
+            android:layout_below="@id/cart_items_productname"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="left"
             android:text="Product Quantity"
-            android:textAlignment="textEnd"
             android:textColor="@color/colorBlack"
             android:textSize="14dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cart_items_productprice"
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/cart_items_productquantity"
+            android:layout_alignParentEnd="true"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:text="Product name"
+            android:gravity="left"
+            android:text="Product price"
             android:textColor="@color/colorBlack"
             android:textSize="14dp"
             android:textStyle="bold" />

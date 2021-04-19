@@ -81,23 +81,23 @@ public class AdminGraphView extends AppCompatActivity {
 
     public void takeMonthSales(){
 
-//        GetRecord = FirebaseDatabase.getInstance().getReference().child("Graph").child("Record");
-//        GetRecord.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                String month = dataSnapshot.child("Month").getValue().toString();
-//                String firstWeek = dataSnapshot.child("1st week").getValue().toString();
-//                String secondWeek = dataSnapshot.child("2nd week").getValue().toString();
-//                String thirdWeek = dataSnapshot.child("3rd week").getValue().toString();
-//                String fourthWeek = dataSnapshot.child("4th week").getValue().toString();
-//                int first = Integer.parseInt(firstWeek);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        GetRecord = FirebaseDatabase.getInstance().getReference().child("Graph").child("Record");
+        GetRecord.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String month = dataSnapshot.child("Month").getValue().toString();
+                String firstWeek = dataSnapshot.child("1st week").getValue().toString();
+                String secondWeek = dataSnapshot.child("2nd week").getValue().toString();
+                String thirdWeek = dataSnapshot.child("3rd week").getValue().toString();
+                String fourthWeek = dataSnapshot.child("4th week").getValue().toString();
+                int first = Integer.parseInt(firstWeek);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         monthSalesDataArrayList.clear();
         monthSalesDataArrayList.add(new MonthSalesData("1st Week", 8589));
