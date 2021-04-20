@@ -10,16 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:background="@drawable/buttonsyello">
+        android:background="@drawable/buttonwhite">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/cart_items_productimage"
             android:layout_width="180dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            app:shapeAppearanceOverlay="@style/CartViewImage" />
 
         <TextView
             android:id="@+id/cart_items_productname"
@@ -28,10 +29,10 @@
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="left"
             android:text="Product name"
-            android:textColor="@color/colorBlack"
+            android:textColor="#E87F13"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -44,10 +45,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="left"
             android:text="Product Quantity"
-            android:textColor="@color/colorBlack"
+            android:textColor="#10100A"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -63,7 +64,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="left"
             android:text="Product price"
-            android:textColor="@color/colorBlack"
+            android:textColor="#1597DD"
             android:textSize="14dp"
             android:textStyle="bold" />
 

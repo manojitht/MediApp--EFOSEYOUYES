@@ -17,6 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class AdminSoldProducts extends AppCompatActivity {
 
@@ -53,6 +54,7 @@ public class AdminSoldProducts extends AppCompatActivity {
                 holder.txtProductQuantity.setText("Quantity = "+model.getQuantity() + " Pcs");
                 holder.txtProductPrice.setText("Price = " + model.getPrice() + " LKR");
                 holder.txtProductname.setText(model.getPname());
+                Picasso.get().load(model.getImage()).into(holder.productImageView);
             }
 
             @NonNull

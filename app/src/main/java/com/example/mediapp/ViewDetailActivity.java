@@ -35,7 +35,7 @@ public class ViewDetailActivity extends AppCompatActivity {
     private ImageView ProductImage;
     private Button addToCartButton;
     private ElegantNumberButton integerButton;
-    private TextView productOfName, productOfDescription, productOfPrice;
+    private TextView productOfName, productOfDescription, productOfPrice, ImageUrl;
     private String productId = "", status = "Normal";
 
 
@@ -52,6 +52,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         productOfName = (TextView) findViewById(R.id.name_product_text);
         productOfDescription = (TextView) findViewById(R.id.details_product_text);
         productOfPrice = (TextView) findViewById(R.id.price_product_text);
+        ImageUrl = (TextView) findViewById(R.id.image_url);
 
 
         takeProductDetails(productId);
@@ -92,7 +93,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         cartMap.put("pid", productId);
         cartMap.put("pname", productOfName.getText().toString());
         cartMap.put("price", productOfPrice.getText().toString());
-        cartMap.put("image", ProductImage.toString());
+        cartMap.put("image", ImageUrl.getText());
         cartMap.put("date", productId);
         cartMap.put("time", productId);
         cartMap.put("quantity", integerButton.getNumber());
@@ -144,6 +145,7 @@ public class ViewDetailActivity extends AppCompatActivity {
                     productOfPrice.setText(products.getPrice());
                     productOfDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(ProductImage);
+                    ImageUrl.setText(products.getImage());
                 }
             }
 

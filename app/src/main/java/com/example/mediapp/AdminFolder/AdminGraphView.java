@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.MonthSalesData;
 import com.example.mediapp.R;
+import com.example.mediapp.ViewDetailActivity;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -17,6 +23,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +39,9 @@ public class AdminGraphView extends AppCompatActivity {
     ArrayList<BarEntry> barEntryArrayList;
     ArrayList<String> labelsName;
     DatabaseReference GetRecord;
-    String setMonth;
+    private TextView setMonth, FirstWeek, SecondWeek, ThirdWeek, FourthWeek;
+    String x = "45213" ;
+    String y ;
 
 
     ArrayList<MonthSalesData> monthSalesDataArrayList = new ArrayList<>();
@@ -43,6 +52,11 @@ public class AdminGraphView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_graph_view);
         barChart = findViewById(R.id.barChart);
+        setMonth = findViewById(R.id.set_month);
+        FirstWeek = findViewById(R.id.first_week);
+        SecondWeek = findViewById(R.id.second_week);
+        ThirdWeek = findViewById(R.id.third_week);
+        FourthWeek = findViewById(R.id.fourth_week);
         // create the new object for the array list of sales and month
         barEntryArrayList = new ArrayList<>();
         labelsName = new ArrayList<>();
@@ -50,15 +64,15 @@ public class AdminGraphView extends AppCompatActivity {
 
         for (int i = 0; i < monthSalesDataArrayList.size(); i++){
             String month = monthSalesDataArrayList.get(i).getMonth();
-            int sales = monthSalesDataArrayList.get(i).getSales();
-            barEntryArrayList.add(new BarEntry(i, sales));
+            String sales = monthSalesDataArrayList.get(i).getSales();
+            barEntryArrayList.add(new BarEntry(i, Float.parseFloat(sales)));
             labelsName.add(month);
         }
 
         BarDataSet barDataSet = new BarDataSet(barEntryArrayList, "Weeks");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         Description description = new Description();
-        description.setText("Month: " );
+        description.setText(setMonth.getText().toString());
         barChart.setDescription(description);
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
@@ -90,7 +104,18 @@ public class AdminGraphView extends AppCompatActivity {
                 String secondWeek = dataSnapshot.child("2nd week").getValue().toString();
                 String thirdWeek = dataSnapshot.child("3rd week").getValue().toString();
                 String fourthWeek = dataSnapshot.child("4th week").getValue().toString();
-                int first = Integer.parseInt(firstWeek);
+                setMonth.setText("Month of report " + month);
+                FirstWeek.setText(firstWeek);
+                SecondWeek.setText(secondWeek);
+                ThirdWeek.setText(thirdWeek);
+                FourthWeek.setText(fourthWeek);
+
+                y = firstWeek;
+
+//                String x = FirstWeek.getText().toString();
+//                Toast.makeText(AdminGraphView.this, "The x is :" + x , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(AdminGraphView.this, FirstWeek.getText() + ", " + SecondWeek.getText() + ", " + ThirdWeek.getText() + ", " + FourthWeek.getText(), Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -99,12 +124,17 @@ public class AdminGraphView extends AppCompatActivity {
             }
         });
 
+
+        Toast.makeText(AdminGraphView.this, "The x is :" + x , Toast.LENGTH_SHORT).show();
         monthSalesDataArrayList.clear();
-        monthSalesDataArrayList.add(new MonthSalesData("1st Week", 8589));
-        monthSalesDataArrayList.add(new MonthSalesData("2nd Week", 85925));
-        monthSalesDataArrayList.add(new MonthSalesData("3rd Week", 65925));
-        monthSalesDataArrayList.add(new MonthSalesData("4th Week", 36925));
+        monthSalesDataArrayList.add(new MonthSalesData("1st Week", x));
+        monthSalesDataArrayList.add(new MonthSalesData("2nd Week", x));
+        monthSalesDataArrayList.add(new MonthSalesData("3rd Week", x));
+        monthSalesDataArrayList.add(new MonthSalesData("4th Week", x));
+
+
     }
+
 
 
 }

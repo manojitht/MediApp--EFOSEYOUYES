@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class ViewOrderCx extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -60,9 +61,10 @@ public class ViewOrderCx extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
-                holder.txtProductQuantity.setText("Quantity = "+model.getQuantity());
-                holder.txtProductPrice.setText("Price = " + model.getPrice());
+                holder.txtProductQuantity.setText("Quantity = "+model.getQuantity() + " Pcs");
+                holder.txtProductPrice.setText("Price = " + model.getPrice() + " LKR");
                 holder.txtProductname.setText(model.getPname());
+                Picasso.get().load(model.getImage()).into(holder.productImageView);
 
                 int oneTypeProductPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;
