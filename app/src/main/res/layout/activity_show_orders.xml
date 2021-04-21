@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/order_card"
         android:layout_width="371dp"
-        android:layout_height="556dp"
+        android:layout_height="506dp"
         android:layout_margin="10dp"
         android:background="@drawable/button_white"
         android:padding="10dp"
@@ -22,19 +22,19 @@
         app:layout_constraintVertical_bias="0.699">
 
 
-        <Button
-            android:id="@+id/received_order"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/order_date_time"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="174dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/buttonblue"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Order received"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite" />
+<!--        <Button-->
+<!--            android:id="@+id/received_order"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/order_date_time"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="174dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:background="@drawable/buttonblue"-->
+<!--            android:fontFamily="@font/poppins_semibold"-->
+<!--            android:text="Order received"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/colorWhite" />-->
 
         <Button
             android:id="@+id/cancel_order"

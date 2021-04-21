@@ -54,7 +54,7 @@ public class SearchActivity extends AppCompatActivity {
         categoryList = new ArrayList<>();
         categoryList.add("Mask");
         categoryList.add("Cardiology");
-        categoryList.add("Baby Items");
+        categoryList.add("Baby");
         categoryList.add("Tablets");
         categoryList.add("Facial");
         categoryList.add("Handwash");

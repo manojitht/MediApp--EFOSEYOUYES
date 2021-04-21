@@ -8,6 +8,21 @@
     android:background="@color/colorWhite">
 
 
+    <TextView
+        android:id="@+id/price_tag"
+        android:layout_width="56dp"
+        android:layout_height="21dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="right"
+        android:text="Price"
+        android:textColor="#D83E0D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.416" />
+
     <ImageView
         android:id="@+id/details_image_view"
         android:layout_width="420dp"
@@ -65,19 +80,19 @@
 
     <TextView
         android:id="@+id/name_product_text"
-        android:layout_width="187dp"
+        android:layout_width="390dp"
         android:layout_height="35dp"
         android:fontFamily="@font/nunito_extrabold"
-        android:gravity="left"
+        android:gravity="center"
         android:paddingStart="12dp"
         android:text="Product name"
-        android:textSize="24sp"
+        android:textColor="#414042"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.336" />
 
     <TextView
         android:id="@+id/stock_status"
@@ -86,15 +101,15 @@
         android:background="@drawable/button_white"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
-        android:text="stock available"
+        android:text="stock status"
         android:textColor="@color/colorBlue"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.417" />
 
     <TextView
         android:id="@+id/textView19"
@@ -108,20 +123,21 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.478" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="343dp"
-        android:layout_height="183dp"
+        android:layout_width="360dp"
+        android:layout_height="154dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623">
+        app:layout_constraintVertical_bias="0.649">
 
         <TextView
             android:id="@+id/details_product_text"
@@ -130,6 +146,7 @@
             android:fontFamily="@font/nunito_extrabold"
             android:paddingLeft="25dp"
             android:text="Product description"
+            android:textColor="#636265"
             android:textSize="13sp" />
     </ScrollView>
 
@@ -138,28 +155,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_extrabold"
+        android:gravity="right"
         android:paddingLeft="5dp"
         android:text="0.00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintVertical_bias="0.416" />
 
     <TextView
         android:id="@+id/currency_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="17dp"
         android:fontFamily="@font/nunito_extrabold"
-        android:text="LKR"
+        android:text="lkr"
         android:textColor="#EF861A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintHorizontal_bias="0.316"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintVertical_bias="0.414" />
 
     <TextView
         android:id="@+id/image_url"

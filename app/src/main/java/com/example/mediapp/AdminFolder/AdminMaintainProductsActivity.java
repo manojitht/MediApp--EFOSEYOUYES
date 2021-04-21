@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.mediapp.LoadingDialog;
@@ -30,6 +32,8 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
     private EditText mtnName, mtnPrice, mtnDescription;
     private ImageView mtnImageView;
     private String productId = "";
+    private RadioGroup radioGroup;
+    private RadioButton pointedButton;
     private DatabaseReference productsRef;
 
     public LoadingDialog loadingDialog = new LoadingDialog(AdminMaintainProductsActivity.this);
@@ -48,6 +52,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         mtnPrice = (EditText) findViewById(R.id.product_price_maintain);
         mtnDescription = (EditText) findViewById(R.id.product_description_maintain);
         mtnImageView = (ImageView) findViewById(R.id.product_image_maintain);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         displayTheProductWithTheInformation();
 
@@ -86,6 +91,8 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         String mName = mtnName.getText().toString();
         String mPrice = mtnPrice.getText().toString();
         String mDescription = mtnDescription.getText().toString();
+        pointedButton  = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
+        String getStockStatus = pointedButton.getText().toString();
 
         if (mName.equals("")){
             Toast.makeText(AdminMaintainProductsActivity.this, "Enter the product name..", Toast.LENGTH_SHORT).show();
@@ -99,6 +106,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             productMap.put("description", mDescription);
             productMap.put("price", mPrice);
             productMap.put("productName", mName);
+            productMap.put("stock", getStockStatus);
 
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

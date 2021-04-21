@@ -1,13 +1,13 @@
 package com.example.mediapp.Model;
 
 public class Products {
-    private String productName, description, price, image, category, pid, date, time;
+    private String productName, description, price, image, category, pid, date, time, stock;
 
     public Products(){
 
     }
 
-    public Products(String productName, String description, String price, String image, String category, String pid, String date, String time) {
+    public Products(String productName, String description, String price, String image, String category, String pid, String date, String time, String stock) {
         this.productName = productName;
         this.description = description;
         this.price = price;
@@ -16,6 +16,7 @@ public class Products {
         this.pid = pid;
         this.date = date;
         this.time = time;
+        this.stock = stock;
     }
 
     public String getProductName() {
@@ -80,5 +81,13 @@ public class Products {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
     }
 }
