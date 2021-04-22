@@ -10,8 +10,8 @@
 
     <Button
         android:id="@+id/product_button_maintain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="117dp"
+        android:layout_height="37dp"
         android:background="@drawable/buttonurple"
         android:fontFamily="@font/nunito_extrabold"
         android:text="Update item"
@@ -94,8 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/background" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/product_name_maintain"
@@ -148,7 +147,8 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:fontFamily="@font/nunito_extrabold"
-            android:text="Stock available" />
+            android:text="Stock available"
+            android:textColor="#1C38E6" />
 
         <RadioButton
             android:id="@+id/rb2"
@@ -157,7 +157,8 @@
             android:layout_marginLeft="45dp"
             android:checked="false"
             android:fontFamily="@font/nunito_extrabold"
-            android:text="Not available" />
+            android:text="Not available"
+            android:textColor="#EA2929" />
 
         <!--        <RadioButton-->
         <!--            android:id="@+id/rb3"-->
@@ -177,8 +178,8 @@
 
     <Button
         android:id="@+id/product_delete_maintain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="36dp"
         android:background="@drawable/buttonred"
         android:fontFamily="@font/nunito_extrabold"
         android:text="Delete item"
