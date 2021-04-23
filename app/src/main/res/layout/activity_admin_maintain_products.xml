@@ -12,7 +12,7 @@
         android:id="@+id/product_button_maintain"
         android:layout_width="117dp"
         android:layout_height="37dp"
-        android:background="@drawable/buttonurple"
+        android:background="@drawable/buttonblue"
         android:fontFamily="@font/nunito_extrabold"
         android:text="Update item"
         android:textAllCaps="false"
@@ -157,7 +157,7 @@
             android:layout_marginLeft="45dp"
             android:checked="false"
             android:fontFamily="@font/nunito_extrabold"
-            android:text="Not available"
+            android:text="Out of stock"
             android:textColor="#EA2929" />
 
         <!--        <RadioButton-->

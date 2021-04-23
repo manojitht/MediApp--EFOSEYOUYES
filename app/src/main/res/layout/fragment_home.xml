@@ -23,12 +23,12 @@
             android:id="@+id/product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorRed"
-            android:fontFamily="@font/nunito_extrabold"
+            android:background="#4F5151"
+            android:fontFamily="@font/poppins_light"
             android:text="Product Name"
             android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20dp"
+            android:textColor="#F1EEEE"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <ImageView
