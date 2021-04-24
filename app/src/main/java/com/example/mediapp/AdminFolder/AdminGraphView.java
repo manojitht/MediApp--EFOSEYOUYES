@@ -40,8 +40,6 @@ public class AdminGraphView extends AppCompatActivity {
     ArrayList<String> labelsName;
     DatabaseReference GetRecord;
     private TextView setMonth, FirstWeek, SecondWeek, ThirdWeek, FourthWeek;
-    String x = "45213" ;
-    String y ;
 
 
     ArrayList<MonthSalesData> monthSalesDataArrayList = new ArrayList<>();
@@ -99,18 +97,16 @@ public class AdminGraphView extends AppCompatActivity {
         GetRecord.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String month = dataSnapshot.child("Month").getValue().toString();
-                String firstWeek = dataSnapshot.child("1st week").getValue().toString();
-                String secondWeek = dataSnapshot.child("2nd week").getValue().toString();
-                String thirdWeek = dataSnapshot.child("3rd week").getValue().toString();
-                String fourthWeek = dataSnapshot.child("4th week").getValue().toString();
-                setMonth.setText("Month of report " + month);
-                FirstWeek.setText(firstWeek);
-                SecondWeek.setText(secondWeek);
-                ThirdWeek.setText(thirdWeek);
-                FourthWeek.setText(fourthWeek);
-
-                y = firstWeek;
+//                String month = dataSnapshot.child("Month").getValue().toString();
+//                String firstWeek = dataSnapshot.child("1st week").getValue().toString();
+//                String secondWeek = dataSnapshot.child("2nd week").getValue().toString();
+//                String thirdWeek = dataSnapshot.child("3rd week").getValue().toString();
+//                String fourthWeek = dataSnapshot.child("4th week").getValue().toString();
+//                setMonth.setText("Month of report " + month);
+//                FirstWeek.setText(firstWeek);
+//                SecondWeek.setText(secondWeek);
+//                ThirdWeek.setText(thirdWeek);
+//                FourthWeek.setText(fourthWeek);
 
 //                String x = FirstWeek.getText().toString();
 //                Toast.makeText(AdminGraphView.this, "The x is :" + x , Toast.LENGTH_SHORT).show();
@@ -124,13 +120,11 @@ public class AdminGraphView extends AppCompatActivity {
             }
         });
 
-
-        Toast.makeText(AdminGraphView.this, "The x is :" + x , Toast.LENGTH_SHORT).show();
         monthSalesDataArrayList.clear();
-        monthSalesDataArrayList.add(new MonthSalesData("1st Week", x));
-        monthSalesDataArrayList.add(new MonthSalesData("2nd Week", x));
-        monthSalesDataArrayList.add(new MonthSalesData("3rd Week", x));
-        monthSalesDataArrayList.add(new MonthSalesData("4th Week", x));
+        monthSalesDataArrayList.add(new MonthSalesData("1st Week", "62685"));
+        monthSalesDataArrayList.add(new MonthSalesData("2nd Week", "72636"));
+        monthSalesDataArrayList.add(new MonthSalesData("3rd Week", "62301"));
+        monthSalesDataArrayList.add(new MonthSalesData("4th Week", "85656"));
 
 
     }
