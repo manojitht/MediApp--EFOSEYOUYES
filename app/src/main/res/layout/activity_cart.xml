@@ -33,19 +33,18 @@
         android:id="@+id/text_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorLightGreen"
+        android:layout_centerVertical="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:textAlignment="center"
-        android:layout_centerVertical="true"
+        android:fontFamily="@font/poppins_medium"
         android:text="Your order has been received to us please wait until we approve the order Thank you!"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins_light"
+        android:textAlignment="center"
+        android:textColor="@color/colorLightGreen"
         android:textSize="15dp"
+        android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/front_image1"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/front_image1" />
 
 <!--    <TextView-->
 <!--        android:id="@+id/text_message1"-->

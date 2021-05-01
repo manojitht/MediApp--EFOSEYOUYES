@@ -172,7 +172,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_profile:
-                Intent intent1 = new Intent(HomeActivity.this, DesicionActivity.class);
+                Intent intent1 = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(intent1);
                 Paper.book().destroy();
                 return true;

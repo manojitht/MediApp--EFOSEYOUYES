@@ -32,7 +32,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="left"
             android:text="Product name"
-            android:textColor="#E87F13"
+            android:textColor="#4A4A49"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="left"
             android:text="Product Quantity"
-            android:textColor="#10100A"
+            android:textColor="#568EEC"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -64,7 +64,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="left"
             android:text="Product price"
-            android:textColor="#1597DD"
+            android:textColor="#F18C0B"
             android:textSize="14dp"
             android:textStyle="bold" />
 

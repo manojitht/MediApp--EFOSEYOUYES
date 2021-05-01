@@ -61,10 +61,14 @@ public class ViewDetailActivity extends AppCompatActivity {
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addingToCart();
+//                addingToCart();
                 if (status.equals("Order placed") || status.equals("Order Shipped")){
                     Toast.makeText(ViewDetailActivity.this, "You can purchase once your order approved! Thanks..", Toast.LENGTH_SHORT).show();
-                }else {
+                }
+                else if (StockStatus.getText().toString().equals("Out of stock")){
+                    Toast.makeText(ViewDetailActivity.this, "Sorry, this product is unavailable.", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     addingToCart();
                 }
             }

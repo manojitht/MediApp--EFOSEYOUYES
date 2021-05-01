@@ -103,6 +103,20 @@ public class LoginActivity extends AppCompatActivity {
                 DatabaseName = "Users";
             }
         });
+
+        String UserNameKey = Paper.book().read(GetData.UserNamekey);
+        String UserPasswordKey = Paper.book().read(GetData.UserPasswordKey);
+
+        if (UserNameKey != "" && UserPasswordKey != ""){
+            if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)){
+                GiveAccess(UserNameKey, UserPasswordKey);
+
+                loadingBar.setTitle("Opening!");
+                loadingBar.setMessage("Please wait...");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
+            }
+        }
     }
 
     private void LoginUser() {
@@ -190,6 +204,43 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+
+            }
+        });
+    }
+
+    private void GiveAccess(final String Name, final String Password) {
+
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("Users").child(Name).exists()){
+                    Users usersData = snapshot.child("Users").child(Name).getValue(Users.class);
+
+                    if (usersData.getName().equals(Name)){
+                        if (usersData.getPassword().equals(Password)){
+                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            GetData.superOnlineUsers = usersData;
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        }
+                    }
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Your name doesn't exists.", Toast.LENGTH_SHORT).show();
+                    loadingBar.dismiss();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });

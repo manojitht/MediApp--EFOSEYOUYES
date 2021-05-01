@@ -149,7 +149,7 @@
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
         android:text="My Orders"
-        android:textColor="@color/colorLightBlue"
+        android:textColor="#2AB0EC"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/order_card"
         app:layout_constraintEnd_toEndOf="parent"

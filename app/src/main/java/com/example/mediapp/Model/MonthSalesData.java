@@ -1,6 +1,6 @@
 package com.example.mediapp.Model;
 
-public class MonthSalesData {
+public class MonthSalesData{
     String month;
     String sales;
 

@@ -44,8 +44,8 @@ public class AdminReportSales extends AppCompatActivity {
         MakeNewReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference removeGraph = FirebaseDatabase.getInstance().getReference().child("Graph");
-                removeGraph.removeValue();
+//                DatabaseReference removeGraph = FirebaseDatabase.getInstance().getReference().child("Graph");
+//                removeGraph.removeValue();
                 ReportMonth.setText("");
                 FirstWeek.setText("");
                 SecondWeek.setText("");
@@ -57,15 +57,25 @@ public class AdminReportSales extends AppCompatActivity {
     }
 
     public void EnterReport(){
-        final DatabaseReference GraphView = FirebaseDatabase.getInstance().getReference().child("Graph").child("Record");
+        final DatabaseReference GraphView = FirebaseDatabase.getInstance().getReference().child("Month Reports").child("Record");
 
-        HashMap<String, Object> WeekSales = new HashMap<>();
-        WeekSales.put("Month", ReportMonth.getText().toString());
-        WeekSales.put("1st week", FirstWeek.getText().toString());
-        WeekSales.put("2nd week", SecondWeek.getText().toString());
-        WeekSales.put("3rd week", ThirdWeek.getText().toString());
-        WeekSales.put("4th week", FourthWeek.getText().toString());
-        GraphView.updateChildren(WeekSales);
-        Toast.makeText(AdminReportSales.this, "Sales record entered successfully!", Toast.LENGTH_SHORT).show();
+        if (FirstWeek.getText().toString().equals("")){
+            FirstWeek.setText("0");
+        }else if(SecondWeek.getText().toString().equals("")){
+            SecondWeek.setText("0");
+        }else if(ThirdWeek.getText().toString().equals("")){
+            ThirdWeek.setText("0");
+        }else if(FourthWeek.getText().toString().equals("")){
+            FourthWeek.setText("0");
+        }else {
+            HashMap<String, Object> WeekSales = new HashMap<>();
+            WeekSales.put("Month", ReportMonth.getText().toString());
+            WeekSales.put("1st week", FirstWeek.getText().toString());
+            WeekSales.put("2nd week", SecondWeek.getText().toString());
+            WeekSales.put("3rd week", ThirdWeek.getText().toString());
+            WeekSales.put("4th week", FourthWeek.getText().toString());
+            GraphView.updateChildren(WeekSales);
+            Toast.makeText(AdminReportSales.this, "Sales record entered successfully!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

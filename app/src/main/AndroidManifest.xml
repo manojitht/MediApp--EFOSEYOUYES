@@ -13,13 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminFolder.AdminReportSales"></activity>
+        <activity android:name=".AdminFolder.GenerateReport" />
+        <activity android:name=".AdminFolder.AdminReportSales" />
         <activity android:name=".AdminFolder.ReportDecision" />
         <activity android:name=".AdminFolder.AdminSoldProducts" />
         <activity android:name=".AdminFolder.AdminOrderHistory" />
         <activity android:name=".ViewOrderCx" />
         <activity android:name=".Show_orders" />
-        <activity android:name=".AdminFolder.AdminGraphView" />
         <activity android:name=".DesicionActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".AdminFolder.AdminMaintainProductsActivity" />

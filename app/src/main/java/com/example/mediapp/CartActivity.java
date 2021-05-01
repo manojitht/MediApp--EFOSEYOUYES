@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.collection.LLRBNode;
 import com.squareup.picasso.Picasso;
 
 import java.util.PriorityQueue;
@@ -71,10 +73,19 @@ public class CartActivity extends AppCompatActivity {
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CartActivity.this, ConfirmOrderActivity.class);
-                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
-                startActivity(intent);
-                finish();
+                if (overTotalPrice == 0){
+                    textMessage.setText("Cart is empty can't go further..");
+                    front_image1.setVisibility(View.VISIBLE);
+                    textMessage.setTextColor(Color.DKGRAY);
+                    textMessage.setVisibility(View.VISIBLE);
+                    Toast.makeText(CartActivity.this, "Your cart is empty, please add some products!", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(CartActivity.this, ConfirmOrderActivity.class);
+                    intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 

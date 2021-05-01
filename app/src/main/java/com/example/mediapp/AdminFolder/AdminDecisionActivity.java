@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.mediapp.DesicionActivity;
 import com.example.mediapp.HomeActivity;
+import com.example.mediapp.LoginActivity;
 import com.example.mediapp.MainActivity;
 import com.example.mediapp.R;
 
@@ -41,7 +42,7 @@ public class AdminDecisionActivity extends AppCompatActivity {
         AdminLogoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminDecisionActivity.this, DesicionActivity.class);
+                Intent intent = new Intent(AdminDecisionActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
