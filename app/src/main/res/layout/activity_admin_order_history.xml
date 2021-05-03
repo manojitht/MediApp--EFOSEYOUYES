@@ -66,12 +66,11 @@
                 android:background="@drawable/buttonsyello"
                 android:fontFamily="@font/poppins_medium"
                 android:padding="7dp"
-                android:text="Get records"
-                android:textColor="@color/colorBlack"
+                android:text="Show"
                 android:textAllCaps="false"
+                android:textColor="@color/colorBlack"
                 android:textSize="13dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

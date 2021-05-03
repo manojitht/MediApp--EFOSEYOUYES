@@ -51,6 +51,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
                 holder.userName.setText("Name: " + model.getCname());
                 holder.userPhoneNumber.setText("Contact: " + model.getPhone());
+                holder.orderId.setText(model.getOrderId());
                 holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount() + " LKR");
                 holder.userDateTime.setText("Date: " + model.getDate() + ", Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress() + " " + model.getCity());
@@ -107,7 +108,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder{
-        public TextView userName, userPhoneNumber, userTotalAmount, userDateTime, userShippingAddress;
+        public TextView userName, userPhoneNumber, userTotalAmount, userDateTime, userShippingAddress, orderId;
         public Button showOrder;
         public AdminOrdersViewHolder(View itemView){
             super(itemView);
@@ -118,6 +119,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
             userDateTime = itemView.findViewById(R.id.order_date_time);
             userShippingAddress = itemView.findViewById(R.id.order_address_city);
             showOrder = itemView.findViewById(R.id.show_all_products);
+            orderId = itemView.findViewById(R.id.order_id);
 
         }
     }

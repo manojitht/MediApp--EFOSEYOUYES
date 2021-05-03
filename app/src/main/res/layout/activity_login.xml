@@ -25,17 +25,18 @@
 
     <TextView
         android:id="@+id/return_register"
-        android:layout_width="67dp"
-        android:layout_height="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
-        android:text="Signup!"
-        android:textColor="#E37608"
+        android:gravity="center"
+        android:text="Click here to register!"
+        android:textColor="#F17B05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.674"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
+        app:layout_constraintVertical_bias="0.753" />
 
     <EditText
         android:id="@+id/Login_password"
@@ -58,7 +59,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.527" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -85,14 +86,14 @@
         android:padding="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textSize="15dp"
         android:textColorHint="#6C6969"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402" />
+        app:layout_constraintVertical_bias="0.395" />
 
     <Button
         android:id="@+id/loginActivity_button"
@@ -109,7 +110,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
+        app:layout_constraintVertical_bias="0.681" />
 
     <TextView
         android:id="@+id/forgot_password"
@@ -127,19 +128,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.584" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="110dp"
-        android:layout_height="19dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="I'm a new user"
-        android:textColor="#201F1F"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
 
     <CheckBox
         android:id="@+id/remember_me"
@@ -151,9 +139,10 @@
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
+        app:layout_constraintVertical_bias="0.845" />
 
     <Button
         android:id="@+id/admin_panel"
@@ -162,14 +151,14 @@
         android:background="@drawable/buttonurple"
         android:fontFamily="@font/poppins_semibold"
         android:text="admin"
-        android:textColor="#fff"
         android:textAllCaps="false"
+        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.924" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

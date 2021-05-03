@@ -9,17 +9,17 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:background="@drawable/buttonurple">
+        android:background="@drawable/button_white">
 
         <TextView
             android:id="@+id/order_cart_items_username"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/nunito_semibold"
             android:text="Username"
-            android:textColor="@color/colorWhite"
-            android:textSize="14dp"
+            android:textColor="#222121"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
@@ -29,10 +29,23 @@
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Contact Number"
             android:textAlignment="textEnd"
-            android:textColor="@color/colorYellow"
+            android:textColor="#1C1C1B"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/order_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_cart_items_username"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="center"
+            android:text="Order Id"
+            android:textColor="#FFFFFF"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -40,13 +53,13 @@
             android:id="@+id/order_total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/order_cart_items_username"
+            android:layout_below="@id/order_id"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="25dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/nunito_semibold"
             android:gravity="center"
             android:text="Total Price"
-            android:textColor="@color/colorWhite"
+            android:textColor="#1E1D1D"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -57,7 +70,7 @@
             android:layout_below="@id/order_total_price"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/nunito_semibold"
             android:gravity="center"
             android:text="Address, City"
             android:textColor="@color/colorBlack"
@@ -71,10 +84,10 @@
             android:layout_below="@id/order_address_city"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/nunito_semibold"
             android:gravity="center"
             android:text="Date Time"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="12dp"
             android:textStyle="bold" />
 
@@ -86,11 +99,11 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/button_white"
+            android:background="@drawable/buttonwhite"
             android:fontFamily="@font/poppins_semibold"
             android:text="View Order"
             android:textAllCaps="false"
-            android:textColor="@color/colorPurple" />
+            android:textColor="@color/colorBlack" />
 
     </RelativeLayout>
 

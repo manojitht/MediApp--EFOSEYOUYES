@@ -40,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Show_orders extends AppCompatActivity {
 
     private DatabaseReference ordersRef, ordersCancel, ordersCancelAdmin, salesDataRemove, salesProductsRemove;
-    private TextView Username, Contact, Address, Price, Date, popMessage, DescriptionDate, HeaderText;
+    private TextView Username, Contact, Address, Price, Date, popMessage, DescriptionDate, OrderId;
     private Button viewOrder, cancelOrder;
     private RelativeLayout order_card;
     private ImageView popup_image;
@@ -61,7 +61,7 @@ public class Show_orders extends AppCompatActivity {
         order_card = (RelativeLayout) findViewById(R.id.order_card);
         popup_image = (ImageView) findViewById(R.id.popup_order_image);
         DescriptionDate = (TextView) findViewById(R.id.description_date);
-        HeaderText = (TextView) findViewById(R.id.my_orders_head_text);
+        OrderId = (TextView) findViewById(R.id.order_id);
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         ordersCancel = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
@@ -71,9 +71,9 @@ public class Show_orders extends AppCompatActivity {
         order_card.setVisibility(View.GONE);
         popup_image.setVisibility(View.VISIBLE);// sets default in invisible mode.
         popMessage.setVisibility(View.VISIBLE);
-        HeaderText.setVisibility(View.GONE);
+        OrderId.setVisibility(View.GONE);
 
-        orderInfoDisplay(Username, Contact, Address, Price, DescriptionDate, Date);
+        orderInfoDisplay(Username, Contact, Address, Price, DescriptionDate, Date, OrderId);
 
         viewOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class Show_orders extends AppCompatActivity {
         });
     }
 
-    private void orderInfoDisplay(final TextView Username, final TextView Contact, final TextView Address, final TextView Price, final TextView DescriptionDate, final TextView Date) {
+    private void orderInfoDisplay(final TextView Username, final TextView Contact, final TextView Address, final TextView Price, final TextView DescriptionDate, final TextView Date, final TextView OrderId) {
 
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
 
@@ -106,7 +106,7 @@ public class Show_orders extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("Cname").exists()){
-                        HeaderText.setVisibility(View.VISIBLE);
+                        OrderId.setVisibility(View.VISIBLE);
                         order_card.setVisibility(View.VISIBLE);
                         popup_image.setVisibility(View.GONE);
                         popMessage.setVisibility(View.GONE);
@@ -117,7 +117,8 @@ public class Show_orders extends AppCompatActivity {
                         String price = dataSnapshot.child("totalAmount").getValue().toString();
                         String date = dataSnapshot.child("date").getValue().toString();
                         String time = dataSnapshot.child("time").getValue().toString();
-
+                        String orderId = dataSnapshot.child("orderId").getValue().toString();
+                        OrderId.setText(orderId);
                         Username.setText("Name: " + name);
                         Contact.setText("Contact: " + contact);
                         Address.setText("Address: " + address);

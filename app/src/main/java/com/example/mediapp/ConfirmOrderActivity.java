@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mediapp.AdminFolder.GenerateReport;
 import com.example.mediapp.GetData.GetData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 
 public class ConfirmOrderActivity extends AppCompatActivity {
     private EditText ShipName, ShipAddress, ShipCity, ShipPhone;
@@ -44,7 +46,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Check();
-                loadingDialog.startLoadingDialog();
             }
         });
 
@@ -70,6 +71,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     }
 
     private void ConfirmOrder() {
+        Random random = new Random();  // Generating the random number...
+        final int number = random.nextInt(999999999);//
+        final String orderId = "#ORDNO" + number;
         final String saveCurrentDate, saveCurrentTime;
         Calendar callForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
@@ -80,6 +84,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName()); //creation of the "Orders" child
 
         HashMap<String, Object> ordersMap = new HashMap<>(); ///creating the object as hash map
+        ordersMap.put("orderId", orderId);
         ordersMap.put("totalAmount", totalAmount);
         ordersMap.put("Cname", ShipName.getText().toString());
         ordersMap.put("phone", ShipPhone.getText().toString());
@@ -92,6 +97,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         final DatabaseReference salesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName()); //creation of the "Sales Data" child
 
         HashMap<String, Object> orderSales = new HashMap<>(); ///creating the object as hash map
+        orderSales.put("orderId", orderId);
         orderSales.put("totalAmount", totalAmount);
         orderSales.put("Cname", ShipName.getText().toString());
         orderSales.put("phone", ShipPhone.getText().toString());
@@ -111,9 +117,19 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                          if (task.isSuccessful()){
                              Toast.makeText(ConfirmOrderActivity.this, "You've confirmed the order!", Toast.LENGTH_SHORT).show();
 
-                             Intent intent = new Intent(ConfirmOrderActivity.this, HomeActivity.class);
-                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                             Intent intent = new Intent(ConfirmOrderActivity.this, HomeActivity.class);
+//                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                             startActivity(intent);
+
+                             //Intent intent = new Intent(ConfirmOrderActivity.this, OrderConfirmMessage.class);
+
+                             Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
+                             intent.putExtra("OrderIdMigrate", orderId);
                              startActivity(intent);
+                             ShipAddress.setText("");
+                             ShipName.setText("");
+                             ShipPhone.setText("");
+                             ShipCity.setText("");
                              finish();
                          }
                      }

@@ -6,4 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".OrderConfirmMessage">
 
+    <TextView
+        android:id="@+id/display_order_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:textColor="#2B2A2A"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.82" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_layer_name"
+        android:layout_width="409dp"
+        android:layout_height="273dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.108"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="tick.json"
+        app:lottie_loop="false"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="center"
+        android:text="We received your order!"
+        android:textAllCaps="false"
+        android:textColor="#2B2A2A"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="center"
+        android:text="Thank you for purchasing our products."
+        android:textAllCaps="false"
+        android:textColor="#2B2A2A"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/go_to_orders"
+        android:layout_width="288dp"
+        android:layout_height="54dp"
+        android:text="View order"
+        android:background="@drawable/buttonred"
+        android:textColor="@color/colorWhite"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.722" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

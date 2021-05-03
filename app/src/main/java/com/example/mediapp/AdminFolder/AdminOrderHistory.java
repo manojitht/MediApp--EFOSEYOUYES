@@ -83,6 +83,7 @@ public class AdminOrderHistory extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersActivity.AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
                 holder.userName.setText("Name: " + model.getCname());
+                holder.orderId.setText(model.getOrderId());
                 holder.userPhoneNumber.setText("Contact: " + model.getPhone());
                 holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount() + " LKR");
                 holder.userDateTime.setText("Date: " + model.getDate() + ", Time: " + model.getTime());
