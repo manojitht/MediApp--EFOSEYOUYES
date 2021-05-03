@@ -9,34 +9,34 @@
 
     <EditText
         android:id="@+id/shipment_address"
-        android:layout_width="357dp"
-        android:layout_height="55dp"
+        android:layout_width="321dp"
+        android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:ems="10"
         android:fontFamily="@font/poppins_light"
         android:hint="Address"
-        android:textColorHint="@color/colorBlue"
-        android:textSize="14dp"
         android:inputType="textPersonName"
         android:padding="15dp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.409" />
 
+
+
     <EditText
         android:id="@+id/shipment_city"
-        android:layout_width="357dp"
-        android:layout_height="55dp"
+        android:layout_width="321dp"
+        android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:ems="10"
         android:fontFamily="@font/poppins_light"
         android:hint="City Name"
-        android:textColorHint="@color/colorBlue"
-        android:textSize="14dp"
         android:inputType="textPersonName"
         android:padding="15dp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,17 +45,16 @@
 
     <EditText
         android:id="@+id/shipment_PhNumber"
-        android:layout_width="357dp"
-        android:layout_height="55dp"
+        android:layout_width="321dp"
+        android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:ems="10"
         android:fontFamily="@font/poppins_light"
         android:hint="Phone Number"
-        android:textColorHint="@color/colorBlue"
         android:inputType="textPersonName"
-        android:textSize="14dp"
         android:padding="15dp"
         android:textColor="@color/colorBlack"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,20 +75,19 @@
         app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <EditText
         android:id="@+id/shipment_name"
-        android:layout_width="357dp"
-        android:layout_height="55dp"
+        android:layout_width="323dp"
+        android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:ems="10"
         android:fontFamily="@font/poppins_light"
         android:hint="Name"
-        android:textColorHint="@color/colorBlue"
-        android:textSize="14dp"
         android:inputType="textPersonName"
         android:padding="15dp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +98,7 @@
     <Button
         android:id="@+id/shipment_confirm"
         android:layout_width="138dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="@drawable/buttonblue"
         android:fontFamily="@font/poppins_light"
         android:text="Ship to house"
@@ -109,10 +107,10 @@
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shipment_address"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.336" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -124,4 +122,5 @@
         app:layout_constraintTop_toBottomOf="@+id/shipment_confirm"
         app:layout_constraintVertical_bias="0.387"
         app:srcCompat="@drawable/undraw_message_sent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".OrderConfirmMessage"></activity>
         <activity android:name=".AdminFolder.GenerateReport" />
         <activity android:name=".AdminFolder.AdminReportSales" />
         <activity android:name=".AdminFolder.ReportDecision" />

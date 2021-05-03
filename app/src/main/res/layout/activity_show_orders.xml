@@ -9,10 +9,10 @@
 
     <RelativeLayout
         android:id="@+id/order_card"
-        android:layout_width="371dp"
-        android:layout_height="506dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/button_white"
+        android:background="@color/colorWhite"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +176,7 @@
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
         android:text="Sorry, you didn't place any orders yet!"
-        android:textColor="@color/colorLightBlue"
+        android:textColor="#323333"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

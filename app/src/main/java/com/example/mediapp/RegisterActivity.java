@@ -72,18 +72,31 @@ public class RegisterActivity extends AppCompatActivity {
         String Email = InputEmail.getText().toString();
         String Password = InputPassword.getText().toString();
         String Address = InputAddress.getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         if (TextUtils.isEmpty((CharSequence) Name)){
             Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty((CharSequence) Email)){
-            Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
+        else if (!Email.matches(emailPattern) || TextUtils.isEmpty((CharSequence) Email)){
+            Toast.makeText(this, "Invalid email address given!", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty((CharSequence) Password)){
             Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty((CharSequence) Address)){
             Toast.makeText(this, "Address cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+        else if (Name.length() > 30){
+            Toast.makeText(this, "Name can't be more than 30 characters", Toast.LENGTH_SHORT).show();
+        }
+        else if (Password.length() > 30){
+            Toast.makeText(this, "Password can't be more than 30 characters", Toast.LENGTH_SHORT).show();
+        }
+        else if (Name.length() <= 8){
+            Toast.makeText(this, "Username must be at least 8 characters!", Toast.LENGTH_SHORT).show();
+        }
+        else if (Password.length() <= 8){
+            Toast.makeText(this, "Password should be at least 8 characters long!", Toast.LENGTH_SHORT).show();
         }
         else{
             loadingDialog.startLoadingDialog();
