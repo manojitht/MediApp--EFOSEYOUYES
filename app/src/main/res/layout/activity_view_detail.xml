@@ -96,14 +96,13 @@
 
     <TextView
         android:id="@+id/stock_status"
-        android:layout_width="95dp"
-        android:layout_height="20dp"
-        android:background="@drawable/button_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
         android:text="stock status"
-        android:textColor="@color/colorBlue"
-        android:textSize="12sp"
+        android:textColor="#3C9F16"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.949"

@@ -21,7 +21,6 @@
         <activity android:name=".AdminFolder.AdminOrderHistory" />
         <activity android:name=".ViewOrderCx" />
         <activity android:name=".Show_orders" />
-        <activity android:name=".DesicionActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".AdminFolder.AdminMaintainProductsActivity" />
         <activity android:name=".AdminFolder.AdminDecisionActivity" />

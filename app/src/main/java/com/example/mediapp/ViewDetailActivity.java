@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -152,6 +153,11 @@ public class ViewDetailActivity extends AppCompatActivity {
                     Picasso.get().load(products.getImage()).into(ProductImage);
                     ImageUrl.setText(products.getImage());
                     StockStatus.setText(products.getStock());
+                    if (StockStatus.getText().toString().equals("Out of stock")){
+                        StockStatus.setTextColor(Color.RED);
+                    }else {
+                        StockStatus.setTextColor(Color.BLUE);
+                    }
                 }
             }
 

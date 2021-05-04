@@ -108,7 +108,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="100dp"
             android:fontFamily="@font/poppins_light"
-            android:gravity="left"
+            android:gravity="center"
             android:textColor="@color/colorBlack"
             android:textSize="12dp"
             android:textStyle="bold"/>

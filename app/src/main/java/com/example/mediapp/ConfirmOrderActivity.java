@@ -73,7 +73,8 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private void ConfirmOrder() {
         Random random = new Random();  // Generating the random number...
         final int number = random.nextInt(999999999);//
-        final String orderId = "#ORDNO" + number;
+        final String orderId;
+        orderId= "ORDNO" + number;
         final String saveCurrentDate, saveCurrentTime;
         Calendar callForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");

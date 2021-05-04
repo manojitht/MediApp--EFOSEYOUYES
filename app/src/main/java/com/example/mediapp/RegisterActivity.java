@@ -92,8 +92,8 @@ public class RegisterActivity extends AppCompatActivity {
         else if (Password.length() > 30){
             Toast.makeText(this, "Password can't be more than 30 characters", Toast.LENGTH_SHORT).show();
         }
-        else if (Name.length() <= 8){
-            Toast.makeText(this, "Username must be at least 8 characters!", Toast.LENGTH_SHORT).show();
+        else if (Name.length() <= 6){
+            Toast.makeText(this, "Username must be at least 6 characters!", Toast.LENGTH_SHORT).show();
         }
         else if (Password.length() <= 8){
             Toast.makeText(this, "Password should be at least 8 characters long!", Toast.LENGTH_SHORT).show();
@@ -164,8 +164,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(RegisterActivity.this, "Sorry! account not created successfully!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, DesicionActivity.class);
-                startActivity(intent);
             }
         });
     }

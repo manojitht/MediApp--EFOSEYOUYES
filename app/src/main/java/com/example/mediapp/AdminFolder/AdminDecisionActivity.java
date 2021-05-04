@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.mediapp.DesicionActivity;
 import com.example.mediapp.HomeActivity;
 import com.example.mediapp.LoginActivity;
-import com.example.mediapp.MainActivity;
 import com.example.mediapp.R;
 
 public class AdminDecisionActivity extends AppCompatActivity {
