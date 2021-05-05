@@ -52,7 +52,7 @@
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
         android:hint="Phone Number"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:padding="15dp"
         android:textColor="@color/colorBlack"
         android:textSize="16dp"
@@ -114,15 +114,5 @@
         app:layout_constraintTop_toBottomOf="@+id/shipment_address"
         app:layout_constraintVertical_bias="0.134" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="303dp"
-        android:layout_height="182dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shipment_confirm"
-        app:layout_constraintVertical_bias="0.636"
-        app:srcCompat="@drawable/undraw_message_sent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

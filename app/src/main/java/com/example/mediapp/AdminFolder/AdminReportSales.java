@@ -59,7 +59,10 @@ public class AdminReportSales extends AppCompatActivity {
     public void EnterReport(){
         final DatabaseReference GraphView = FirebaseDatabase.getInstance().getReference().child("Month Reports").child("Record");
 
-        if (FirstWeek.getText().toString().equals("")){
+        if (ReportMonth.getText().toString().equals("")){
+            Toast.makeText(AdminReportSales.this, "Enter the month!", Toast.LENGTH_SHORT).show();
+        }
+        else if (FirstWeek.getText().toString().equals("")){
             FirstWeek.setText("0");
         }else if(SecondWeek.getText().toString().equals("")){
             SecondWeek.setText("0");

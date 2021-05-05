@@ -201,7 +201,6 @@ public class AdminProductActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override

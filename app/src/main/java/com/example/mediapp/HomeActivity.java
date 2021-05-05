@@ -33,6 +33,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
@@ -75,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener();
 
         View headerView = navigationView.getHeaderView(0);
         TextView usernameView = headerView.findViewById(R.id.user_profile_name);
@@ -110,7 +115,6 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
-//                holder.Description.setText(model.getDescription());
                 holder.txtProductName.setText(model.getProductName());
                 holder.productPrice.setText("Rs: "+model.getPrice()+" LKR");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
@@ -172,6 +176,14 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_profile:
+//                final String LastLoginDate, LastLoginTime;
+//                Calendar callForDate = Calendar.getInstance();
+//                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd");
+//                LastLoginDate = currentDate.format(callForDate.getTime());
+//                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
+//                LastLoginTime = currentTime.format(callForDate.getTime());
+//                DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Users").child(GetData.superOnlineUsers.getName());
+//                LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
                 Intent intent1 = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(intent1);
                 Paper.book().destroy();
@@ -200,25 +212,15 @@ public class HomeActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
+//
 //    @Override
 //    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//
-//        if (id == R.id.nav_home){
-//
-//        }
-//        else if (id == R.id.nav_gallery){
-//
-//        }
-//        else if (id == R.id.nav_slideshow){
-//
-//        }
-//        else if (id == R.id.settings_fragment){
-//
-//            Paper.book().destroy();
+//        switch (item.getItemId()){
+//            case R.id.nav_cart:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.nav_view, new LoginActivity()).commit();
+//                break;
 //        }
 //
-//        return false;
+//        return true;
 //    }
 }

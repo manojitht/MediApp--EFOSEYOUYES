@@ -4,54 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderConfirmMessage"
-    android:background="@color/colorWhite">
-
-    <TextView
-        android:id="@+id/display_order_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_extrabold"
-        android:gravity="center"
-        android:textAllCaps="false"
-        android:textColor="#2B2A2A"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82" />
+    tools:context=".WelcomeMessage">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_layer_name"
-        android:layout_width="409dp"
-        android:layout_height="273dp"
+        android:layout_width="408dp"
+        android:layout_height="598dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108"
+        app:layout_constraintVertical_bias="0.352"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="tick.json"
+        app:lottie_fileName="welcome_glitters.json"
         app:lottie_loop="false"
         tools:ignore="MissingConstraints" />
-
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_extrabold"
-        android:gravity="center"
-        android:text="We received your order!"
-        android:textAllCaps="false"
-        android:textColor="#2B2A2A"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
 
     <TextView
         android:id="@+id/username_message"
@@ -59,29 +26,49 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
-        android:text="Thank you for purchasing our products."
+        android:text="Hi Manojith,"
         android:textAllCaps="false"
         android:textColor="#2B2A2A"
-        android:textSize="18sp"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.404" />
 
-    <Button
-        android:id="@+id/go_to_orders"
-        android:layout_width="288dp"
-        android:layout_height="54dp"
-        android:text="View order"
-        android:background="@drawable/buttonred"
-        android:textColor="@color/colorWhite"
+    <TextView
+        android:id="@+id/about_shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="center"
+        android:text="Welcome to our Mediapp"
         android:textAllCaps="false"
+        android:textColor="#A074D5"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.529" />
+
+    <Button
+        android:id="@+id/go_to_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonurple"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@
         android:drawablePadding="12dp"
         android:ems="10"
         android:fontFamily="@font/poppins_semibold"
-        android:hint="password"
+        android:hint="confirm password"
         android:inputType="textPassword"
         android:padding="11dp"
         android:paddingStart="12dp"
@@ -31,15 +31,15 @@
         app:layout_constraintVertical_bias="0.689" />
 
     <EditText
-        android:id="@+id/password_address"
+        android:id="@+id/confirm_password"
         android:layout_width="323dp"
         android:layout_height="50dp"
         android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/ic_baseline_location_on_24"
+        android:drawableStart="@drawable/ic_baseline_lock_open_24"
         android:drawablePadding="12dp"
         android:ems="10"
         android:fontFamily="@font/poppins_semibold"
-        android:hint="address"
+        android:hint="password"
         android:inputType="textPersonName"
         android:padding="11dp"
         android:paddingStart="12dp"

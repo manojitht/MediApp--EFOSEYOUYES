@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.mediapp.AdminFolder.AdminDecisionActivity;
+import com.example.mediapp.AdminFolder.GenerateReport;
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.Users;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +25,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import io.paperdb.Paper;
 
@@ -129,15 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         else if (TextUtils.isEmpty((CharSequence) Password)){
             Toast.makeText(this, "password cannot be empty", Toast.LENGTH_SHORT).show();
         }else {
-//            final LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
             loadingDialog.startLoadingDialog();
-
-
-//            loadingBar.setTitle("Logging in");
-//            loadingBar.setMessage("Please wait for the Login...");
-//            loadingBar.setCanceledOnTouchOutside(false);
-//            loadingBar.show();
-
             AllowUserToLoginAccount(Name, Password);
         }
     }
@@ -156,48 +152,73 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child(DatabaseName).child(Name).exists()){
-                    Users usersData = snapshot.child(DatabaseName).child(Name).getValue(Users.class);
+                    final Users usersData = snapshot.child(DatabaseName).child(Name).getValue(Users.class);
 
                     if (usersData.getName().equals(Name)){
                         if (usersData.getPassword().equals(Password)){
                             if (DatabaseName.equals("Admins")){
                                 Toast.makeText(LoginActivity.this, "Admin, Logged in Successfully!", Toast.LENGTH_SHORT).show();
-//                                loadingBar.dismiss();
+                                Intent intent = new Intent(getApplicationContext(), AdminDecisionActivity.class);
+                                intent.putExtra("AdminName", Name);
+                                startActivity(intent);
                                 loadingDialog.dismissDialog();
                                 InputLoginName.setText("");
                                 InputLoginPassword.setText("");
-                                Intent intent = new Intent(LoginActivity.this, AdminDecisionActivity.class);
-                                startActivity(intent);
+//                                Intent intent = new Intent(LoginActivity.this, AdminDecisionActivity.class);
+//                                startActivity(intent);
                             }
                             else if (DatabaseName.equals("Users")){
-                                Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
-//                                loadingBar.dismiss();
-                                loadingDialog.dismissDialog();
-                                InputLoginName.setText("");
-                                InputLoginPassword.setText("");
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                GetData.superOnlineUsers = usersData;
-                                startActivity(intent);
+                                DatabaseReference GetAddress = FirebaseDatabase.getInstance().getReference().child("Users").child(Name);
+                                GetAddress.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.child("address").exists()){
+                                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+                                            loadingDialog.dismissDialog();
+                                            InputLoginName.setText("");
+                                            InputLoginPassword.setText("");
+                                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                            GetData.superOnlineUsers = usersData;
+                                            startActivity(intent);
+                                        }
+                                        else {
+                                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+                                            loadingDialog.dismissDialog();
+                                            InputLoginName.setText("");
+                                            InputLoginPassword.setText("");
+                                            Intent intent = new Intent(LoginActivity.this, WelcomeMessage.class);
+                                            GetData.superOnlineUsers = usersData;
+                                            startActivity(intent);;
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+//                                Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+//                                loadingDialog.dismissDialog();
+//                                InputLoginName.setText("");
+//                                InputLoginPassword.setText("");
+//                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+//                                GetData.superOnlineUsers = usersData;
+//                                startActivity(intent);
                             }
                         }else {
                             Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
-//                            loadingBar.dismiss();
                             loadingDialog.dismissDialog();
                             InputLoginName.setText("");
                             InputLoginPassword.setText("");
-//                            Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
-//                            startActivity(intent);
                         }
                     }
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Your name doesn't exists.", Toast.LENGTH_SHORT).show();
-//                    loadingBar.dismiss();
                     loadingDialog.dismissDialog();
                     InputLoginName.setText("");
                     InputLoginPassword.setText("");
-//                    Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
-//                    startActivity(intent);
                 }
             }
 
