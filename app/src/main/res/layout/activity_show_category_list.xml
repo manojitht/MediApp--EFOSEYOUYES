@@ -4,22 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    tools:context=".AdminFolder.AdminCategoryActivity"
-    >
+    tools:context=".ShowCategoryList">
 
     <TextView
-        android:id="@+id/slogan"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/poppins_light"
-        android:text="Choose product"
-        android:layout_marginTop="22dp"
         android:layout_marginStart="22dp"
-        android:textColor="#9172DD"
-        android:textSize="24sp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="Categories"
+        android:textColor="#575759"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,13 +26,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ListView
-        android:id="@+id/ListView"
+        android:id="@+id/listView_categories"
         android:layout_width="wrap_content"
         android:layout_height="608dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slogan" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

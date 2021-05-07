@@ -52,18 +52,22 @@ public class SearchActivity extends AppCompatActivity {
         searchList.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
 
         categoryList = new ArrayList<>();
-        categoryList.add("Mask");
-        categoryList.add("Cardiology");
-        categoryList.add("Baby");
-        categoryList.add("Tablets");
-        categoryList.add("Facial");
-        categoryList.add("Handwash");
+        categoryList.add("First Aid Box");
+        categoryList.add("Vaccines & Injections");
+        categoryList.add("Balm products");
+        categoryList.add("Vitamin tablets");
+        categoryList.add("Energy drinks");
+        categoryList.add("Thermometer");
         categoryList.add("Optical");
-        categoryList.add("Devices");
-        categoryList.add("Nutrients");
+        categoryList.add("Soaps & sanitizer");
+        categoryList.add("Shampoo");
+        categoryList.add("Tablets");
+        categoryList.add("Baby products");
+        categoryList.add("Face Mask");
+        categoryList.add("Cardiac products");
+        categoryList.add("Surgical equipments");
+        categoryList.add("Stethoscopes");
         categoryList.add("Syrup");
-        categoryList.add("Balm");
-        categoryList.add("Drone");
 
         searchText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +113,9 @@ public class SearchActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SearchInput = searchText.getText().toString().toLowerCase();
+                SearchInput = searchText.getText().toString();
+//                String Names = SearchInput;
+//                Names.replaceAll("\\s", ""); // replaces all the spaces from the string
                 onStart();
             }
         });

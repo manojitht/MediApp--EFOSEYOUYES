@@ -15,6 +15,7 @@
     <string name="Settings">Settings</string>
     <string name="Orders">My Orders</string>
     <string name="Cart">My Cart</string>
+    <string name="Categories">Choose category</string>
     <string name="Logout">Log out</string>
     <string name="Search">Search Product</string>
     <!-- TODO: Remove or change this placeholder text -->

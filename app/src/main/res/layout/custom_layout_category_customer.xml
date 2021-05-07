@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imageView_category"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="7dp"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/category_names_customer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView_category"
+        android:layout_marginStart="22dp"
+        android:layout_toEndOf="@+id/imageView_category"
+        android:text="Name"
+        android:textSize="18dp"
+        android:textColor="#8A44DF"
+        app:fontFamily="@font/nunito_extrabold" />
+
+    <TextView
+        android:id="@+id/category_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView_category"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="28dp"
+        android:layout_toEndOf="@+id/imageView_category"
+        android:text="descriptive text"
+        android:textColor="#2E2D2D"
+        android:textSize="12dp"
+        app:fontFamily="@font/nunito_extrabold" />
+</RelativeLayout>

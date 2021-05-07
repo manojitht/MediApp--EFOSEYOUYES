@@ -199,6 +199,11 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent4);
                 return true;
 
+            case R.id.action_categories:
+                Intent intent5 = new Intent(HomeActivity.this, ShowCategoryList.class);
+                startActivity(intent5);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
