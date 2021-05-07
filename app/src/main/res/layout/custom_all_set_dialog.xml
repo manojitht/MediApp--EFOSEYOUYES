@@ -10,8 +10,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_layer_name"
-        android:layout_width="296dp"
-        android:layout_height="176dp"
+        android:layout_width="360dp"
+        android:layout_height="206dp"
         app:layout_constraintBottom_toTopOf="@+id/Login_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="purple_tick.json"
-        app:lottie_loop="true"
+        app:lottie_loop="false"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -27,9 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:fontFamily="@font/poppins_light"
-        android:text="Your account all set"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Your account all set!"
         android:textAlignment="center"
+        android:textSize="18dp"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

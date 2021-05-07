@@ -155,8 +155,6 @@ public class ViewDetailActivity extends AppCompatActivity {
                     StockStatus.setText(products.getStock());
                     if (StockStatus.getText().toString().equals("Out of stock")){
                         StockStatus.setTextColor(Color.RED);
-                    }else {
-                        StockStatus.setTextColor(Color.BLUE);
                     }
                 }
             }

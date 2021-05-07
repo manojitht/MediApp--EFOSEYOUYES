@@ -8,6 +8,27 @@
     android:background="@color/colorWhite"
     tools:context=".UserSettingsActivity">
 
+    <EditText
+        android:id="@+id/edit_contact"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_phone_24"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="contact no"
+        android:inputType="number"
+        android:padding="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.657" />
+
     <Button
         android:id="@+id/set_security_questions"
         android:layout_width="310dp"
@@ -19,52 +40,52 @@
         android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintVertical_bias="0.882" />
 
     <EditText
         android:id="@+id/edit_address"
         android:layout_width="307dp"
         android:layout_height="48dp"
-        android:ems="10"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_location_on_24"
         android:drawablePadding="12dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="address"
+        android:inputType="textEmailAddress"
         android:padding="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textSize="15dp"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="address"
-        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.574" />
+        app:layout_constraintVertical_bias="0.531" />
 
     <EditText
         android:id="@+id/edit_email"
         android:layout_width="307dp"
         android:layout_height="48dp"
-        android:ems="10"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/icemail"
         android:drawablePadding="12dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="email"
+        android:inputType="textEmailAddress"
         android:padding="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textSize="15dp"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="email"
-        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.451" />
+        app:layout_constraintVertical_bias="0.409" />
 
     <View
         android:id="@+id/view"
@@ -92,8 +113,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/settings_profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="128dp"
+        android:layout_height="116dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:src="@drawable/undraw_male_avatar"
@@ -101,78 +122,79 @@
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109"
+        app:layout_constraintVertical_bias="0.075"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/avatar_changer"
-        android:layout_width="82dp"
-        android:layout_height="22dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:gravity="center"
-        android:text="My avatar"
+        android:id="@+id/username_viewer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="left"
+        android:textColor="#F1EDED"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintVertical_bias="0.064" />
 
     <EditText
         android:id="@+id/edit_username"
         android:layout_width="307dp"
         android:layout_height="48dp"
-        android:ems="10"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_account_circle_24"
         android:drawablePadding="12dp"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="username"
+        android:inputType="textPersonName"
         android:padding="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textSize="15dp"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="username"
-        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.331" />
+        app:layout_constraintVertical_bias="0.289" />
 
     <Button
         android:id="@+id/settings_close"
         android:layout_width="106dp"
         android:layout_height="40dp"
+        android:background="@drawable/buttonred"
         android:fontFamily="@font/poppins_medium"
         android:text="Close"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/buttonred"
         android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintVertical_bias="0.757" />
 
     <Button
         android:id="@+id/settings_update"
         android:layout_width="106dp"
         android:layout_height="40dp"
+        android:background="@drawable/buttonblue"
         android:fontFamily="@font/poppins_medium"
         android:text="Update"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/buttonblue"
         android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintHorizontal_bias="0.829"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintVertical_bias="0.759" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -185,4 +207,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_purpledown" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_image_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 import io.paperdb.Paper;
 
@@ -172,8 +173,8 @@ public class LoginActivity extends AppCompatActivity {
                                 GetAddress.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.child("address").exists()){
-                                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+                                        if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "existing")){
+//                                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
                                             loadingDialog.dismissDialog();
                                             InputLoginName.setText("");
                                             InputLoginPassword.setText("");
@@ -181,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                                             GetData.superOnlineUsers = usersData;
                                             startActivity(intent);
                                         }
-                                        else {
+                                        else if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "new")){
                                             Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
                                             loadingDialog.dismissDialog();
                                             InputLoginName.setText("");

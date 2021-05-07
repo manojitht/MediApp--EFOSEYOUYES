@@ -19,6 +19,7 @@ import com.example.mediapp.GetData.GetData;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,9 +39,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserSettingsActivity extends AppCompatActivity {
 
     private CircleImageView settingsProfileImage;
-    private EditText userName, eMail, homeAddress;
+    private EditText userName, eMail, homeAddress, phoneNumber;
     private Button close, update, setSecurity;
-    private TextView changeAvatar;
+    private TextView currentUsername;
+    private FloatingActionButton changeAvatar;
+    private ProgressDialog successTick;
 
     private Uri imageUri;
     private String pictureUrl = "";
@@ -48,6 +51,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     private StorageTask uploadTask;
     private String checker = "";
 //    private static int TakeGallery = 1;
+    public CustomAllSetDialog AllSetTick = new CustomAllSetDialog(UserSettingsActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +64,16 @@ public class UserSettingsActivity extends AppCompatActivity {
         userName = (EditText) findViewById(R.id.edit_username);
         eMail = (EditText) findViewById(R.id.edit_email);
         homeAddress = (EditText) findViewById(R.id.edit_address);
+        phoneNumber = (EditText) findViewById(R.id.edit_contact);
         close = (Button) findViewById(R.id.settings_close);
         update = (Button) findViewById(R.id.settings_update);
         setSecurity = (Button) findViewById(R.id.set_security_questions);
-        changeAvatar = (TextView) findViewById(R.id.avatar_changer);
-        
-        userInfoDisplay(settingsProfileImage, userName, eMail, homeAddress);
+        changeAvatar = findViewById(R.id.edit_image_btn);
+        currentUsername = findViewById(R.id.username_viewer);
+        successTick = new ProgressDialog(this);
+
+
+        userInfoDisplay(settingsProfileImage, userName, eMail, homeAddress, phoneNumber);
 
 
         close.setOnClickListener(new View.OnClickListener() {
@@ -84,15 +92,17 @@ public class UserSettingsActivity extends AppCompatActivity {
                     Toast.makeText(UserSettingsActivity.this, "Email is empty..", Toast.LENGTH_SHORT).show();
                 }else if (TextUtils.isEmpty(homeAddress.getText().toString())){
                     Toast.makeText(UserSettingsActivity.this, "Address is empty..", Toast.LENGTH_SHORT).show();
+                }else if (TextUtils.isEmpty(phoneNumber.getText().toString())){
+                    Toast.makeText(UserSettingsActivity.this, "Phone number is empty..", Toast.LENGTH_SHORT).show();
                 }else if(checker.equals("clicked")){
                     uploadImage();
                 }else {
-
+                    AllSetTick.startAllSetDialog();
                     updateDataOfUser();
-
                 }
             }
         });
+        currentUsername.setText("Hi, \n" + GetData.superOnlineUsers.getName());
 
         setSecurity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,11 +138,8 @@ public class UserSettingsActivity extends AppCompatActivity {
         userMap.put("name", userName.getText().toString());
         userMap.put("email", eMail.getText().toString());
         userMap.put("address", homeAddress.getText().toString());
+        userMap.put("phone", phoneNumber.getText().toString());
         ref.child(GetData.superOnlineUsers.getName()).updateChildren(userMap);
-
-        startActivity(new Intent(UserSettingsActivity.this, UserSettingsActivity.class));
-        Toast.makeText(UserSettingsActivity.this, "Updated successfully !",  Toast.LENGTH_SHORT).show();
-        finish();
     }
 
     @Override
@@ -152,17 +159,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         }
     }
 
-//    private void saveInfoOfUser() {
-//        if (TextUtils.isEmpty(userName.getText().toString())){
-//            Toast.makeText(UserSettingsActivity.this, "Username is empty..", Toast.LENGTH_SHORT).show();
-//        }else if (TextUtils.isEmpty(eMail.getText().toString())){
-//            Toast.makeText(UserSettingsActivity.this, "Email is empty..", Toast.LENGTH_SHORT).show();
-//        }else if (TextUtils.isEmpty(homeAddress.getText().toString())){
-//            Toast.makeText(UserSettingsActivity.this, "Address is empty..", Toast.LENGTH_SHORT).show();
-//        }else if(checker.equals("clicked")){
-//            uploadImage();
-//        }
-//    }
+
 
     private void uploadImage() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -197,12 +194,12 @@ public class UserSettingsActivity extends AppCompatActivity {
                         userMap.put("name", userName.getText().toString());
                         userMap.put("email", eMail.getText().toString());
                         userMap.put("address", homeAddress.getText().toString());
+                        userMap.put("phone", phoneNumber.getText().toString());
                         userMap.put("image", pictureUrl);
                         ref.child(GetData.superOnlineUsers.getName()).updateChildren(userMap);
 
-                        progressDialog.dismiss();
 
-                        startActivity(new Intent(UserSettingsActivity.this, HomeActivity.class));
+                        //startActivity(new Intent(UserSettingsActivity.this, UserSettingsActivity.class));
                         Toast.makeText(UserSettingsActivity.this, "Updated successfully !",  Toast.LENGTH_SHORT).show();
                         finish();
                     }else {
@@ -217,7 +214,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         }
     }
 
-    private void userInfoDisplay(final CircleImageView settingsProfileImage, final EditText userName, final EditText eMail, final EditText homeAddress) {
+    private void userInfoDisplay(final CircleImageView settingsProfileImage, final EditText userName, final EditText eMail, final EditText homeAddress, final EditText phoneNumber) {
 
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName());
 
@@ -226,11 +223,15 @@ public class UserSettingsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("name").exists()){
-                        //String image = dataSnapshot.child("image").getValue().toString(); // This works on the real physical device
                         String name = dataSnapshot.child("name").getValue().toString();
                         String email = dataSnapshot.child("email").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
-
+                        if (dataSnapshot.child("phone").exists()){
+                            String phone = dataSnapshot.child("phone").getValue().toString();
+                            phoneNumber.setText(phone);
+                        }else {
+                            phoneNumber.setText("");
+                        }
                         Picasso.get().load(GetData.superOnlineUsers.getImage()).placeholder(R.drawable.undraw_male_avatar).into(settingsProfileImage); // This works on the real physical device
                         userName.setText(name);
                         eMail.setText(email);

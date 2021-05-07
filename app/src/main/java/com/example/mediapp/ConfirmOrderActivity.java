@@ -15,13 +15,19 @@ import com.example.mediapp.AdminFolder.GenerateReport;
 import com.example.mediapp.GetData.GetData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ConfirmOrderActivity extends AppCompatActivity {
     private EditText ShipName, ShipAddress, ShipCity, ShipPhone;
@@ -42,6 +48,8 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ShipPhone = (EditText) findViewById(R.id.shipment_PhNumber);
         ShipConfirm = (Button) findViewById(R.id.shipment_confirm);
 
+        userInfoDisplay(ShipName, ShipAddress, ShipPhone);
+
         ShipConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +57,39 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void userInfoDisplay(final EditText ShipName, final EditText ShipAddress, final EditText shipPhone) {
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName());
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    if (dataSnapshot.child("name").exists()){
+                        String name = dataSnapshot.child("name").getValue().toString();
+                        //String email = dataSnapshot.child("email").getValue().toString();
+                        String address = dataSnapshot.child("address").getValue().toString();
+                        if (dataSnapshot.child("phone").exists()){
+                            String phone = dataSnapshot.child("phone").getValue().toString();
+                            shipPhone.setText(phone);
+                        }else {
+                            shipPhone.setText("");
+                        }
+                        ShipName.setText(name);
+                       // eMail.setText(email);
+                        ShipAddress.setText(address);
+                    }
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void Check() {

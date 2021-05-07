@@ -46,7 +46,6 @@ public class RegisterAddress extends AppCompatActivity {
         addressThree = findViewById(R.id.address_three);
         addressFour = findViewById(R.id.address_four);
         addressFive = findViewById(R.id.address_five);
-//        loadingBar = new ProgressDialog(this);
         TextView message = findViewById(R.id.username_message);
         Button registerAddress = findViewById(R.id.submit_address);
 
@@ -75,9 +74,9 @@ public class RegisterAddress extends AppCompatActivity {
         }
         else {
             //EnterAddress();
-            DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Users").child(GetData.superOnlineUsers.getName());
-            LastLogin.child("address").setValue(addressOne.getText().toString() + ", " + addressTwo.getText().toString() + ", " + addressThree.getText().toString() + ", " + addressFour.getText().toString() + ", " + addressFive.getText().toString() + ".");
-//            customAllSetDialog.startAllSetDialog();
+            DatabaseReference UserAddress = FirebaseDatabase.getInstance().getReference("Users").child(GetData.superOnlineUsers.getName());
+            UserAddress.child("address").setValue(addressOne.getText().toString() + ", " + addressTwo.getText().toString() + ", " + addressThree.getText().toString() + ", " + addressFour.getText().toString() + ", " + addressFive.getText().toString() + ".");
+            UserAddress.child("customerStatus").setValue("existing");
             Toast.makeText(RegisterAddress.this, "Address entered successfully!",  Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(RegisterAddress.this, HomeActivity.class);
             startActivity(intent);

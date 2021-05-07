@@ -118,6 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                     HashMap<String, Object> userdataMap = new HashMap<>();
                     userdataMap.put("name", Name);
                     userdataMap.put("email", Email);
+                    userdataMap.put("customerStatus", "new");
                     userdataMap.put("password", Password);
 
                     RootRef.child("Users").child(String.valueOf(Name)).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {

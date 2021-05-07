@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeMessage">
+    tools:context=".WelcomeMessage"
+    android:background="@color/colorWhite">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_layer_name"
-        android:layout_width="408dp"
-        android:layout_height="598dp"
+        android:layout_width="410dp"
+        android:layout_height="601dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352"
+        app:layout_constraintVertical_bias="0.262"
         app:lottie_autoPlay="true"
         app:lottie_fileName="welcome_glitters.json"
         app:lottie_loop="false"
@@ -26,16 +28,16 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
-        android:text="Hi Manojith,"
+        android:text="Hi User,"
         android:textAllCaps="false"
-        android:textColor="#2B2A2A"
+        android:textColor="#494848"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintVertical_bias="0.547" />
 
     <TextView
         android:id="@+id/about_shop"
@@ -43,16 +45,15 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
-        android:text="Welcome to our Mediapp"
+        android:text="Welcome to our Mediapp!"
         android:textAllCaps="false"
         android:textColor="#A074D5"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.652" />
 
     <Button
         android:id="@+id/go_to_next"
@@ -69,6 +70,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.955" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="412dp"
+        android:layout_height="305dp"
+        app:layout_constraintBottom_toTopOf="@+id/lottie_layer_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/welcome_page" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

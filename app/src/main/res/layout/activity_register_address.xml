@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/address_five"
-        android:layout_width="150dp"
+        android:layout_width="323dp"
         android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:ems="10"
@@ -18,17 +18,17 @@
         android:hint="Postal code"
         android:inputType="number"
         android:padding="15dp"
+        android:textColorHint="#6C6969"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633" />
+        app:layout_constraintVertical_bias="0.766" />
 
     <EditText
         android:id="@+id/address_four"
-        android:layout_width="150dp"
+        android:layout_width="323dp"
         android:layout_height="50dp"
         android:background="@drawable/custom_input"
         android:ems="10"
@@ -36,13 +36,13 @@
         android:hint="District"
         android:inputType="textPersonName"
         android:padding="15dp"
+        android:textColorHint="#6C6969"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.635" />
+        app:layout_constraintVertical_bias="0.623" />
 
     <EditText
         android:id="@+id/address_three"
@@ -52,6 +52,7 @@
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
         android:hint="Place (e.g Wellawatta)"
+        android:textColorHint="#6C6969"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textSize="16dp"
@@ -69,6 +70,7 @@
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
         android:hint="Street (or) road"
+        android:textColorHint="#6C6969"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textSize="16dp"
@@ -85,7 +87,8 @@
         android:background="@drawable/custom_input"
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
-        android:hint="House no (or) Apartment name"
+        android:hint="House no (or) Building name"
+        android:textColorHint="#6C6969"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textSize="16dp"
@@ -97,12 +100,12 @@
 
     <TextView
         android:id="@+id/username_message"
-        android:layout_width="398dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
         android:textAllCaps="false"
-        android:textColor="#474646"
+        android:textColor="#515050"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,23 +114,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.046" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="162dp"
-        android:layout_height="113dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853"
-        app:srcCompat="@drawable/image_location" />
 
     <Button
         android:id="@+id/submit_address"
         android:layout_width="130dp"
         android:layout_height="40dp"
-        android:background="@drawable/buttonred"
+        android:background="@drawable/buttonurple"
         android:fontFamily="@font/poppins_semibold"
         android:text="Submit"
         android:textAllCaps="false"
@@ -137,6 +129,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
+        app:layout_constraintVertical_bias="0.919" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

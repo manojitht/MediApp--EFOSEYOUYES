@@ -87,7 +87,7 @@ public class AdminOrderHistory extends AppCompatActivity {
                 holder.userPhoneNumber.setText("Contact: " + model.getPhone());
                 holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount() + " LKR");
                 holder.userDateTime.setText("Date: " + model.getDate() + ", Time: " + model.getTime());
-                holder.userShippingAddress.setText("Shipping Address: " + model.getAddress() + " " + model.getCity());
+                holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
