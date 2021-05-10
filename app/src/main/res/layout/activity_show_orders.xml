@@ -173,7 +173,7 @@
         android:id="@+id/popup_message"
         android:layout_width="317dp"
         android:layout_height="80dp"
-        android:fontFamily="@font/nunito_extrabold"
+        android:fontFamily="@font/poppins_light"
         android:gravity="center"
         android:text="No orders found!"
         android:textColor="#272626"

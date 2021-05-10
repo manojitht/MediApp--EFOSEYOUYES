@@ -23,7 +23,7 @@ public class AdminSoldProducts extends AppCompatActivity {
 
     private RecyclerView itemsList;
     RecyclerView.LayoutManager layoutManager;
-    private DatabaseReference salesItemsRef;
+    private DatabaseReference salesItemsRef, UpdateChildOrder;
 
     private String userID = "";
 
@@ -39,7 +39,7 @@ public class AdminSoldProducts extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         itemsList.setLayoutManager(layoutManager);
 
-        salesItemsRef = FirebaseDatabase.getInstance().getReference().child("Sold products").child("customers").child(userID).child("products");// creates the child in sales data
+        salesItemsRef = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(userID).child("sold items").child("products");
     }
 
     @Override

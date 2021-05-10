@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
         registernow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 RegisterAccount();
             }
         });
@@ -104,6 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
 //            loadingBar.setCanceledOnTouchOutside(false);
 //            loadingBar.show();
             ValidateEmail(Email, Name, Password);
+
         }
     }
 
@@ -165,4 +166,37 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Trying to add the mail services
+
+//    private void SendMail(){
+//        final String username = "bigbangcoder8@gmail.com";
+//        final String password = "BigBang@password";
+//        String sendMessage =  "Hi " + InputName.getText().toString() + ", welcome to the MediApp!";
+//        Properties properties = new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        properties.put("mail.smtp.host", "smtp.gmail.com");
+//        properties.put("mail.smtp.port", "587");
+//        Session session = Session.getInstance(properties, new javax.mail.Authenticator(){
+//            @Override
+//            protected PasswordAuthentication getPasswordAuthentication(){
+//                return new PasswordAuthentication(username, password);
+//            }
+//        });
+//        try {
+//            Message message = new MimeMessage(session);
+//            message.setFrom(new InternetAddress(username));
+//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(InputEmail.getText().toString()));
+//            message.setSubject("Welcome to MediApp!");
+//            message.setText(sendMessage);
+//            Transport.send(message);
+//            Toast.makeText(getApplicationContext(), "Email sent successfully", Toast.LENGTH_LONG).show();
+//        }
+//        catch (MessagingException e ){
+//            throw new RuntimeException(e);
+//        }
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//    }
 }

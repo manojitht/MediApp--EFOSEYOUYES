@@ -158,15 +158,28 @@ public class LoginActivity extends AppCompatActivity {
                     if (usersData.getName().equals(Name)){
                         if (usersData.getPassword().equals(Password)){
                             if (DatabaseName.equals("Admins")){
-                                Toast.makeText(LoginActivity.this, "Admin, Logged in Successfully!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), AdminDecisionActivity.class);
-                                intent.putExtra("AdminName", Name);
-                                startActivity(intent);
-                                loadingDialog.dismissDialog();
-                                InputLoginName.setText("");
-                                InputLoginPassword.setText("");
-//                                Intent intent = new Intent(LoginActivity.this, AdminDecisionActivity.class);
-//                                startActivity(intent);
+
+                                DatabaseReference GetAddress = FirebaseDatabase.getInstance().getReference().child("Admins").child(Name);
+                                GetAddress.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        loadingDialog.dismissDialog();
+                                        InputLoginName.setText("");
+                                        InputLoginPassword.setText("");
+                                        GetData.superOnlineUsers = usersData;
+                                        Intent intent = new Intent(LoginActivity.this, AdminDecisionActivity.class);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                                //////////////////////////////////////////////////////
+
+
                             }
                             else if (DatabaseName.equals("Users")){
                                 DatabaseReference GetAddress = FirebaseDatabase.getInstance().getReference().child("Users").child(Name);
@@ -244,7 +257,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (usersData.getName().equals(Name)){
                         if (usersData.getPassword().equals(Password)){
-                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             GetData.superOnlineUsers = usersData;

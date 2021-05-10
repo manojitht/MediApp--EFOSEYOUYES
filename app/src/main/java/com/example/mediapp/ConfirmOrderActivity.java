@@ -25,6 +25,7 @@ import com.squareup.picasso.Picasso;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -33,6 +34,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private EditText ShipName, ShipAddress, ShipCity, ShipPhone;
     private Button ShipConfirm;
     private String totalAmount = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +110,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         }
         else {
             ConfirmOrder();
+
         }
     }
 
@@ -115,13 +118,15 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         Random random = new Random();  // Generating the random number...
         final int number = random.nextInt(999999999);//
         final String orderId;
-        orderId= "ORDNO" + number;
-        final String saveCurrentDate, saveCurrentTime;
+        final String saveCurrentDate, saveCurrentTime, getCurrentRefTime;
         Calendar callForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(callForDate.getTime());
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(callForDate.getTime());
+        SimpleDateFormat RefTime = new SimpleDateFormat("HHmmss");
+        getCurrentRefTime = RefTime.format(callForDate.getTime());
+        orderId= "REF" + number + getCurrentRefTime;
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName()); //creation of the "Orders" child
 
@@ -136,18 +141,18 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("time", saveCurrentTime);
         ordersMap.put("status", "Not Shipped");
 
-        final DatabaseReference salesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName()); //creation of the "Sales Data" child
-
-        HashMap<String, Object> orderSales = new HashMap<>(); ///creating the object as hash map
-        orderSales.put("orderId", orderId);
-        orderSales.put("totalAmount", totalAmount);
-        orderSales.put("Cname", ShipName.getText().toString());
-        orderSales.put("phone", ShipPhone.getText().toString());
-        orderSales.put("address", ShipAddress.getText().toString());
-        orderSales.put("city", ShipCity.getText().toString());
-        orderSales.put("date", saveCurrentDate);
-        orderSales.put("time", saveCurrentTime);
-        salesData.updateChildren(orderSales);
+//        final DatabaseReference salesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName()); //creation of the "Sales Data" child
+//
+//        HashMap<String, Object> orderSales = new HashMap<>(); ///creating the object as hash map
+//        orderSales.put("orderId", orderId);
+//        orderSales.put("totalAmount", totalAmount);
+//        orderSales.put("Cname", ShipName.getText().toString());
+//        orderSales.put("phone", ShipPhone.getText().toString());
+//        orderSales.put("address", ShipAddress.getText().toString());
+//        orderSales.put("city", ShipCity.getText().toString());
+//        orderSales.put("date", saveCurrentDate);
+//        orderSales.put("time", saveCurrentTime);
+//        salesData.updateChildren(orderSales);
 
         ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -167,6 +172,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
                              Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
                              intent.putExtra("OrderIdMigrate", orderId);
+
                              startActivity(intent);
                              ShipAddress.setText("");
                              ShipName.setText("");

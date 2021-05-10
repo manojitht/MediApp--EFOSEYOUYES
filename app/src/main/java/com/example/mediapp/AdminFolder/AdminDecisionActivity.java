@@ -41,20 +41,17 @@ public class AdminDecisionActivity extends AppCompatActivity {
         ShowGraph = (Button) findViewById(R.id.show_graph);
         WelcomeMessage = (TextView) findViewById(R.id.welcome_message);
 
-        Intent intent = getIntent();
 
-        final String admin = intent.getStringExtra("AdminName");
-
-        DatabaseReference LastLoginMessage = FirebaseDatabase.getInstance().getReference().child("Admins").child(admin);
+        DatabaseReference LastLoginMessage = FirebaseDatabase.getInstance().getReference().child("Admins").child(GetData.superOnlineUsers.getName());
         LastLoginMessage.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("lastLogin").exists()){
                     String LoginAtLast = dataSnapshot.child("lastLogin").getValue().toString();
-                    WelcomeMessage.setText("Hi " + admin + ", Last logout at " + LoginAtLast);
+                    WelcomeMessage.setText("Hi " + GetData.superOnlineUsers.getName() + ", Last logout at " + LoginAtLast);
                 }
                 else {
-                    WelcomeMessage.setText("Hi " + admin + ", Welcome to Mediapp as Admin");
+                    WelcomeMessage.setText("Hi " + GetData.superOnlineUsers.getName() + ", Welcome to Mediapp as Admin");
                 }
 
             }
@@ -84,7 +81,7 @@ public class AdminDecisionActivity extends AppCompatActivity {
                 LastLoginDate = currentDate.format(callForDate.getTime());
                 SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
                 LastLoginTime = currentTime.format(callForDate.getTime());
-                DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(admin);
+                DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
                 LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
                 Intent intent = new Intent(AdminDecisionActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

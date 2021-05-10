@@ -30,6 +30,7 @@ import java.security.PublicKey;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 
 public class ViewDetailActivity extends AppCompatActivity {
 
@@ -85,6 +86,10 @@ public class ViewDetailActivity extends AppCompatActivity {
     }
 
     private void addingToCart() {
+        Random random = new Random();  // Generating the random number...
+        final int number = random.nextInt(999999999);//
+        final String orderId;
+        orderId= "ORDNO" + number;
         String saveCurrentDate, saveCurrentTime;
         Calendar callForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
@@ -121,17 +126,6 @@ public class ViewDetailActivity extends AppCompatActivity {
                             }
                         }
                     });
-//                    soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if (task.isSuccessful()){
-//                                Toast.makeText(ViewDetailActivity.this, "Added to cart successfully!", Toast.LENGTH_SHORT).show();
-//
-//                                Intent intent = new Intent(ViewDetailActivity.this, HomeActivity.class);
-//                                startActivity(intent);
-//                            }
-//                        }
-//                    });
                 }
             }
         });

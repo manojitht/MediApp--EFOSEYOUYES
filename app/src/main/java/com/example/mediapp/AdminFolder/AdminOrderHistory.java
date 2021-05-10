@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mediapp.Model.AdminOrders;
 import com.example.mediapp.R;
@@ -85,8 +86,9 @@ public class AdminOrderHistory extends AppCompatActivity {
                 holder.userName.setText("Name: " + model.getCname());
                 holder.orderId.setText(model.getOrderId());
                 holder.userPhoneNumber.setText("Contact: " + model.getPhone());
-                holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount() + " LKR");
-                holder.userDateTime.setText("Date: " + model.getDate() + ", Time: " + model.getTime());
+                holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount());
+                holder.userDate.setText("Date: " + model.getDate());
+                holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +96,7 @@ public class AdminOrderHistory extends AppCompatActivity {
                     public void onClick(View view) {
 
                         String uID = getRef(position).getKey();
-
+                        Toast.makeText(AdminOrderHistory.this, uID + " selected!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(AdminOrderHistory.this, AdminSoldProducts.class);
                         intent.putExtra("uid", uID);
                         startActivity(intent);
