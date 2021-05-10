@@ -147,7 +147,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder{
-        public TextView userName, userPhoneNumber, userTotalAmount, userDate, userShippingAddress, orderId, userTime;
+        public TextView userName, userPhoneNumber, userTotalAmount, userDate, userShippingAddress, orderId, userTime, approvedBy;
         public Button showOrder;
         public AdminOrdersViewHolder(View itemView){
             super(itemView);
@@ -160,6 +160,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
             userShippingAddress = itemView.findViewById(R.id.order_address_city);
             showOrder = itemView.findViewById(R.id.show_all_products);
             orderId = itemView.findViewById(R.id.order_id);
+            approvedBy = itemView.findViewById(R.id.approved_admin);
 
         }
     }
@@ -179,10 +180,9 @@ public class AdminOrdersActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isComplete()){
                             fromPath.removeValue();
-                            Toast.makeText(AdminOrdersActivity.this, "Successfully transferred the data!", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(AdminOrdersActivity.this, "Doesn't work try again!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminOrdersActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

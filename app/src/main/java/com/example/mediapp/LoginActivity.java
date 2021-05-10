@@ -166,9 +166,10 @@ public class LoginActivity extends AppCompatActivity {
                                         loadingDialog.dismissDialog();
                                         InputLoginName.setText("");
                                         InputLoginPassword.setText("");
-                                        GetData.superOnlineUsers = usersData;
-                                        Intent intent = new Intent(LoginActivity.this, AdminDecisionActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), AdminDecisionActivity.class);
+                                        intent.putExtra("AdminName", Name);
                                         startActivity(intent);
+                                        GetData.superOnlineUsers = usersData;
                                     }
 
                                     @Override
@@ -176,9 +177,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
-
-                                //////////////////////////////////////////////////////
-
 
                             }
                             else if (DatabaseName.equals("Users")){

@@ -90,6 +90,7 @@ public class AdminOrderHistory extends AppCompatActivity {
                 holder.userDate.setText("Date: " + model.getDate());
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
+                holder.approvedBy.setText("Approved by: " + model.getApprovedBy());
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
                     @Override

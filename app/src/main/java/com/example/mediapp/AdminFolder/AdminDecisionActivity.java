@@ -23,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import io.paperdb.Paper;
+
 public class AdminDecisionActivity extends AppCompatActivity {
 
     private Button CheckOrders, AdminLogoff,MaintainItems, AddProducts, ShowGraph;
@@ -41,17 +43,21 @@ public class AdminDecisionActivity extends AppCompatActivity {
         ShowGraph = (Button) findViewById(R.id.show_graph);
         WelcomeMessage = (TextView) findViewById(R.id.welcome_message);
 
+        Intent intent = getIntent();
 
-        DatabaseReference LastLoginMessage = FirebaseDatabase.getInstance().getReference().child("Admins").child(GetData.superOnlineUsers.getName());
+        final String admin = intent.getStringExtra("AdminName");
+
+
+        DatabaseReference LastLoginMessage = FirebaseDatabase.getInstance().getReference().child("Admins").child(admin);
         LastLoginMessage.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("lastLogin").exists()){
                     String LoginAtLast = dataSnapshot.child("lastLogin").getValue().toString();
-                    WelcomeMessage.setText("Hi " + GetData.superOnlineUsers.getName() + ", Last logout at " + LoginAtLast);
+                    WelcomeMessage.setText("Hi " + admin + ", Last logout at " + LoginAtLast);
                 }
                 else {
-                    WelcomeMessage.setText("Hi " + GetData.superOnlineUsers.getName() + ", Welcome to Mediapp as Admin");
+                    WelcomeMessage.setText("Hi " + admin + ", Welcome to Mediapp as Admin");
                 }
 
             }
@@ -75,17 +81,10 @@ public class AdminDecisionActivity extends AppCompatActivity {
         AdminLogoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String LastLoginDate, LastLoginTime;
-                Calendar callForDate = Calendar.getInstance();
-                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd");
-                LastLoginDate = currentDate.format(callForDate.getTime());
-                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
-                LastLoginTime = currentTime.format(callForDate.getTime());
-                DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
-                LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
                 Intent intent = new Intent(AdminDecisionActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                //LogoutSession();
                 finish();
             }
         });
@@ -113,5 +112,16 @@ public class AdminDecisionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void LogoutSession(){
+        final String LastLoginDate, LastLoginTime;
+        Calendar callForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd");
+        LastLoginDate = currentDate.format(callForDate.getTime());
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
+        LastLoginTime = currentTime.format(callForDate.getTime());
+        DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
+        LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
     }
 }
