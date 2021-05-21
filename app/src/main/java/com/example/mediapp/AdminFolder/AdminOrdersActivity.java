@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,11 +44,15 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
     private RecyclerView ordersList;
     private DatabaseReference ordersRef, ordersRefA, updateSalesOrders, updateSalesProducts;
+    private ImageView notFoundImage;
+    private TextView notFoundText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_orders);
+        notFoundImage = findViewById(R.id.not_found_image);
+        notFoundText = findViewById(R.id.show_text);
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         ordersRefA = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View");
@@ -57,6 +62,27 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
+
+        ordersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    onStart();
+
+                } else {
+                    notFoundImage.setVisibility(View.VISIBLE);
+                    notFoundText.setText("No orders received yet!");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+
+        });
+
     }
 
     @Override

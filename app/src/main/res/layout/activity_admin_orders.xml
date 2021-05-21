@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".AdminFolder.AdminOrdersActivity">
 
     <RelativeLayout
@@ -14,6 +15,7 @@
         android:background="@drawable/buttonknightblue">
 
         <TextView
+            android:id="@+id/show_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -25,9 +27,24 @@
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
             tools:ignore="RtlCompat" />
-
-
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/not_found_image"
+        android:layout_width="304dp"
+        android:layout_height="287dp"
+        android:foregroundGravity="center"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126"
+        android:visibility="gone"
+        app:srcCompat="@drawable/no_orders" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orders_list"

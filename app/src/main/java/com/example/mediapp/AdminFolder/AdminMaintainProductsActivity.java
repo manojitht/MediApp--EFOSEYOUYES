@@ -11,9 +11,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.LoadingDialog;
+import com.example.mediapp.Model.AdminOrders;
+import com.example.mediapp.OrderConfirmMessage;
 import com.example.mediapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,9 +38,9 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
     private String productId = "";
     private RadioGroup radioGroup;
     private RadioButton pointedButton;
+    private TextView lastUpdatedBy;
     private DatabaseReference productsRef;
 
-    public LoadingDialog loadingDialog = new LoadingDialog(AdminMaintainProductsActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +57,13 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         mtnDescription = (EditText) findViewById(R.id.product_description_maintain);
         mtnImageView = (ImageView) findViewById(R.id.product_image_maintain);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        lastUpdatedBy = (TextView) findViewById(R.id.updated_lastly_by);
 
         displayTheProductWithTheInformation();
 
         applyChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadingDialog.startLoadingDialog();
                 doTheChanges();
             }
         });
@@ -67,7 +71,6 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         deleteItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadingDialog.startLoadingDialog();
                 deleteTheItems();
             }
         });
@@ -78,9 +81,8 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                loadingDialog.dismissDialog();
-                Toast.makeText(AdminMaintainProductsActivity.this, "Product deleted successfully from the server!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminDecisionActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProductMessage.class);
+                intent.putExtra("ProductName", "Item");
                 startActivity(intent);
                 finish();
             }
@@ -88,7 +90,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
     }
 
     private void doTheChanges() {
-        String mName = mtnName.getText().toString();
+        final String mName = mtnName.getText().toString();
         String mPrice = mtnPrice.getText().toString();
         String mDescription = mtnDescription.getText().toString();
         pointedButton  = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
@@ -107,15 +109,14 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             productMap.put("price", mPrice);
             productMap.put("productName", mName);
             productMap.put("stock", getStockStatus);
+            productMap.put("lastUpdatedBy", GetData.superOnlineUsers.getName());
 
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-                        loadingDialog.dismissDialog();
-                        Toast.makeText(AdminMaintainProductsActivity.this, "Changes made successfully ..", Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminDecisionActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ProductMessage.class);
+                        intent.putExtra("ProductName", mName);
                         startActivity(intent);
                         finish();
                     }
@@ -135,11 +136,13 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                     String mPrice = dataSnapshot.child("price").getValue().toString();
                     String mDescription = dataSnapshot.child("description").getValue().toString();
                     String mImage = dataSnapshot.child("image").getValue().toString();
+                    String lastlyUpdatedBy = dataSnapshot.child("lastUpdatedBy").getValue().toString();
 
                     mtnName.setText(mName);
                     mtnPrice.setText(mPrice);
                     mtnDescription.setText(mDescription);
                     Picasso.get().load(mImage).into(mtnImageView);
+                    lastUpdatedBy.setText("Last updated by: " +  lastlyUpdatedBy);
 
                 }
             }

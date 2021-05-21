@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminFolder.AdminProductActivity">
+    tools:context=".AdminFolder.AdminProductActivity"
+    android:background="@color/colorWhite">
 
 
     <EditText
@@ -14,7 +15,7 @@
         android:background="@drawable/custom_input"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/nunito_semibold"
         android:hint="Product description"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
@@ -26,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.708" />
+        app:layout_constraintVertical_bias="0.749" />
 
     <EditText
         android:id="@+id/product_price"
@@ -35,44 +36,44 @@
         android:background="@drawable/custom_input"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/nunito_semibold"
         android:hint="Product price"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:paddingStart="12dp"
         android:textColorHint="#686565"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
+        app:layout_constraintVertical_bias="0.611" />
 
     <ImageView
         android:id="@+id/image_finder"
-        android:layout_width="412dp"
-        android:layout_height="220dp"
+        android:layout_width="wrap_content"
+        android:layout_height="209dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/image_clicker" />
+        app:srcCompat="@drawable/upload_image_new" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="321dp"
-        android:layout_height="20dp"
-        android:fontFamily="@font/poppins_medium"
+        android:layout_width="320dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="click on the camera icon to select image!"
-        android:textColor="#A65AC6"
+        android:text="click on the upload picture to select image!"
+        android:textColor="#1E1D1E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.361" />
+        app:layout_constraintVertical_bias="0.383" />
 
     <EditText
         android:id="@+id/product_name"
@@ -81,7 +82,7 @@
         android:background="@drawable/custom_input"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/nunito_semibold"
         android:hint="Product name"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
@@ -92,7 +93,7 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459" />
+        app:layout_constraintVertical_bias="0.475" />
 
     <Button
         android:id="@+id/click_add"
@@ -101,12 +102,11 @@
         android:background="@drawable/buttonurple"
         android:fontFamily="@font/poppins_medium"
         android:text="Add product"
-        android:textColor="@color/colorWhite"
         android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
+        app:layout_constraintVertical_bias="0.887" />
 </androidx.constraintlayout.widget.ConstraintLayout>

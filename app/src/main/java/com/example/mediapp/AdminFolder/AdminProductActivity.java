@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -181,6 +182,7 @@ public class AdminProductActivity extends AppCompatActivity {
         productMap.put("price", Price);
         productMap.put("stock", "Stock available");
         productMap.put("productName", ProductName);
+        productMap.put("lastUpdatedBy", GetData.superOnlineUsers.getName());
 
         ProductsRef.child(productRandomKey).updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
