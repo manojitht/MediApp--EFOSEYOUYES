@@ -79,7 +79,8 @@ public class UserSettingsActivity extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(UserSettingsActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 

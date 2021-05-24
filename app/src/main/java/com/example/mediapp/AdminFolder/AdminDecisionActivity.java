@@ -14,6 +14,7 @@ import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.HomeActivity;
 import com.example.mediapp.LoginActivity;
 import com.example.mediapp.R;
+import com.example.mediapp.ShowCategoryList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,7 +72,7 @@ public class AdminDecisionActivity extends AppCompatActivity {
         MaintainItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminDecisionActivity.this, HomeActivity.class);
+                Intent intent = new Intent(AdminDecisionActivity.this, ShowCategoryList.class);
                 intent.putExtra("Admin", "Admin");
                 startActivity(intent);
                 finish();

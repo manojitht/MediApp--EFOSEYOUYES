@@ -83,9 +83,9 @@ public class AdminOrderHistory extends AppCompatActivity {
         FirebaseRecyclerAdapter<AdminOrders, AdminOrdersActivity.AdminOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersActivity.AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersActivity.AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
-                holder.userName.setText("Name: " + model.getCname());
+                holder.userName.setText("" + model.getCname());
                 holder.orderId.setText(model.getOrderId());
-                holder.userPhoneNumber.setText("Contact: " + model.getPhone());
+                holder.userPhoneNumber.setText("" + model.getPhone());
                 holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount());
                 holder.userDate.setText("Date: " + model.getDate());
                 holder.userTime.setText("Time: " + model.getTime());

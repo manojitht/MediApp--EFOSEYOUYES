@@ -9,17 +9,18 @@
 
 
     <TextView
-        android:id="@+id/price_tag"
-        android:layout_width="56dp"
-        android:layout_height="21dp"
+        android:id="@+id/currency_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="right"
-        android:text="Price"
-        android:textColor="#D83E0D"
+        android:paddingLeft="5dp"
+        android:text="LKR"
+        android:textColor="#F18628"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="@+id/price_product_text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.416" />
 
@@ -157,26 +158,13 @@
         android:gravity="right"
         android:paddingLeft="5dp"
         android:text="0.00"
+        android:textColor="#242524"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.416" />
-
-    <TextView
-        android:id="@+id/currency_text"
-        android:layout_width="35dp"
-        android:layout_height="17dp"
-        android:fontFamily="@font/nunito_extrabold"
-        android:text="lkr"
-        android:textColor="#EF861A"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
 
     <TextView
         android:id="@+id/image_url"
@@ -189,4 +177,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.965" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="45dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.417"
+        app:srcCompat="@drawable/money" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,12 +14,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mediapp.AdminFolder.AdminMaintainProductsActivity;
+import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.Products;
+import com.example.mediapp.Model.Users;
 import com.example.mediapp.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class ShowByCategory extends AppCompatActivity {
@@ -38,8 +44,6 @@ public class ShowByCategory extends AppCompatActivity {
         categoryName = getIntent().getExtras().get("category").toString();
         showCategoryName.setText(categoryName);
 
-
-
     }
 
     @Override
@@ -53,7 +57,6 @@ public class ShowByCategory extends AppCompatActivity {
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
-//                holder.Description.setText(model.getDescription());
                 holder.txtProductName.setText(model.getProductName());
                 holder.productPrice.setText("Price "+model.getPrice()+" LKR");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
@@ -61,9 +64,30 @@ public class ShowByCategory extends AppCompatActivity {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(ShowByCategory.this, ViewDetailActivity.class);
-                        intent.putExtra("pid", model.getPid());
-                        startActivity(intent);
+
+                        final DatabaseReference RootRef;
+                        RootRef = FirebaseDatabase.getInstance().getReference();
+
+                        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.child("Admins").child(GetData.superOnlineUsers.getName()).exists()){
+                                    Intent intent = new Intent(ShowByCategory.this, AdminMaintainProductsActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Intent intent = new Intent(ShowByCategory.this, ViewDetailActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                     }
                 });
 
