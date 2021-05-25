@@ -52,22 +52,30 @@ public class SearchActivity extends AppCompatActivity {
         searchList.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
 
         categoryList = new ArrayList<>();
-        categoryList.add("First Aid Box");
-        categoryList.add("Vaccines & Injections");
-        categoryList.add("Balm products");
-        categoryList.add("Vitamin tablets");
-        categoryList.add("Energy drinks");
+        categoryList.add("Anti-acids for gastritis");
+        categoryList.add("Ayurveda products");
+        categoryList.add("Baby care");
+        categoryList.add("Baby diapers");
+        categoryList.add("Beauty care");
+        categoryList.add("Body care");
+        categoryList.add("Food and beverages");
+        categoryList.add("Glucose monitors and splits");
+        categoryList.add("Hair care");
+        categoryList.add("Household cleaners");
+        categoryList.add("Mask");
+        categoryList.add("Medical devices");
+        categoryList.add("Mens grooming");
+        categoryList.add("Mosquito repellents");
+        categoryList.add("Nutrition and supplements");
+        categoryList.add("Oral care");
+        categoryList.add("Orthopedic items");
+        categoryList.add("Pain killer");
+        categoryList.add("Skin care");
         categoryList.add("Thermometer");
-        categoryList.add("Optical");
-        categoryList.add("Soaps & sanitizer");
-        categoryList.add("Shampoo");
-        categoryList.add("Tablets");
-        categoryList.add("Baby products");
-        categoryList.add("Face Mask");
-        categoryList.add("Cardiac products");
-        categoryList.add("Surgical equipments");
-        categoryList.add("Stethoscopes");
-        categoryList.add("Syrup");
+        categoryList.add("Vaccine");
+        categoryList.add("Wet wipes");
+        categoryList.add("Wound care");
+
 
         searchText.setOnClickListener(new View.OnClickListener() {
             @Override

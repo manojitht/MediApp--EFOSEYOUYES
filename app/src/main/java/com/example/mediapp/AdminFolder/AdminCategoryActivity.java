@@ -18,12 +18,14 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
     ListView categoryListView;
 
-    int[] images = {R.drawable.first_aid_kit, R.drawable.vaccines, R.drawable.balm, R.drawable.vitamin, R.drawable.drink, R.drawable.thermometer,
-                    R.drawable.ophtalmology, R.drawable.soap, R.drawable.shampoo, R.drawable.pills, R.drawable.newborn, R.drawable.mask,
-                    R.drawable.cardiogram, R.drawable.surgical_components, R.drawable.stethoscope};
+    int[] images = {R.drawable.antiacids_for_gastritis, R.drawable.ayurveda_products, R.drawable.baby_care, R.drawable.baby_diapers, R.drawable.beauty_care, R.drawable.body_care,
+            R.drawable.food_and_beverages, R.drawable.glucose_monitors_and_splits, R.drawable.hair_care, R.drawable.house_hold_cleaners, R.drawable.mask, R.drawable.medical_devices,
+            R.drawable.mens_grooming, R.drawable.mosquito_repellant, R.drawable.nutrition_and_supplements, R.drawable.oral_care, R.drawable.orthopedic_items, R.drawable.pain_management,
+            R.drawable.skin_care, R.drawable.thermometer, R.drawable.vaccine, R.drawable.wet_wipes, R.drawable.wound_care};
 
-    String[] Names = {"First Aid Box", "Vaccines & Injections", "Balm products", "Vitamin tablets", "Energy drinks", "Thermometer", "Optical", "Soaps & sanitizer", "Shampoo", "Tablets", "Baby products",
-                                "Face Mask", "Cardiac products", "Surgical equipments", "Stethoscopes"};
+    String[] Names = {"Anti-acids for gastritis", "Ayurveda products", "Baby care", "Baby diapers", "Beauty care", "Body care", "Food and beverages", "Glucose monitors and splits",
+            "Hair care", "Household cleaners", "Mask", "Medical devices", "Mens grooming", "Mosquito repellents", "Nutrition and supplements", "Oral care", "Orthopedic items", "Pain killer",
+            "Skin care", "Thermometer", "Vaccine", "Wet wipes", "Wound care"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,76 +42,116 @@ public class AdminCategoryActivity extends AppCompatActivity {
                 Intent intent;
                 if (position == 0) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "First Aid Box");
+                    intent.putExtra("category", "Anti-acids for gastritis");
                     startActivity(intent);
                 }else if (position == 1) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Vaccines & Injections");
+                    intent.putExtra("category", "Ayurveda products");
                     startActivity(intent);
                 }
                 else if (position == 2) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Balm products");
+                    intent.putExtra("category", "Baby care");
                     startActivity(intent);
                 }
                 else if (position == 3) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Vitamin tablets");
+                    intent.putExtra("category", "Baby diapers");
                     startActivity(intent);
                 }
                 else if (position == 4) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Energy drinks");
+                    intent.putExtra("category", "Beauty care");
                     startActivity(intent);
                 }
                 else if (position == 5) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Thermometer");
+                    intent.putExtra("category", "Body care");
                     startActivity(intent);
                 }
                 else if (position == 6) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Optical");
+                    intent.putExtra("category", "Food and beverages");
                     startActivity(intent);
                 }
                 else if (position == 7) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Soaps & sanitizer");
+                    intent.putExtra("category", "Glucose monitors and splits");
+                    startActivity(intent);
+                }
+                else if (position == 8) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Hair care");
                     startActivity(intent);
                 }
                 else if (position == 9) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Shampoo");
+                    intent.putExtra("category", "Household cleaners");
                     startActivity(intent);
                 }
                 else if (position == 10) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Tablets");
+                    intent.putExtra("category", "Mask");
                     startActivity(intent);
                 }
                 else if (position == 11) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Baby products");
+                    intent.putExtra("category", "Medical devices");
                     startActivity(intent);
                 }
                 else if (position == 12) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Face Mask");
+                    intent.putExtra("category", "Mens grooming");
                     startActivity(intent);
                 }
                 else if (position == 13) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Cardiac products");
+                    intent.putExtra("category", "Mosquito repellents");
                     startActivity(intent);
                 }
                 else if (position == 14) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Surgical equipments");
+                    intent.putExtra("category", "Nutrition and supplements");
                     startActivity(intent);
                 }
                 else if (position == 15) {
                     intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
-                    intent.putExtra("category", "Stethoscopes");
+                    intent.putExtra("category", "Oral care");
+                    startActivity(intent);
+                }
+                else if (position == 16) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Orthopedic items");
+                    startActivity(intent);
+                }
+                else if (position == 17) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Pain killer");
+                    startActivity(intent);
+                }
+                else if (position == 18) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Skin care");
+                    startActivity(intent);
+                }
+                else if (position == 19) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Thermometer");
+                    startActivity(intent);
+                }
+                else if (position == 20) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Vaccine");
+                    startActivity(intent);
+                }
+                else if (position == 21) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Wet wipes");
+                    startActivity(intent);
+                }
+                else if (position == 22) {
+                    intent = new Intent(AdminCategoryActivity.this, AdminProductActivity.class);
+                    intent.putExtra("category", "Wound care");
                     startActivity(intent);
                 }
             }
