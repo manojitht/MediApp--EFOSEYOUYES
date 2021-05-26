@@ -39,6 +39,7 @@ public class ViewDetailActivity extends AppCompatActivity {
     private ElegantNumberButton integerButton;
     private TextView productOfName, productOfDescription, productOfPrice, ImageUrl, StockStatus;
     private String productId = "", status = "Normal";
+    private String category = "";
 
 
     @Override
@@ -47,6 +48,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_detail);
 
         productId = getIntent().getStringExtra("pid");
+        category = getIntent().getStringExtra("category");
 
         ProductImage = (ImageView) findViewById(R.id.details_image_view);
         addToCartButton = (Button) findViewById(R.id.product_add_to_cart);
@@ -109,6 +111,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         cartMap.put("time", productId);
         cartMap.put("quantity", integerButton.getNumber());
         cartMap.put("discount", "");
+        cartMap.put("category", category);
 
         cartListRef.child("User View").child(GetData.superOnlineUsers.getName()).child("Products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

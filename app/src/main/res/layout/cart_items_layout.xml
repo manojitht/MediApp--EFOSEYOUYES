@@ -4,69 +4,85 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="#F6F7F8"
     app:cardElevation="15dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
         android:background="@drawable/buttonwhite">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/cart_items_productimage"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
-            app:shapeAppearanceOverlay="@style/CartViewImage" />
+        <TextView
+            android:id="@+id/cart_product_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cart_items_productimage"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-74dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/cart_items_productimage"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="category"
+            android:textColor="#2A6811"
+            android:textSize="12dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cart_items_productname"
-            android:layout_width="160dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_medium"
+            android:background="#C09BEC"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="Product Name"
+            android:textAlignment="center"
+            android:textColor="#F1EEEE"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/cart_items_productimage"
+            android:layout_width="162dp"
+            android:layout_height="154dp"
+            android:layout_below="@id/cart_items_productname"
+            android:layout_marginTop="0dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/cart_items_productprice"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cart_items_productimage"
+            android:layout_marginStart="14dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="-28dp"
+            android:layout_toEndOf="@+id/cart_items_productimage"
+            android:fontFamily="@font/nunito_extrabold"
             android:gravity="left"
-            android:text="Product name"
-            android:textColor="#4A4A49"
-            android:textSize="14dp"
+            android:text="Product Price"
+            android:textColor="#131313"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cart_items_productquantity"
-            android:layout_width="155dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cart_items_productname"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_below="@id/cart_items_productimage"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-144dp"
+            android:layout_toEndOf="@+id/cart_items_productimage"
+            android:fontFamily="@font/nunito_extrabold"
             android:gravity="left"
-            android:text="Product Quantity"
-            android:textColor="#568EEC"
-            android:textSize="14dp"
+            android:text="Name"
+            android:textColor="#4E0D9E"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/cart_items_productprice"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cart_items_productquantity"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="left"
-            android:text="Product price"
-            android:textColor="#F18C0B"
-            android:textSize="14dp"
-            android:textStyle="bold" />
 
     </RelativeLayout>
 

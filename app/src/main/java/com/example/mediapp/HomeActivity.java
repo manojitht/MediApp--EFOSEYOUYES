@@ -116,7 +116,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                 holder.txtProductName.setText(model.getProductName());
-                holder.productPrice.setText("Rs: "+model.getPrice()+" LKR");
+                holder.productCategory.setText("Category: " + model.getCategory());
+                holder.productCardName.setText(model.getProductName());
+                holder.productPrice.setText("Rs: "+model.getPrice()+" lkr");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
 
@@ -128,11 +130,13 @@ public class HomeActivity extends AppCompatActivity {
                         if (type.equals("Admin")){
                             Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
                             intent.putExtra("pid", model.getPid());
+                            intent.putExtra("category", model.getCategory());
                             startActivity(intent);
                         }
                         else {
                             Intent intent = new Intent(HomeActivity.this, ViewDetailActivity.class);
                             intent.putExtra("pid", model.getPid());
+                            intent.putExtra("category", model.getCategory());
                             startActivity(intent);
                         }
 

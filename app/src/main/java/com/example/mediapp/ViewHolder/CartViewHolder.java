@@ -11,7 +11,7 @@ import com.example.mediapp.Interface.ItemClickListener;
 import com.example.mediapp.R;
 
 public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView txtProductname, txtProductPrice, txtProductQuantity;
+    public TextView txtProductname, txtProductPrice, txtProductQuantity, txtProductCategory;
     public ImageView productImageView;
     private ItemClickListener itemClickListener;
 
@@ -19,6 +19,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         super(itemView);
 
         txtProductname = itemView.findViewById(R.id.cart_items_productname);
+        txtProductCategory = itemView.findViewById(R.id.cart_product_category);
         txtProductPrice = itemView.findViewById(R.id.cart_items_productprice);
         txtProductQuantity = itemView.findViewById(R.id.cart_items_productquantity);
         productImageView = itemView.findViewById(R.id.cart_items_productimage);

@@ -8,7 +8,7 @@
     android:layout_marginStart="15dp"
     android:layout_marginEnd="15dp"
     app:cardCornerRadius="15dp"
-    app:cardBackgroundColor="@color/colorLightGrey"
+    app:cardBackgroundColor="#F6F7F8"
     app:cardElevation="15dp"
     tools:context=".ui.home.HomeFragment"
     >
@@ -16,15 +16,30 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/product_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_image"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-74dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/product_image"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="category"
+            android:textColor="#2A6811"
+            android:textSize="12dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4F5151"
-            android:fontFamily="@font/poppins_light"
+            android:background="#8433E6"
+            android:fontFamily="@font/nunito_extrabold"
             android:text="Product Name"
             android:textAlignment="center"
             android:textColor="#F1EEEE"
@@ -33,22 +48,41 @@
 
         <ImageView
             android:id="@+id/product_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="162dp"
+            android:layout_height="154dp"
             android:layout_below="@id/product_name"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="0dp"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/product_price"
-            android:layout_width="match_parent"
+            android:layout_width="176dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/product_image"
+            android:layout_marginStart="14dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="-28dp"
+            android:layout_toEndOf="@+id/product_image"
             android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
             android:text="Product Price"
-            android:textAlignment="center"
-            android:textColor="@color/colorOrange"
-            android:textSize="18dp"
+            android:textColor="#131313"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/product_name_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_image"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-144dp"
+            android:layout_toEndOf="@+id/product_image"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="Name"
+            android:textColor="#4E0D9E"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
@@ -56,11 +90,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/product_price"
+            android:background="#E0E3E3"
             android:fontFamily="@font/nunito_semibold"
             android:text="Click item to see product description"
             android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="14dp"
+            android:textColor="#191919"
+            android:textSize="12dp"
             android:textStyle="bold" />
 
     </RelativeLayout>

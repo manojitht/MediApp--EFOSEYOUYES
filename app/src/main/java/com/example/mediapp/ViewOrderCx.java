@@ -62,7 +62,8 @@ public class ViewOrderCx extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
                 holder.txtProductQuantity.setText("Quantity = "+model.getQuantity() + " Pcs");
-                holder.txtProductPrice.setText("Price = " + model.getPrice() + " LKR");
+                holder.txtProductCategory.setText("Category: " + model.getCategory());
+                holder.txtProductPrice.setText("Price = " + model.getPrice() + " lkr");
                 holder.txtProductname.setText(model.getPname());
                 Picasso.get().load(model.getImage()).into(holder.productImageView);
 

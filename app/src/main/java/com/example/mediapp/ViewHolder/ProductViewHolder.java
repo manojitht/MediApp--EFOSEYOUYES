@@ -13,7 +13,7 @@ import com.example.mediapp.R;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView txtProductName, Description, productPrice;
+    public TextView txtProductName, Description, productPrice, productCategory, productCardName;
     public ImageView imageView;
     public ItemClickListener listener;
 
@@ -21,6 +21,8 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
         super(itemView);
 
         imageView = (ImageView) itemView.findViewById(R.id.product_image);
+        productCategory = (TextView) itemView.findViewById(R.id.product_category);
+        productCardName = (TextView) itemView.findViewById(R.id.product_name_card);
         txtProductName = (TextView) itemView.findViewById(R.id.product_name);
         Description = (TextView) itemView.findViewById(R.id.product_description);
         productPrice = (TextView) itemView.findViewById(R.id.product_price);

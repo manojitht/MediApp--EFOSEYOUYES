@@ -52,6 +52,7 @@ public class AdminSoldProducts extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
                 holder.txtProductQuantity.setText("Quantity = "+model.getQuantity() + " Pcs");
+                holder.txtProductCategory.setText("Category: " + model.getCategory());
                 holder.txtProductPrice.setText("Price = " + model.getPrice() + " LKR");
                 holder.txtProductname.setText(model.getPname());
                 Picasso.get().load(model.getImage()).into(holder.productImageView);
