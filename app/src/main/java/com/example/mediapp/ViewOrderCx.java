@@ -34,6 +34,8 @@ import com.squareup.picasso.Picasso;
 public class ViewOrderCx extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    private Button checkOut, makeOrder;
+    private TextView cart;
 
     private int overTotalPrice = 0;
 
@@ -43,9 +45,14 @@ public class ViewOrderCx extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
 
         recyclerView = findViewById(R.id.cart_list);
+        checkOut = findViewById(R.id.calculate_process_button);
+        cart = findViewById(R.id.total_price_text);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+        checkOut.setVisibility(View.GONE);
+        cart.setText("Purchased items");
 
     }
 
@@ -63,12 +70,11 @@ public class ViewOrderCx extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
                 holder.txtProductQuantity.setText("Quantity = "+model.getQuantity() + " Pcs");
                 holder.txtProductCategory.setText("Category: " + model.getCategory());
-                holder.txtProductPrice.setText("Price = " + model.getPrice() + " lkr");
+                holder.txtProductPrice.setText("Price " + model.getPrice() + " lkr");
+                holder.editIcon.setVisibility(View.GONE);
+                holder.deleteIcon.setVisibility(View.GONE);
                 holder.txtProductname.setText(model.getPname());
                 Picasso.get().load(model.getImage()).into(holder.productImageView);
-
-                int oneTypeProductPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
-                overTotalPrice = overTotalPrice + oneTypeProductPrice;
             }
 
             @NonNull

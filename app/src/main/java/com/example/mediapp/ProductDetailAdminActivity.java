@@ -54,6 +54,8 @@ public class ProductDetailAdminActivity extends AppCompatActivity {
                 holder.txtProductCategory.setText("Category: " + model.getCategory());
                 holder.txtProductPrice.setText("Price = " + model.getPrice() + " lkr");
                 holder.txtProductname.setText(model.getPname());
+                holder.editIcon.setVisibility(View.GONE);
+                holder.deleteIcon.setVisibility(View.GONE);
                 Picasso.get().load(model.getImage()).into(holder.productImageView);
             }
 

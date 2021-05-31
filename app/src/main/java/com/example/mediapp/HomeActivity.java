@@ -180,14 +180,6 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_profile:
-//                final String LastLoginDate, LastLoginTime;
-//                Calendar callForDate = Calendar.getInstance();
-//                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd");
-//                LastLoginDate = currentDate.format(callForDate.getTime());
-//                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
-//                LastLoginTime = currentTime.format(callForDate.getTime());
-//                DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Users").child(GetData.superOnlineUsers.getName());
-//                LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
                 Intent intent1 = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(intent1);
                 Paper.book().destroy();

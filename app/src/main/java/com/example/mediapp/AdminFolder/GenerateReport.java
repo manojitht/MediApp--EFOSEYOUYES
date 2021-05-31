@@ -44,10 +44,10 @@ public class GenerateReport extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String barOne = intent.getStringExtra("BarOne");
-        String barTwo = intent.getStringExtra("BarTwo");
-        String barThree = intent.getStringExtra("BarThree");
-        String barFour = intent.getStringExtra("BarFour");
+        String barOne = intent.getStringExtra("BarOne").replace(",", "");
+        String barTwo = intent.getStringExtra("BarTwo").replace(",", "");
+        String barThree = intent.getStringExtra("BarThree").replace(",", "");
+        String barFour = intent.getStringExtra("BarFour").replace(",", "");
         String graphMonth = intent.getStringExtra("GraphMonth");
 
         monthStatus.setText("Month of graph: " + graphMonth);

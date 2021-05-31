@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.749" />
 
-    <EditText
+    <com.aldoapps.autoformatedittext.AutoFormatEditText
         android:id="@+id/product_price"
         android:layout_width="326dp"
         android:layout_height="49dp"
@@ -38,10 +38,11 @@
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
         android:hint="Product price"
-        android:inputType="number"
         android:paddingStart="12dp"
         android:textColorHint="#686565"
         android:textSize="14dp"
+        app:isDecimal="false"
+        android:maxLength="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
