@@ -9,20 +9,20 @@
 
 
     <TextView
-        android:id="@+id/currency_word"
+        android:id="@+id/product_category"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="22dp"
         android:fontFamily="@font/nunito_extrabold"
-        android:gravity="right"
-        android:paddingLeft="5dp"
-        android:text="LKR"
-        android:textColor="#F18628"
+        android:gravity="center"
+        android:text="Category : Nutrients and supplements"
+        android:textAllCaps="false"
+        android:textColor="#2C6DD3"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
-        app:layout_constraintStart_toStartOf="@+id/price_product_text"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.383" />
 
     <ImageView
         android:id="@+id/details_image_view"
@@ -38,7 +38,7 @@
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="427dp"
-        android:layout_height="168dp"
+        android:layout_height="128dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,18 +49,18 @@
     <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
         android:id="@+id/increase_button"
         android:layout_width="187dp"
-        android:layout_height="38dp"
+        android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:elevation="6dp"
         app:backGroundColor="@color/colorPurple"
-        app:finalNumber="15"
+        app:finalNumber="50"
         app:initialNumber="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829"
+        app:layout_constraintVertical_bias="0.879"
         app:textColor="@color/colorWhite"
         app:textSize="8dp"
         tools:ignore="MissingConstraints"></com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
@@ -69,15 +69,15 @@
         android:id="@+id/product_add_to_cart"
         android:layout_width="188dp"
         android:layout_height="45dp"
+        android:background="@drawable/buttonsyello"
         android:text="Add to cart"
         android:textAllCaps="false"
-        android:background="@drawable/buttonsyello"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.933" />
+        app:layout_constraintVertical_bias="0.973" />
 
     <TextView
         android:id="@+id/name_product_text"
@@ -106,10 +106,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <TextView
         android:id="@+id/textView19"
@@ -119,34 +119,33 @@
         android:gravity="center"
         android:text="Item Description"
         android:textAllCaps="false"
-        android:textColor="@color/colorPurple"
+        android:textColor="#D13708"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.521" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="360dp"
-        android:layout_height="154dp"
+        android:layout_width="361dp"
+        android:layout_height="157dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649">
+        app:layout_constraintVertical_bias="0.721">
 
         <TextView
             android:id="@+id/details_product_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_extrabold"
-            android:paddingLeft="25dp"
+            android:paddingLeft="5dp"
             android:text="Product description"
-            android:textColor="#636265"
+            android:textColor="#2B2B2C"
             android:textSize="13sp" />
     </ScrollView>
 
@@ -164,7 +163,7 @@
         app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.448" />
 
     <TextView
         android:id="@+id/image_url"
@@ -187,7 +186,7 @@
         app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417"
+        app:layout_constraintVertical_bias="0.451"
         app:srcCompat="@drawable/money" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

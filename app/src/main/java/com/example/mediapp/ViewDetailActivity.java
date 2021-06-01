@@ -37,7 +37,7 @@ public class ViewDetailActivity extends AppCompatActivity {
     private ImageView ProductImage;
     private Button addToCartButton;
     private ElegantNumberButton integerButton;
-    private TextView productOfName, productOfDescription, productOfPrice, ImageUrl, StockStatus;
+    private TextView productOfName, productOfDescription, productOfPrice, ImageUrl, StockStatus, productCategory;
     private String productId = "", status = "Normal";
     private String category = "";
 
@@ -58,6 +58,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         productOfPrice = (TextView) findViewById(R.id.price_product_text);
         ImageUrl = (TextView) findViewById(R.id.image_url);
         StockStatus = (TextView) findViewById(R.id.stock_status);
+        productCategory = (TextView) findViewById(R.id.product_category);
 
 
         takeProductDetails(productId);
@@ -105,13 +106,14 @@ public class ViewDetailActivity extends AppCompatActivity {
         final HashMap<String, Object> cartMap = new HashMap<>();
         cartMap.put("pid", productId);
         cartMap.put("pname", productOfName.getText().toString());
-        cartMap.put("price", productOfPrice.getText().toString());
+        String productPrice = productOfPrice.getText().toString().replace(" LKR", "");
+        cartMap.put("price", productPrice);
         cartMap.put("image", ImageUrl.getText());
         cartMap.put("date", productId);
         cartMap.put("time", productId);
         cartMap.put("quantity", integerButton.getNumber());
         cartMap.put("discount", "");
-        cartMap.put("category", category);
+        cartMap.put("category", productCategory.getText().toString());
 
         cartListRef.child("User View").child(GetData.superOnlineUsers.getName()).child("Products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -145,8 +147,9 @@ public class ViewDetailActivity extends AppCompatActivity {
                     Products products = dataSnapshot.getValue(Products.class);
 
                     productOfName.setText(products.getProductName());
-                    productOfPrice.setText(products.getPrice());
+                    productOfPrice.setText(products.getPrice() + " LKR");
                     productOfDescription.setText(products.getDescription());
+                    productCategory.setText(products.getCategory());
                     Picasso.get().load(products.getImage()).into(ProductImage);
                     ImageUrl.setText(products.getImage());
                     StockStatus.setText(products.getStock());

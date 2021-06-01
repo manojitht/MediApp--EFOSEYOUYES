@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
         android:gravity="center"
@@ -24,8 +24,23 @@
         app:fontFamily="@font/nunito_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_file"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="checkout_cart.json"
+        app:lottie_loop="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
@@ -34,7 +49,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#959191"
+        android:background="#CCC8C8"
         app:layout_constraintTop_toBottomOf="@id/textView12" />
 
     <TextView
@@ -113,7 +128,7 @@
         android:id="@+id/view_bottom"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#959191"
+        android:background="#CCC8C8"
         app:layout_constraintTop_toBottomOf="@id/total_checkout_shipping" />
 
     <TextView
@@ -167,7 +182,6 @@
         android:textAllCaps="false"
         android:textColor="#073E93"
         android:textSize="18dp"
-        android:textStyle="bold"
         app:fontFamily="@font/poppins_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

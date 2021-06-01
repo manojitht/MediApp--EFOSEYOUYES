@@ -79,9 +79,9 @@ public class CartActivity extends AppCompatActivity {
                 TextView totalPriceCost = (TextView) bottomSheetView.findViewById(R.id.total_checkout_price);
                 TextView shippingCost = (TextView) bottomSheetView.findViewById(R.id.total_checkout_shipping);
                 TextView totalAmountCost = (TextView) bottomSheetView.findViewById(R.id.total_amount_price);
-                totalPriceCost.setText(formattedPrice);
-                shippingCost.setText("0");
-                totalAmountCost.setText(formattedPrice);
+                totalPriceCost.setText(formattedPrice + " LKR");
+                shippingCost.setText("0" + " LKR");
+                totalAmountCost.setText(formattedPrice + " LKR");
                 bottomSheetView.findViewById(R.id.checkout_proceed).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
