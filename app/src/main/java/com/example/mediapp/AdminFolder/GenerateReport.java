@@ -29,18 +29,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class GenerateReport extends AppCompatActivity {
     BarChart barchart;
-    TextView monthStatus;
+    TextView monthStatus, totalSalesOfMonth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_report);
 
         barchart = findViewById(R.id.graph);
-        monthStatus = findViewById(R.id.monthStatus);
+        monthStatus = findViewById(R.id.current_sales_month);
+        totalSalesOfMonth = findViewById(R.id.total_amount_for_month);
 
         Intent intent = getIntent();
 
@@ -50,7 +52,16 @@ public class GenerateReport extends AppCompatActivity {
         String barFour = intent.getStringExtra("BarFour").replace(",", "");
         String graphMonth = intent.getStringExtra("GraphMonth");
 
-        monthStatus.setText("Month of graph: " + graphMonth);
+        int salesFirstWeek = Integer.parseInt(barOne);
+        int salesSecondWeek = Integer.parseInt(barTwo);
+        int salesThirdWeek = Integer.parseInt(barThree);
+        int salesFourthWeek = Integer.parseInt(barFour);
+        int addAllWeeks = salesFirstWeek + salesSecondWeek + salesThirdWeek + salesFourthWeek;
+        String formattedTotal = NumberFormat.getInstance().format(addAllWeeks);
+
+        totalSalesOfMonth.setText(formattedTotal + " LKR");
+
+        monthStatus.setText("Month of sales: " + graphMonth);
 
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         barEntries.add(new BarEntry(Integer.parseInt(barOne), 0));

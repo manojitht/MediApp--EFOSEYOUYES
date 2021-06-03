@@ -4,36 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPurple"
     tools:context=".AdminFolder.GenerateReport">
 
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/graph"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
+<!--    <com.github.mikephil.charting.charts.BarChart-->
+<!--        android:id="@+id/graph"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="600dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.333"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.062"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+<!--    </com.github.mikephil.charting.charts.BarChart>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/monthStatus"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/nunito_extrabold"-->
+<!--        android:textColor="@color/colorPrimaryDark"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/graph"-->
+<!--        app:layout_constraintVertical_bias="0.222" />-->
+
+    <View
+        android:id="@+id/graph_sales_container"
+        android:layout_width="355dp"
+        android:layout_height="440dp"
+        android:background="@drawable/today_sales_amount_container"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062"
+        app:layout_constraintVertical_bias="0.851" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/graph"
+        android:layout_width="317dp"
+        android:layout_height="401dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826"
         tools:ignore="MissingConstraints">
 
     </com.github.mikephil.charting.charts.BarChart>
 
+    <View
+        android:id="@+id/total_sales_container"
+        android:layout_width="355dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/total_sales_amount_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.069" />
+
+
     <TextView
-        android:id="@+id/monthStatus"
+        android:id="@+id/total_amount_for_month"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_extrabold"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:layout_height="42dp"
+        android:text="99,000 LKR"
+        android:textColor="#575659"
+        android:textSize="26dp"
+        app:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <TextView
+        android:id="@+id/dashboard"
+        android:layout_width="126dp"
+        android:layout_height="33dp"
+        android:text="Dashboard"
+        android:textColor="#111112"
+        android:textSize="22sp"
+        app:fontFamily="@font/nunito_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graph"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.011" />
+
+    <TextView
+        android:id="@+id/current_sales_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This month sales: June"
+        android:textColor="#9355DF"
+        android:textSize="16dp"
+        app:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.086" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="78dp"
+        android:layout_height="73dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.151"
+        app:srcCompat="@drawable/graph_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

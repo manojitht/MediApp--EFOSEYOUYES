@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class AdminDecisionActivity extends AppCompatActivity {
         AddProducts = (Button) findViewById(R.id.add_admin_products);
         ShowGraph = (Button) findViewById(R.id.show_graph);
         WelcomeMessage = (TextView) findViewById(R.id.welcome_message);
+
 
         Intent intent = getIntent();
 
@@ -125,4 +127,5 @@ public class AdminDecisionActivity extends AppCompatActivity {
         DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
         LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
     }
+
 }

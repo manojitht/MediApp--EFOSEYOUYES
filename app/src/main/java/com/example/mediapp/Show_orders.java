@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -115,6 +116,7 @@ public class Show_orders extends AppCompatActivity {
                         String contact = dataSnapshot.child("phone").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
                         String price = dataSnapshot.child("totalAmount").getValue().toString();
+                        int formattedPrice = Integer.parseInt(price);
                         String date = dataSnapshot.child("date").getValue().toString();
                         String time = dataSnapshot.child("time").getValue().toString();
                         String orderId = dataSnapshot.child("orderId").getValue().toString();
@@ -122,7 +124,7 @@ public class Show_orders extends AppCompatActivity {
                         Username.setText("Name: " + name);
                         Contact.setText("Contact: " + contact);
                         Address.setText("Address: " + address);
-                        Price.setText("Price: " + price + " LKR");
+                        Price.setText("Price: " + NumberFormat.getInstance().format(formattedPrice) + " LKR");
                         DescriptionDate.setText("Dear customer you have placed the order in the following date and time that was provided below.");
                         Date.setText("Date: " + date + ", Time: " + time);
                     }

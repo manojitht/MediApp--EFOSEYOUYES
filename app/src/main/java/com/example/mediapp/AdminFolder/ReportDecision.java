@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ReportDecision extends AppCompatActivity {
-    private Button ShowSalesReport, PointOutGraph, WeekSalesRevenue;
+    private Button ShowSalesReport, PointOutGraph, WeekSalesRevenue, SystemInfo;
     private TextView getOne, getTwo, getThree, getFour, monthOne;
     DatabaseReference GetRecord;
 
@@ -31,6 +31,7 @@ public class ReportDecision extends AppCompatActivity {
         ShowSalesReport = findViewById(R.id.show_sales_report);
         PointOutGraph = findViewById(R.id.graph_generator);
         WeekSalesRevenue = findViewById(R.id.enter_weekly_sales);
+        SystemInfo = findViewById(R.id.system_info_button);
         getOne = findViewById(R.id.retreiveOne);
         getTwo = findViewById(R.id.retreiveTwo);
         getThree = findViewById(R.id.retreiveThree);
@@ -97,6 +98,14 @@ public class ReportDecision extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ReportDecision.this, AdminReportSales.class);
+                startActivity(intent);
+            }
+        });
+
+        SystemInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportDecision.this, AdminShopManager.class);
                 startActivity(intent);
             }
         });

@@ -42,7 +42,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_order);
 
         final LoadingDialog loadingDialog = new LoadingDialog(ConfirmOrderActivity.this);
-        totalAmount = getIntent().getStringExtra("Total Price");
+        totalAmount = getIntent().getStringExtra("Total Price").replace(",", "");
 
         ShipAddress = (EditText) findViewById(R.id.shipment_address);
         ShipName = (EditText) findViewById(R.id.shipment_name);
@@ -132,6 +132,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
         HashMap<String, Object> ordersMap = new HashMap<>(); ///creating the object as hash map
         ordersMap.put("orderId", orderId);
+        totalAmount.replace(" LKR", "");
         ordersMap.put("totalAmount", totalAmount);
         ordersMap.put("Cname", ShipName.getText().toString());
         ordersMap.put("phone", ShipPhone.getText().toString());

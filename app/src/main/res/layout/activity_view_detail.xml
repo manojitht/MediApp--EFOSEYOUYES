@@ -143,7 +143,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_extrabold"
-            android:paddingLeft="5dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="20dp"
+            android:paddingLeft="0dp"
             android:text="Product description"
             android:textColor="#2B2B2C"
             android:textSize="13sp" />

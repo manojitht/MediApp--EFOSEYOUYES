@@ -25,6 +25,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -86,7 +87,9 @@ public class AdminOrderHistory extends AppCompatActivity {
                 holder.userName.setText("" + model.getCname());
                 holder.orderId.setText(model.getOrderId());
                 holder.userPhoneNumber.setText("" + model.getPhone());
-                holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount());
+                int formattedPrice = Integer.parseInt(model.getTotalAmount());
+                String orderHistoryPrice = NumberFormat.getInstance().format(formattedPrice);
+                holder.userTotalAmount.setText("Cost of price: " + orderHistoryPrice + " LKR");
                 holder.userDate.setText("Date: " + model.getDate());
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());

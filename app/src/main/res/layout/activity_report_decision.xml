@@ -7,6 +7,22 @@
     android:background="@color/colorWhite"
     tools:context=".AdminFolder.ReportDecision">
 
+    <Button
+        android:id="@+id/system_info_button"
+        android:layout_width="327dp"
+        android:layout_height="46dp"
+        android:background="@drawable/buttonred"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Total earnings, system info"
+        android:textAllCaps="false"
+        android:textColor="#F3EFEF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.776" />
+
     <TextView
         android:id="@+id/monthOne"
         android:layout_width="46dp"
@@ -61,7 +77,7 @@
         android:layout_height="46dp"
         android:background="@drawable/buttonurple"
         android:fontFamily="@font/nunito_semibold"
-        android:text="View sales details"
+        android:text="Admin Dashboard"
         android:textAllCaps="false"
         android:textColor="#F3EFEF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
+        app:layout_constraintVertical_bias="0.65" />
 
     <Button
         android:id="@+id/enter_weekly_sales"
@@ -77,14 +93,14 @@
         android:layout_height="46dp"
         android:background="@drawable/buttonsyello"
         android:fontFamily="@font/nunito_semibold"
-        android:text="Week sales"
+        android:text="Enter week sales"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        app:layout_constraintVertical_bias="0.53" />
 
     <Button
         android:id="@+id/show_sales_report"
@@ -92,15 +108,15 @@
         android:layout_height="46dp"
         android:background="@drawable/buttonblue"
         android:fontFamily="@font/nunito_semibold"
-        android:text="Show sales report"
+        android:text="Show sales records"
         android:textAllCaps="false"
         android:textColor="#F3EFEF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.414" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -108,10 +124,9 @@
         android:layout_height="216dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095"
+        app:layout_constraintVertical_bias="0.009"
         app:srcCompat="@drawable/graph_image" />
 
     <TextView

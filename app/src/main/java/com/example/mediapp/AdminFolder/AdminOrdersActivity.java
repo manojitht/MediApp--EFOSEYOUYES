@@ -37,6 +37,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,6 +47,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
     private DatabaseReference ordersRef, ordersRefA, updateSalesOrders, updateSalesProducts;
     private ImageView notFoundImage;
     private TextView notFoundText;
+    int order = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,8 @@ public class AdminOrdersActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     onStart();
-
+                    order = (int) snapshot.getChildrenCount();
+                    notFoundText.setText("Orders " + order);
                 } else {
                     notFoundImage.setVisibility(View.VISIBLE);
                     notFoundText.setText("No orders received yet!");
@@ -96,7 +99,9 @@ public class AdminOrdersActivity extends AppCompatActivity {
                 holder.userName.setText("" + model.getCname());
                 holder.userPhoneNumber.setText("" + model.getPhone());
                 holder.orderId.setText(model.getOrderId());
-                holder.userTotalAmount.setText("Cost of price: " + model.getTotalAmount() + " lkr");
+                int formattedPrice = Integer.parseInt(model.getTotalAmount());
+                String orderHistoryPrice = NumberFormat.getInstance().format(formattedPrice);
+                holder.userTotalAmount.setText("Cost of price: " + orderHistoryPrice + " LKR");
                 holder.userDate.setText(model.getDate());
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
@@ -134,7 +139,10 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                     cartMap.put("orderId", holder.orderId.getText().toString());
                                     cartMap.put("Cname", holder.userName.getText().toString().replace("Name: ", ""));
                                     cartMap.put("phone", holder.userPhoneNumber.getText().toString().replace("Contact: ", ""));
-                                    cartMap.put("totalAmount", holder.userTotalAmount.getText().toString().replace("Cost of price: ", ""));
+                                    String totalPrice = holder.userTotalAmount.getText().toString().replace("Cost of price: ", "");
+                                    String formattedPrice = totalPrice.replace(" LKR", "");
+                                    String finalPrice = formattedPrice.replace(",", "");
+                                    cartMap.put("totalAmount", finalPrice);
                                     cartMap.put("address", holder.userShippingAddress.getText().toString().replace("Shipping Address: ", ""));
                                     cartMap.put("date", holder.userDate.getText().toString());
                                     cartMap.put("time", holder.userTime.getText().toString().replace("Time: ", ""));
