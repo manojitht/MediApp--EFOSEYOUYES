@@ -21,7 +21,6 @@
         <activity android:name=".RegisterAddress" />
         <activity android:name=".OrderConfirmMessage" />
         <activity android:name=".AdminFolder.GenerateReport" />
-        <activity android:name=".AdminFolder.AdminReportSales" />
         <activity android:name=".AdminFolder.ReportDecision" />
         <activity android:name=".AdminFolder.AdminSoldProducts" />
         <activity android:name=".AdminFolder.AdminOrderHistory" />

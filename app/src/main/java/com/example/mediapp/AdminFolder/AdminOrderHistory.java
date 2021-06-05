@@ -22,12 +22,16 @@ import com.example.mediapp.Model.AdminOrders;
 import com.example.mediapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Map;
 
 public class AdminOrderHistory extends AppCompatActivity {
 
@@ -36,7 +40,8 @@ public class AdminOrderHistory extends AppCompatActivity {
     private RecyclerView searchList;
     private DatePickerDialog datePickerDialogDateFrom, datePickerDialogDateTo;
     private String dateFromInput, dateToInput;
-    private TextView TextMessage;
+    private TextView TextMessage, TotalAmountOfPeriod, TotalOrderCount;
+    int orders = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,8 @@ public class AdminOrderHistory extends AppCompatActivity {
         DateTo = (EditText) findViewById(R.id.search_date_to);
         DateTo.setText(GetDate());
         TextMessage = findViewById(R.id.text_message);
+        TotalAmountOfPeriod = findViewById(R.id.text_total_amount_period);
+        TotalOrderCount = findViewById(R.id.text_total_order_count);
         searchList = (RecyclerView) findViewById(R.id.search_list);
         searchList.setLayoutManager(new LinearLayoutManager(AdminOrderHistory.this));
         TextMessage.setVisibility(View.VISIBLE);
@@ -78,9 +85,32 @@ public class AdminOrderHistory extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Sales Data");
+        final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Sales Data");
 
         FirebaseRecyclerOptions<AdminOrders> options = new FirebaseRecyclerOptions.Builder<AdminOrders>().setQuery(ordersRef.orderByChild("date").startAt(dateFromInput).endAt(dateToInput), AdminOrders.class).build();
+        ordersRef.orderByChild("date").startAt(dateFromInput).endAt(dateToInput).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int sum = 0;
+                orders = (int) dataSnapshot.getChildrenCount();
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    Map<String, Object> map = (Map<String, Object>)ds.getValue();
+                    Object price = map.get("totalAmount");
+                    int totalPrice = Integer.parseInt(String.valueOf(price));
+                    sum += totalPrice;
+
+                    String formattedTotal = NumberFormat.getInstance().format(sum);
+                    TotalAmountOfPeriod.setText("Period of sales: " + formattedTotal + " LKR");
+                    TotalOrderCount.setText("Orders: " + orders);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerAdapter<AdminOrders, AdminOrdersActivity.AdminOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersActivity.AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersActivity.AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
@@ -106,6 +136,9 @@ public class AdminOrderHistory extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+
+
+
             }
 
             @NonNull

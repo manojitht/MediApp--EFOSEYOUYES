@@ -55,6 +55,27 @@
                 android:textStyle="bold"
                 android:onClick="showDatePickerDateTo"/>
 
+            <TextView
+                android:id="@+id/text_total_amount_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/search_date_to"
+                android:layout_marginLeft="25dp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text=""
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/text_total_order_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/search_date_to"
+                android:layout_marginLeft="20dp"
+                android:layout_toEndOf="@+id/text_total_amount_period"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text=""
+                android:textColor="#FFFFFF" />
+
 
             <Button
                 android:id="@+id/search_button"

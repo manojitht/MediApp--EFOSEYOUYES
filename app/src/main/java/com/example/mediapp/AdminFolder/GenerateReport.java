@@ -30,11 +30,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Map;
 
 public class GenerateReport extends AppCompatActivity {
     BarChart barchart;
-    TextView monthStatus, totalSalesOfMonth;
+    TextView monthStatus, totalSalesOfMonth, totalSalesAmount;
+    DatabaseReference getValuesfromDB;
+    int totalNumberOfOrders = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,20 +48,62 @@ public class GenerateReport extends AppCompatActivity {
         barchart = findViewById(R.id.graph);
         monthStatus = findViewById(R.id.current_sales_month);
         totalSalesOfMonth = findViewById(R.id.total_amount_for_month);
+        totalSalesAmount = findViewById(R.id.total_amount_from_start);
+
+        getValuesfromDB = FirebaseDatabase.getInstance().getReference().child("Sales Data");
+
+//        getValuesfromDB.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                if (!dataSnapshot.exists()){
+//                    totalSalesAmount.setText("0 LKR");
+//                   // totalNumberOfOrders.setText("Number of orders: 0");
+//                }
+//                else if (dataSnapshot.exists()){
+//
+////                    order = (int) dataSnapshot.getChildrenCount();
+////                    totalNumberOfOrders.setText("Number of orders: " + order);
+//
+//
+//                    int sum = 0;
+//
+//                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+//                        Map<String, Object> map = (Map<String, Object>)ds.getValue();
+//                        Object price = map.get("totalAmount");
+//                        int totalPrice = Integer.parseInt(String.valueOf(price));
+//                        sum += totalPrice;
+//
+//                        String formattedTotal = NumberFormat.getInstance().format(sum);
+//                        totalSalesAmount.setText("Total sales from start: " + formattedTotal + " LKR");
+//                    }
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+        getTotalOrdersForMonth();
 
         Intent intent = getIntent();
 
-        String barOne = intent.getStringExtra("BarOne").replace(",", "");
-        String barTwo = intent.getStringExtra("BarTwo").replace(",", "");
-        String barThree = intent.getStringExtra("BarThree").replace(",", "");
-        String barFour = intent.getStringExtra("BarFour").replace(",", "");
+        String barOne = intent.getStringExtra("BarOne");
+        String barTwo = intent.getStringExtra("BarTwo");
+        String barThree = intent.getStringExtra("BarThree");
+        String barFour = intent.getStringExtra("BarFour");
+        String barFive = intent.getStringExtra("BarFive");
         String graphMonth = intent.getStringExtra("GraphMonth");
 
         int salesFirstWeek = Integer.parseInt(barOne);
         int salesSecondWeek = Integer.parseInt(barTwo);
         int salesThirdWeek = Integer.parseInt(barThree);
         int salesFourthWeek = Integer.parseInt(barFour);
-        int addAllWeeks = salesFirstWeek + salesSecondWeek + salesThirdWeek + salesFourthWeek;
+        int salesFifthWeek = Integer.parseInt(barFive);
+        int addAllWeeks = salesFirstWeek + salesSecondWeek + salesThirdWeek + salesFourthWeek + salesFifthWeek;
         String formattedTotal = NumberFormat.getInstance().format(addAllWeeks);
 
         totalSalesOfMonth.setText(formattedTotal + " LKR");
@@ -68,6 +115,7 @@ public class GenerateReport extends AppCompatActivity {
         barEntries.add(new BarEntry(Integer.parseInt(barTwo), 1));
         barEntries.add(new BarEntry(Integer.parseInt(barThree), 2));
         barEntries.add(new BarEntry(Integer.parseInt(barFour), 3));
+        barEntries.add(new BarEntry(Integer.parseInt(barFive), 4));
         BarDataSet barDataSet = new BarDataSet(barEntries, "Weeks");
 
         ArrayList<String> theWeeks;
@@ -76,6 +124,7 @@ public class GenerateReport extends AppCompatActivity {
         theWeeks.add("2nd week");
         theWeeks.add("3rd week");
         theWeeks.add("4th week");
+        theWeeks.add("5th week");
 
         BarData theData = new BarData(theWeeks, barDataSet);
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -88,6 +137,34 @@ public class GenerateReport extends AppCompatActivity {
 
         //////////////////////////////////////////
 
+
+    }
+
+    private void getTotalOrdersForMonth(){
+        final String saveCurrentMonth, saveCurrentYear;
+        Calendar callForDate = Calendar.getInstance();
+        SimpleDateFormat currentMonth = new SimpleDateFormat("MMM");
+        SimpleDateFormat currentYear = new SimpleDateFormat("yyyy");
+        saveCurrentMonth = currentMonth.format(callForDate.getTime());
+        saveCurrentYear = currentYear.format(callForDate.getTime());
+
+        String dateFrom = saveCurrentMonth  + " 01, " + saveCurrentYear;
+        String dateTo = saveCurrentMonth  + " 31, " + saveCurrentYear;
+
+        System.out.println(dateFrom + " to " + dateTo);
+
+        getValuesfromDB.orderByChild("date").startAt(dateFrom).endAt(dateTo).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                totalNumberOfOrders = (int) dataSnapshot.getChildrenCount();
+                totalSalesAmount.setText("Total number of orders this month: " + String.valueOf(totalNumberOfOrders));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

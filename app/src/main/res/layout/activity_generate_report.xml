@@ -7,39 +7,10 @@
     android:background="@color/colorPurple"
     tools:context=".AdminFolder.GenerateReport">
 
-
-<!--    <com.github.mikephil.charting.charts.BarChart-->
-<!--        android:id="@+id/graph"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="600dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.333"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.062"-->
-<!--        tools:ignore="MissingConstraints">-->
-
-<!--    </com.github.mikephil.charting.charts.BarChart>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/monthStatus"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="@font/nunito_extrabold"-->
-<!--        android:textColor="@color/colorPrimaryDark"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/graph"-->
-<!--        app:layout_constraintVertical_bias="0.222" />-->
-
     <View
         android:id="@+id/graph_sales_container"
         android:layout_width="355dp"
-        android:layout_height="440dp"
+        android:layout_height="420dp"
         android:background="@drawable/today_sales_amount_container"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -65,7 +36,7 @@
     <View
         android:id="@+id/total_sales_container"
         android:layout_width="355dp"
-        android:layout_height="140dp"
+        android:layout_height="210dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/total_sales_amount_container"
@@ -75,6 +46,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.069" />
 
+
+    <TextView
+        android:id="@+id/total_amount_from_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_cart_edit_item"
+        android:padding="2dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="Overall sales from start: 895698562"
+        android:textColor="#0651CF"
+        app:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.235" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="351dp"
+        android:layout_height="1dp"
+        android:background="#B5B2B2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253" />
 
     <TextView
         android:id="@+id/total_amount_for_month"
@@ -127,10 +126,10 @@
         android:layout_height="73dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintHorizontal_bias="0.837"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151"
+        app:layout_constraintVertical_bias="0.139"
         app:srcCompat="@drawable/graph_view" />
 
 

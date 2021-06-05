@@ -9,50 +9,118 @@
 
 
     <View
-    android:id="@+id/total_sales_container"
-    android:layout_width="355dp"
-    android:layout_height="227dp"
-    android:background="@drawable/total_sales_amount_container"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.138" />
+        android:id="@+id/total_sales_container"
+        android:layout_width="355dp"
+        android:layout_height="240dp"
+        android:background="@drawable/total_sales_amount_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
 
     <TextView
-        android:id="@+id/total_order_count"
+        android:id="@+id/total_orders_revenue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of orders: 9"
-        android:textColor="#E65100"
+        android:text="Total number of orders revenue: 89895623"
+        android:background="@drawable/button_cart_edit_item"
+        android:padding="2dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="12sp"
+        android:textColor="#1474D3"
         app:fontFamily="@font/nunito_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/total_sales_container"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.282" />
 
     <TextView
-        android:id="@+id/total_amount_from_start"
-        android:layout_width="158dp"
-        android:layout_height="42dp"
-        android:text="99,000 LKR"
-        android:textColor="#A168E6"
-        android:textSize="26dp"
+        android:id="@+id/total_orders_handled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of orders handled: 10,000"
+        android:background="@drawable/button_cart_delete_item"
+        android:padding="2dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="12sp"
+        android:textColor="#E33802"
         app:fontFamily="@font/nunito_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/total_sales_container"
-        app:layout_constraintVertical_bias="0.133" />
+        app:layout_constraintVertical_bias="0.239" />
 
     <TextView
-        android:id="@+id/text_total_sales"
+        android:id="@+id/total_admin_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Earnings from start"
+        android:text="Number of admins: 10"
+        android:textColor="#F57C00"
+        app:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <TextView
+        android:id="@+id/total_users_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of users: 1000"
+        android:textColor="#4B9A06"
+        app:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <TextView
+        android:id="@+id/total_number_products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of products: 1000"
+        android:textColor="#121111"
+        android:textSize="12sp"
+        app:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.186" />
+
+    <TextView
+        android:id="@+id/text_total_products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of categories: 23"
+        android:textColor="#747577"
+        android:textSize="12sp"
+        app:fontFamily="@font/nunito_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_sales_container"
+        app:layout_constraintVertical_bias="0.187" />
+
+    <TextView
+        android:id="@+id/system_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Active system information"
         android:textColor="#1C1B1C"
         android:textSize="22dp"
         app:fontFamily="@font/nunito_extrabold"
@@ -60,19 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/total_sales_container"
-        app:layout_constraintVertical_bias="0.015" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="78dp"
-        android:layout_height="73dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192"
-        app:srcCompat="@drawable/graph_view" />
+        app:layout_constraintVertical_bias="0.014" />
 
     <View
         android:id="@+id/view2"
@@ -83,108 +139,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325" />
-
-    <TextView
-        android:id="@+id/view_total_orders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View orders"
-        android:textColor="#377EED"
-        app:fontFamily="@font/poppins_medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365" />
+        app:layout_constraintVertical_bias="0.182" />
 
     <View
         android:id="@+id/system_info_container"
         android:layout_width="355dp"
-        android:layout_height="240dp"
+        android:layout_height="430dp"
         android:background="@drawable/total_sales_amount_container"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintVertical_bias="0.93" />
 
-    <TextView
-        android:id="@+id/orders_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number of orders remains: 1"
-        android:textColor="#BF360C"
-        app:fontFamily="@font/poppins_medium"
+    <com.anychart.AnyChartView
+        android:id="@+id/pie_chart"
+        android:layout_width="321dp"
+        android:layout_height="394dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694"
-        app:textAllCaps="false" />
+        app:layout_constraintVertical_bias="0.89"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/admin_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number of admins: 15"
-        android:textColor="#FF4081"
-        app:fontFamily="@font/poppins_medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824"
-        app:textAllCaps="false" />
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#1C1B1C"
+            android:textSize="20dp"
+            app:fontFamily="@font/nunito_extrabold"
+            android:text="Product Manager" />
+    </com.anychart.AnyChartView>
 
-    <TextView
-        android:id="@+id/users_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number of active users: 600"
-        android:textColor="#25882D"
-        app:fontFamily="@font/poppins_medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756"
-        app:textAllCaps="false" />
 
-    <TextView
-        android:id="@+id/product_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number of products in show: 90"
-        android:textColor="#3A7BDF"
-        app:fontFamily="@font/poppins_medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629"
-        app:textAllCaps="false" />
-
-    <TextView
-        android:id="@+id/systemInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="System Information"
-        android:textColor="#1C1B1C"
-        android:textSize="22dp"
-        app:fontFamily="@font/nunito_extrabold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56"
-        app:textAllCaps="false" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
