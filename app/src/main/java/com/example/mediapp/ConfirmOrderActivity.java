@@ -80,7 +80,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                             shipPhone.setText("");
                         }
                         ShipName.setText(name);
-                       // eMail.setText(email);
                         ShipAddress.setText(address);
                     }
                 }
@@ -142,19 +141,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("time", saveCurrentTime);
         ordersMap.put("status", "Not Shipped");
 
-//        final DatabaseReference salesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName()); //creation of the "Sales Data" child
-//
-//        HashMap<String, Object> orderSales = new HashMap<>(); ///creating the object as hash map
-//        orderSales.put("orderId", orderId);
-//        orderSales.put("totalAmount", totalAmount);
-//        orderSales.put("Cname", ShipName.getText().toString());
-//        orderSales.put("phone", ShipPhone.getText().toString());
-//        orderSales.put("address", ShipAddress.getText().toString());
-//        orderSales.put("city", ShipCity.getText().toString());
-//        orderSales.put("date", saveCurrentDate);
-//        orderSales.put("time", saveCurrentTime);
-//        salesData.updateChildren(orderSales);
-
         ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -164,13 +150,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                      public void onComplete(@NonNull Task<Void> task) {
                          if (task.isSuccessful()){
                              Toast.makeText(ConfirmOrderActivity.this, "You've confirmed the order!", Toast.LENGTH_SHORT).show();
-
-//                             Intent intent = new Intent(ConfirmOrderActivity.this, HomeActivity.class);
-//                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                             startActivity(intent);
-
-                             //Intent intent = new Intent(ConfirmOrderActivity.this, OrderConfirmMessage.class);
-
                              Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
                              intent.putExtra("OrderIdMigrate", orderId);
 

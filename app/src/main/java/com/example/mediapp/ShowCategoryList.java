@@ -28,23 +28,31 @@ public class ShowCategoryList extends AppCompatActivity {
             "Hair care", "Household cleaners", "Mask", "Medical devices", "Mens grooming", "Mosquito repellents", "Nutrition and supplements", "Oral care", "Orthopedic items", "Pain killer",
             "Skin care", "Thermometer", "Vaccine", "Wet wipes", "Wound care"};
 
-//    String[] Descriptions = {
-//            "Helps to make the heal quickly..",
-//            "Vaccination is a simple, safe, and effective way of protecting people against harmful diseases",
-//            "A fragrant cream or liquid used to heal or soothe the skin",
-//            "Multivitamins are not a ticket to optimal health",
-//            "An energy drink is a type of drink containing stimulant compounds",
-//            "thermometer is a device that measures temperature or a temperature gradient",
-//            "relating to vision visual optical wavelength",
-//            "Highly effective perfumed hand wash with anti-bacterial ingredients",
-//            "Shampoo commonly recognized as a dandruff scalp treatment",
-//            "No worries after taking it..",
-//            "Small needs for the kids like soaps, oil, shampoo for babies",
-//            "Facial masks are here with different types",
-//            "Prevents disease from the cardiac attack",
-//            "All kinds of surgical equipments available",
-//            "Measuring the heart beat..."
-//    };
+    String[] Descriptions = {
+            "Helps to get out from acidity.",
+            "Heals the pain in ayurvedic way",
+            "Having all kinds of baby care products",
+            "Having all kinds of baby diapers",
+            "Things make you to be very handsome and stylish",
+            "Body caring products available here",
+            "Energy drinks and enriched powders",
+            "Gives the energy source to your body",
+            "Things that makes your hair regrowth and maintains health.",
+            "Products that make your home as cleanest home",
+            "Masks available for all kinds of person",
+            "Devices that helps out you to find the body results.",
+            "Products for men to make them stylish and smart",
+            "Things that make you to be safer with mosquitoes",
+            "This products are suitable for gym body builders",
+            "Products that make your mouth cleaner and safer",
+            "Things for the ortho related matter",
+            "Feels the relief from the pain of your body",
+            "Products that protects the skin and keeps healthy",
+            "Devices that shows the temperature and fahrenheit",
+            "Things stimulates to your body and stay active",
+            "Makes your faces to be freshen and clean",
+            "Apply the product on your wounds to heal it"
+    };
 
 
     @Override
@@ -199,11 +207,11 @@ public class ShowCategoryList extends AppCompatActivity {
             View view = getLayoutInflater().inflate(R.layout.custom_layout_category_customer, null);
             ImageView categoryImageView = view.findViewById(R.id.imageView_category);
             TextView categoryNames = view.findViewById(R.id.category_names_customer);
-            //TextView categoryDescription = view.findViewById(R.id.category_description);
+            TextView categoryDescription = view.findViewById(R.id.category_description);
 
             categoryImageView.setImageResource(images[position]);
             categoryNames.setText(Names[position]);
-            //categoryDescription.setText(Descriptions[position]);
+            categoryDescription.setText(Descriptions[position]);
 
             return view;
         }

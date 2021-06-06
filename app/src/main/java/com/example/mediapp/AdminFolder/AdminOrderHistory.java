@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class AdminOrderHistory extends AppCompatActivity {
     private RecyclerView searchList;
     private DatePickerDialog datePickerDialogDateFrom, datePickerDialogDateTo;
     private String dateFromInput, dateToInput;
+    private ImageView noSearchFound;
     private TextView TextMessage, TotalAmountOfPeriod, TotalOrderCount;
     int orders = 0;
 
@@ -55,19 +57,35 @@ public class AdminOrderHistory extends AppCompatActivity {
         DateTo = (EditText) findViewById(R.id.search_date_to);
         DateTo.setText(GetDate());
         TextMessage = findViewById(R.id.text_message);
+        noSearchFound = findViewById(R.id.no_search_image);
         TotalAmountOfPeriod = findViewById(R.id.text_total_amount_period);
         TotalOrderCount = findViewById(R.id.text_total_order_count);
         searchList = (RecyclerView) findViewById(R.id.search_list);
         searchList.setLayoutManager(new LinearLayoutManager(AdminOrderHistory.this));
+        noSearchFound.setVisibility(View.GONE);
+        TotalAmountOfPeriod.setVisibility(View.GONE);
         TextMessage.setVisibility(View.VISIBLE);
+
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TextMessage.setVisibility(View.GONE);
-                dateFromInput = DateFrom.getText().toString();
-                dateToInput = DateTo.getText().toString();
-                onStart();
+                noSearchFound.setVisibility(View.GONE);
+                String monthFromValidator = DateFrom.getText().toString().substring(0,3);
+                String monthToValidator = DateTo.getText().toString().substring(0,3);
+                String yearFromValidator = DateFrom.getText().toString().substring(8,12);
+                String yearToValidator = DateTo.getText().toString().substring(8,12);
+                if (monthFromValidator.equals(monthToValidator) && yearFromValidator.equals(yearToValidator)){
+                    searchList.setVisibility(View.VISIBLE);
+                    dateFromInput = DateFrom.getText().toString();
+                    dateToInput = DateTo.getText().toString();
+                    onStart();
+                }else {
+                    searchList.setVisibility(View.GONE);
+                    TextMessage.setVisibility(View.VISIBLE);
+                    TextMessage.setText("Invalid months that couldn't match!");
+                }
             }
         });
     }
@@ -91,18 +109,27 @@ public class AdminOrderHistory extends AppCompatActivity {
         ordersRef.orderByChild("date").startAt(dateFromInput).endAt(dateToInput).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int sum = 0;
-                orders = (int) dataSnapshot.getChildrenCount();
+                if (!dataSnapshot.exists()){
+                    TotalOrderCount.setText("");
+                    TotalAmountOfPeriod.setText("");
+                    noSearchFound.setVisibility(View.VISIBLE);
+                    TextMessage.setVisibility(View.VISIBLE);
+                    TextMessage.setText("No orders found for the period!");
+                }else {
+                    int sum = 0;
+                    orders = (int) dataSnapshot.getChildrenCount();
 
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    Map<String, Object> map = (Map<String, Object>)ds.getValue();
-                    Object price = map.get("totalAmount");
-                    int totalPrice = Integer.parseInt(String.valueOf(price));
-                    sum += totalPrice;
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Map<String, Object> map = (Map<String, Object>) ds.getValue();
+                        Object price = map.get("totalAmount");
+                        int totalPrice = Integer.parseInt(String.valueOf(price));
+                        sum += totalPrice;
 
-                    String formattedTotal = NumberFormat.getInstance().format(sum);
-                    TotalAmountOfPeriod.setText("Period of sales: " + formattedTotal + " LKR");
-                    TotalOrderCount.setText("Orders: " + orders);
+                        String formattedTotal = NumberFormat.getInstance().format(sum);
+                        TotalAmountOfPeriod.setVisibility(View.VISIBLE);
+                        TotalAmountOfPeriod.setText("Period of sales: " + formattedTotal + " LKR");
+                        TotalOrderCount.setText("Orders: " + orders);
+                    }
                 }
             }
 
@@ -136,8 +163,6 @@ public class AdminOrderHistory extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
-
 
             }
 

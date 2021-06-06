@@ -210,13 +210,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
-//                                Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
-//                                loadingDialog.dismissDialog();
-//                                InputLoginName.setText("");
-//                                InputLoginPassword.setText("");
-//                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//                                GetData.superOnlineUsers = usersData;
-//                                startActivity(intent);
                             }
                         }else {
                             Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
@@ -255,7 +248,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (usersData.getName().equals(Name)){
                         if (usersData.getPassword().equals(Password)){
-//                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             GetData.superOnlineUsers = usersData;

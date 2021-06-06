@@ -52,41 +52,6 @@ public class GenerateReport extends AppCompatActivity {
 
         getValuesfromDB = FirebaseDatabase.getInstance().getReference().child("Sales Data");
 
-//        getValuesfromDB.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                if (!dataSnapshot.exists()){
-//                    totalSalesAmount.setText("0 LKR");
-//                   // totalNumberOfOrders.setText("Number of orders: 0");
-//                }
-//                else if (dataSnapshot.exists()){
-//
-////                    order = (int) dataSnapshot.getChildrenCount();
-////                    totalNumberOfOrders.setText("Number of orders: " + order);
-//
-//
-//                    int sum = 0;
-//
-//                    for (DataSnapshot ds : dataSnapshot.getChildren()){
-//                        Map<String, Object> map = (Map<String, Object>)ds.getValue();
-//                        Object price = map.get("totalAmount");
-//                        int totalPrice = Integer.parseInt(String.valueOf(price));
-//                        sum += totalPrice;
-//
-//                        String formattedTotal = NumberFormat.getInstance().format(sum);
-//                        totalSalesAmount.setText("Total sales from start: " + formattedTotal + " LKR");
-//                    }
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
         getTotalOrdersForMonth();
 
         Intent intent = getIntent();
@@ -135,9 +100,6 @@ public class GenerateReport extends AppCompatActivity {
         barchart.setDragEnabled(true);
         barchart.setScaleEnabled(true);
 
-        //////////////////////////////////////////
-
-
     }
 
     private void getTotalOrdersForMonth(){
@@ -165,9 +127,5 @@ public class GenerateReport extends AppCompatActivity {
 
             }
         });
-
     }
-
-
-
 }

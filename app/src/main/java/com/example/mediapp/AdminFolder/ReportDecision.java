@@ -232,30 +232,6 @@ public class ReportDecision extends AppCompatActivity {
             }
         });
 
-
-
-//        GetRecord = FirebaseDatabase.getInstance().getReference().child("Month Reports").child("Record");
-//        GetRecord.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                String month = dataSnapshot.child("Month").getValue().toString();
-//                String firstWeek = dataSnapshot.child("1st week").getValue().toString();
-//                String secondWeek = dataSnapshot.child("2nd week").getValue().toString();
-//                String thirdWeek = dataSnapshot.child("3rd week").getValue().toString();
-//                String fourthWeek = dataSnapshot.child("4th week").getValue().toString();
-//                getOne.setText(firstWeek);
-//                getTwo.setText(secondWeek);
-//                getThree.setText(thirdWeek);
-//                getFour.setText(fourthWeek);
-//                monthOne.setText(month);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
         productManagerInfo.orderByChild("category").startAt("Anti-acids for gastritis").endAt("Anti-acids for gastritis").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -588,16 +564,6 @@ public class ReportDecision extends AppCompatActivity {
             }
         });
 
-
-
-//        WeekSalesRevenue.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(ReportDecision.this, AdminReportSales.class);
-//                startActivity(intent);
-//            }
-//        });
-
         SystemInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -655,124 +621,4 @@ public class ReportDecision extends AppCompatActivity {
             }
         });
     }
-
-//    private void ReportGenerator(){
-//        final String saveCurrentMonth, saveCurrentYear;
-//        Calendar callForDate = Calendar.getInstance();
-//        SimpleDateFormat currentMonth = new SimpleDateFormat("MMM");
-//        SimpleDateFormat currentYear = new SimpleDateFormat("yyyy");
-//        saveCurrentMonth = currentMonth.format(callForDate.getTime());
-//        saveCurrentYear = currentYear.format(callForDate.getTime());
-//
-//        String firstFrom = saveCurrentMonth  + " 01, " + saveCurrentYear;
-//        String firstTo = saveCurrentMonth  + " 07, " + saveCurrentYear;
-//        String secondFrom = saveCurrentMonth  + " 08, " + saveCurrentYear;
-//        String secondTo = saveCurrentMonth  + " 14, " + saveCurrentYear;
-//        String thirdFrom = saveCurrentMonth  + " 15, " + saveCurrentYear;
-//        String thirdTo = saveCurrentMonth  + " 21, " + saveCurrentYear;
-//        String fourthFrom = saveCurrentMonth  + " 22, " + saveCurrentYear;
-//        String fourthTo = saveCurrentMonth  + " 28, " + saveCurrentYear;
-//        String fifthFrom = saveCurrentMonth  + " 29, " + saveCurrentYear;
-//        String fifthTo = saveCurrentMonth  + " 31, " + saveCurrentYear;
-//
-//        getSalesOfWeek.orderByChild("date").startAt(firstFrom).endAt(firstTo).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                int sum = 0;
-//
-//                for (DataSnapshot ds : dataSnapshot.getChildren()){
-//                    Map<String, Object> map = (Map<String, Object>)ds.getValue();
-//                    Object price = map.get("totalAmount");
-//                    int totalPrice = Integer.parseInt(String.valueOf(price));
-//                    sum += totalPrice;
-//                    getOne.setText(String.valueOf(sum));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        getSalesOfWeek.orderByChild("date").startAt(secondFrom).endAt(secondTo).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                int sum = 0;
-//
-//                for (DataSnapshot ds : dataSnapshot.getChildren()){
-//                    Map<String, Object> map = (Map<String, Object>)ds.getValue();
-//                    Object price = map.get("totalAmount");
-//                    int totalPrice = Integer.parseInt(String.valueOf(price));
-//                    sum += totalPrice;
-//                    getTwo.setText(String.valueOf(sum));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        getSalesOfWeek.orderByChild("date").startAt(thirdFrom).endAt(thirdTo).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                int sum = 0;
-//
-//                for (DataSnapshot ds : dataSnapshot.getChildren()){
-//                    Map<String, Object> map = (Map<String, Object>)ds.getValue();
-//                    Object price = map.get("totalAmount");
-//                    int totalPrice = Integer.parseInt(String.valueOf(price));
-//                    sum += totalPrice;
-//                    getThree.setText(String.valueOf(sum));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        getSalesOfWeek.orderByChild("date").startAt(fourthFrom).endAt(fourthTo).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                int sum = 0;
-//
-//                for (DataSnapshot ds : dataSnapshot.getChildren()){
-//                    Map<String, Object> map = (Map<String, Object>)ds.getValue();
-//                    Object price = map.get("totalAmount");
-//                    int totalPrice = Integer.parseInt(String.valueOf(price));
-//                    sum += totalPrice;
-//                    getFour.setText(String.valueOf(sum));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        getSalesOfWeek.orderByChild("date").startAt(fifthFrom).endAt(fifthTo).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                int sum = 0;
-//
-//                for (DataSnapshot ds : dataSnapshot.getChildren()){
-//                    Map<String, Object> map = (Map<String, Object>)ds.getValue();
-//                    Object price = map.get("totalAmount");
-//                    int totalPrice = Integer.parseInt(String.valueOf(price));
-//                    sum += totalPrice;
-//                    getFive.setText(String.valueOf(sum));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".SearchActivity">
 
     <RelativeLayout
@@ -16,7 +17,7 @@
 
         <EditText
             android:id="@+id/search_product_name"
-            android:layout_width="260dp"
+            android:layout_width="245dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
@@ -58,5 +59,27 @@
         android:layout_below="@id/laysearch">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/text_message_search"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="@color/colorGrey" />
+
+    <ImageView
+        android:id="@+id/no_search_image_product"
+        android:layout_width="wrap_content"
+        android:layout_height="286dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="20dp"
+        app:srcCompat="@drawable/no_search" />
 
 </RelativeLayout>

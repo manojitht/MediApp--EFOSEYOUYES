@@ -19,18 +19,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.Products;
 import com.example.mediapp.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -38,6 +45,8 @@ public class SearchActivity extends AppCompatActivity {
     private EditText searchText;
     private RecyclerView searchList;
     private String SearchInput;
+    private ImageView noProductFoundImage;
+    private TextView noProductFoundText;
     Dialog dialog;
     ArrayList<String> categoryList;
 
@@ -49,6 +58,10 @@ public class SearchActivity extends AppCompatActivity {
         searchButton = (Button) findViewById(R.id.search_button);
         searchText = (EditText) findViewById(R.id.search_product_name);
         searchList = (RecyclerView) findViewById(R.id.search_list);
+        noProductFoundImage = findViewById(R.id.no_search_image_product);
+        noProductFoundText = findViewById(R.id.text_message_search);
+        noProductFoundImage.setVisibility(View.GONE);
+        noProductFoundText.setVisibility(View.GONE);
         searchList.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
 
         categoryList = new ArrayList<>();
@@ -137,10 +150,28 @@ public class SearchActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(reference.orderByChild("category").startAt(SearchInput).endAt(SearchInput), Products.class).build();
 
+        reference.orderByChild("category").startAt(SearchInput).endAt(SearchInput).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    noProductFoundImage.setVisibility(View.VISIBLE);
+                    noProductFoundText.setVisibility(View.VISIBLE);
+                    noProductFoundText.setText("Oops! No products found.");
+                }else {
+                    noProductFoundImage.setVisibility(View.GONE);
+                    noProductFoundText.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
-//                holder.Description.setText(model.getDescription());
                 holder.txtProductName.setText(model.getProductName());
                 holder.productPrice.setText("Price "+model.getPrice()+" LKR");
                 Picasso.get().load(model.getImage()).into(holder.imageView);

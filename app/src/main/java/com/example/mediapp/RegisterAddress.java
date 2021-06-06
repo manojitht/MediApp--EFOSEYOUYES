@@ -31,8 +31,6 @@ import java.util.HashMap;
 public class RegisterAddress extends AppCompatActivity {
 
     private EditText addressOne, addressTwo, addressThree, addressFour, addressFive;
-//    private ProgressDialog loadingBar;
-
     public CustomAllSetDialog customAllSetDialog = new CustomAllSetDialog(RegisterAddress.this);
 
     @SuppressLint("SetTextI18n")
@@ -73,7 +71,6 @@ public class RegisterAddress extends AppCompatActivity {
             Toast.makeText(RegisterAddress.this, "Postal cannot be empty", Toast.LENGTH_SHORT).show();
         }
         else {
-            //EnterAddress();
             DatabaseReference UserAddress = FirebaseDatabase.getInstance().getReference("Users").child(GetData.superOnlineUsers.getName());
             UserAddress.child("address").setValue(addressOne.getText().toString() + ", " + addressTwo.getText().toString() + ", " + addressThree.getText().toString() + ", " + addressFour.getText().toString() + ", " + addressFive.getText().toString() + ".");
             UserAddress.child("customerStatus").setValue("existing");

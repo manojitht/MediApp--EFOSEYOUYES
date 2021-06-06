@@ -25,7 +25,7 @@
         android:layout_height="46dp"
         android:background="@drawable/buttonred"
         android:fontFamily="@font/nunito_semibold"
-        android:text="Total earnings, system info"
+        android:text="System info, Product Manager"
         android:textAllCaps="false"
         android:textColor="#F3EFEF"
         app:layout_constraintBottom_toBottomOf="parent"

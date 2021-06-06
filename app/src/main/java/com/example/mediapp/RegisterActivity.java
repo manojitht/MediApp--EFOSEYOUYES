@@ -98,13 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         else{
             loadingDialog.startLoadingDialog();
-
-//            loadingBar.setTitle("Create Account");
-//            loadingBar.setMessage("Please wait for the Account creation.");
-//            loadingBar.setCanceledOnTouchOutside(false);
-//            loadingBar.show();
             ValidateEmail(Email, Name, Password);
-
         }
     }
 
