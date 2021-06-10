@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminFolder.AdminShopManager"></activity>
+        <activity android:name=".ShippedOrderProducts"></activity>
+        <activity android:name=".MyOrderHistory" />
+        <activity android:name=".AdminFolder.AdminShopManager" />
         <activity android:name=".AdminFolder.ProductMessage" />
         <activity android:name=".ShowByCategory" />
         <activity android:name=".ShowCategoryList" />

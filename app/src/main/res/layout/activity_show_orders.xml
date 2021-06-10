@@ -7,6 +7,39 @@
     android:background="@color/colorWhite"
     tools:context=".Show_orders">
 
+    <TextView
+        android:id="@+id/order_in_process_txt"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:gravity="center"
+        android:text="Your order was in process!"
+        android:textColor="#4D910A"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/order_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.146" />
+
+    <Button
+        android:id="@+id/take_to_order_history"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/buttoncartlay"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Show order history"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_card"
+        app:layout_constraintVertical_bias="1.0" />
+
     <RelativeLayout
         android:id="@+id/order_card"
         android:layout_width="wrap_content"
@@ -149,7 +182,7 @@
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
         android:text="My orders"
-        android:textColor="#3F403E"
+        android:textColor="#727371"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/order_card"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +208,7 @@
         android:layout_height="80dp"
         android:fontFamily="@font/poppins_light"
         android:gravity="center"
-        android:text="No orders found!"
+        android:text="No order in process!"
         android:textColor="#272626"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

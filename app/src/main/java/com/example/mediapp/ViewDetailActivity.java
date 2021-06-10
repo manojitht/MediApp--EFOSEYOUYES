@@ -108,15 +108,16 @@ public class ViewDetailActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
-                    cartListRef.child("Admin View").child(GetData.superOnlineUsers.getName()).child("Products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(productId).updateChildren(cartMap); // making the sold products records to admin
-                                Toast.makeText(ViewDetailActivity.this, "Added to cart successfully!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+//                    cartListRef.child("Admin View").child(GetData.superOnlineUsers.getName()).child("Products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if (task.isSuccessful()){
+//                                //soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(productId).updateChildren(cartMap); // making the sold products records to admin
+//                                Toast.makeText(ViewDetailActivity.this, "Added to cart successfully!", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
+                    Toast.makeText(ViewDetailActivity.this, "Added to cart successfully!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

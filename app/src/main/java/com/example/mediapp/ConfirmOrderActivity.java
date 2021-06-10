@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mediapp.AdminFolder.AdminOrdersActivity;
 import com.example.mediapp.AdminFolder.GenerateReport;
 import com.example.mediapp.GetData.GetData;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -128,8 +129,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         orderId= "REF" + number + getCurrentRefTime;
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName()); //creation of the "Orders" child
+        final DatabaseReference getProducts = FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View");
 
-        HashMap<String, Object> ordersMap = new HashMap<>(); ///creating the object as hash map
+        final HashMap<String, Object> ordersMap = new HashMap<>(); ///creating the object as hash map
         ordersMap.put("orderId", orderId);
         totalAmount.replace(" LKR", "");
         ordersMap.put("totalAmount", totalAmount);
@@ -145,26 +147,60 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
              if (task.isSuccessful()){
-                 FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View").child(GetData.superOnlineUsers.getName()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                 ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                      @Override
                      public void onComplete(@NonNull Task<Void> task) {
                          if (task.isSuccessful()){
-                             Toast.makeText(ConfirmOrderActivity.this, "You've confirmed the order!", Toast.LENGTH_SHORT).show();
-                             Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
-                             intent.putExtra("OrderIdMigrate", orderId);
+                             moveRecord(getProducts.child(GetData.superOnlineUsers.getName()).child("Products"), ordersRef.child("cart"));
+                             Toast.makeText(ConfirmOrderActivity.this,  "Item done.", Toast.LENGTH_SHORT).show();
+                             FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View").child(GetData.superOnlineUsers.getName()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                 @Override
+                                 public void onComplete(@NonNull Task<Void> task) {
+                                     if (task.isSuccessful()){
+                                         Toast.makeText(ConfirmOrderActivity.this, "You've confirmed the order!", Toast.LENGTH_SHORT).show();
+                                         Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
+                                         intent.putExtra("OrderIdMigrate", orderId);
 
-                             startActivity(intent);
-                             ShipAddress.setText("");
-                             ShipName.setText("");
-                             ShipPhone.setText("");
-                             ShipCity.setText("");
-                             finish();
+                                         startActivity(intent);
+                                         ShipAddress.setText("");
+                                         ShipName.setText("");
+                                         ShipPhone.setText("");
+                                         ShipCity.setText("");
+                                         finish();
+                                     }
+                                 }
+                             });
                          }
                      }
                  });
+
              }
             }
         });
 
+    }
+
+    private void moveRecord(final DatabaseReference fromPath, final DatabaseReference toPath) {
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                toPath.setValue(dataSnapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isComplete()){
+                        }
+                        else {
+                            Toast.makeText(ConfirmOrderActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        fromPath.addListenerForSingleValueEvent(valueEventListener);
     }
 }

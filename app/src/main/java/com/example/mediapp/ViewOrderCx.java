@@ -61,9 +61,9 @@ public class ViewOrderCx extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>().setQuery(cartListRef.child("Admin View")
-                .child(GetData.superOnlineUsers.getName()).child("Products"), Cart.class).build();
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference();
+        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>().setQuery(cartListRef.child("Orders")
+                .child(GetData.superOnlineUsers.getName()).child("cart"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override

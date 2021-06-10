@@ -1,37 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShowCategoryList">
 
-    <TextView
-        android:id="@+id/title"
+    <RelativeLayout
+        android:id="@+id/lay_out_categories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="22dp"
-        android:fontFamily="@font/nunito_extrabold"
-        android:text="Categories"
-        android:textColor="#575759"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:background="#fff"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/go_to_cart_from_category"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/button_cart_edit_item"
+            android:layout_marginStart="145dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="View cart"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:textColor="#083883"
+            android:layout_toEndOf="@+id/title"
+             />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="Categories"
+            android:layout_marginStart="15dp"
+            android:textColor="#515050"
+            android:textSize="22sp"
+            tools:ignore="RtlCompat" />
+    </RelativeLayout>
+
 
     <ListView
         android:id="@+id/listView_categories"
-        android:layout_width="wrap_content"
-        android:layout_height="608dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/lay_out_categories"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan" />
+        app:layout_constraintTop_toBottomOf="@+id/lay_out_categories" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

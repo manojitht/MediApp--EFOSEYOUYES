@@ -38,7 +38,7 @@ public class ProductDetailAdminActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         itemsList.setLayoutManager(layoutManager);
 
-        itemsRef = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View").child(userID).child("Products");
+        itemsRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(userID).child("cart");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.mediapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,16 +9,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mediapp.AdminFolder.AdminCategoryActivity;
 import com.example.mediapp.AdminFolder.AdminProductActivity;
+import com.example.mediapp.GetData.GetData;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class ShowCategoryList extends AppCompatActivity {
 
     ListView categoryListView;
+    Button viewCart;
 
     int[] images = {R.drawable.antiacids_for_gastritis, R.drawable.ayurveda_products, R.drawable.baby_care, R.drawable.baby_diapers, R.drawable.beauty_care, R.drawable.body_care,
             R.drawable.food_and_beverages, R.drawable.glucose_monitors_and_splits, R.drawable.hair_care, R.drawable.house_hold_cleaners, R.drawable.mask, R.drawable.medical_devices,
@@ -61,9 +72,33 @@ public class ShowCategoryList extends AppCompatActivity {
         setContentView(R.layout.activity_show_category_list);
 
         categoryListView = findViewById(R.id.listView_categories);
+        viewCart = findViewById(R.id.go_to_cart_from_category);
         ShowCategoryList.CustomAdapter customAdapter = new ShowCategoryList.CustomAdapter();
         categoryListView.setAdapter(customAdapter);
+        final DatabaseReference accessForUsers = FirebaseDatabase.getInstance().getReference().child("Users");
+        accessForUsers.child(GetData.superOnlineUsers.getName()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    viewCart.setVisibility(View.VISIBLE);
+                    viewCart.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(ShowCategoryList.this, CartActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
+                else {
+                    viewCart.setVisibility(View.GONE);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         categoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {

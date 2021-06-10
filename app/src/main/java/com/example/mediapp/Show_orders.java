@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.mediapp.AdminFolder.AdminOrdersActivity;
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.AdminOrders;
+import com.example.mediapp.ViewHolder.MyOrdersViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -40,9 +41,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Show_orders extends AppCompatActivity {
 
-    private DatabaseReference ordersRef, ordersCancel, ordersCancelAdmin, salesDataRemove, salesProductsRemove;
-    private TextView Username, Contact, Address, Price, Date, popMessage, DescriptionDate, OrderId;
-    private Button viewOrder, cancelOrder;
+    private DatabaseReference ordersCancel, ordersCancelAdmin, salesDataRemove, salesProductsRemove;
+    private TextView Username, Contact, Address, Price, Date, popMessage, DescriptionDate, OrderId, titleText;
+    private Button viewOrder, cancelOrder, showOrderHistory;
     private RelativeLayout order_card;
     private ImageView popup_image;
 
@@ -63,8 +64,9 @@ public class Show_orders extends AppCompatActivity {
         popup_image = (ImageView) findViewById(R.id.popup_order_image);
         DescriptionDate = (TextView) findViewById(R.id.description_date);
         OrderId = (TextView) findViewById(R.id.order_id);
+        showOrderHistory = findViewById(R.id.take_to_order_history);
+        titleText = findViewById(R.id.order_in_process_txt);
 
-        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         ordersCancel = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
         salesDataRemove = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName());
         ordersCancelAdmin = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View").child(GetData.superOnlineUsers.getName());
@@ -73,8 +75,17 @@ public class Show_orders extends AppCompatActivity {
         popup_image.setVisibility(View.VISIBLE);// sets default in invisible mode.
         popMessage.setVisibility(View.VISIBLE);
         OrderId.setVisibility(View.GONE);
+        titleText.setVisibility(View.GONE);
 
         orderInfoDisplay(Username, Contact, Address, Price, DescriptionDate, Date, OrderId);
+
+        showOrderHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Show_orders.this, MyOrderHistory.class);
+                startActivity(intent);
+            }
+        });
 
         viewOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +107,8 @@ public class Show_orders extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
     private void orderInfoDisplay(final TextView Username, final TextView Contact, final TextView Address, final TextView Price, final TextView DescriptionDate, final TextView Date, final TextView OrderId) {
@@ -109,6 +122,7 @@ public class Show_orders extends AppCompatActivity {
                     if (dataSnapshot.child("Cname").exists()){
                         OrderId.setVisibility(View.VISIBLE);
                         order_card.setVisibility(View.VISIBLE);
+                        titleText.setVisibility(View.VISIBLE);
                         popup_image.setVisibility(View.GONE);
                         popMessage.setVisibility(View.GONE);
                         //String image = dataSnapshot.child("image").getValue().toString(); // This works on the real physical device
@@ -120,7 +134,7 @@ public class Show_orders extends AppCompatActivity {
                         String date = dataSnapshot.child("date").getValue().toString();
                         String time = dataSnapshot.child("time").getValue().toString();
                         String orderId = dataSnapshot.child("orderId").getValue().toString();
-                        OrderId.setText(orderId);
+                        OrderId.setText("#"+orderId);
                         Username.setText("Name: " + name);
                         Contact.setText("Contact: " + contact);
                         Address.setText("Address: " + address);

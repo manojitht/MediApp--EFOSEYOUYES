@@ -44,9 +44,10 @@ import java.util.Map;
 public class AdminOrdersActivity extends AppCompatActivity {
 
     private RecyclerView ordersList;
-    private DatabaseReference ordersRef, ordersRefA, updateSalesOrders, updateSalesProducts;
+    private DatabaseReference ordersRef, ordersRefA, updateSalesOrders, updateSalesProducts, updateUsersAccount;
     private ImageView notFoundImage;
     private TextView notFoundText;
+    private Button refreshButton;
     int order = 0;
 
     @Override
@@ -55,12 +56,23 @@ public class AdminOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_orders);
         notFoundImage = findViewById(R.id.not_found_image);
         notFoundText = findViewById(R.id.show_text);
+        refreshButton = findViewById(R.id.refresh_button);
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         ordersRefA = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View");
 
         updateSalesOrders = FirebaseDatabase.getInstance().getReference().child("Sales Data");
-        updateSalesProducts = FirebaseDatabase.getInstance().getReference().child("Sold products").child("customers");
+        updateSalesProducts = FirebaseDatabase.getInstance().getReference().child("Orders");
+        updateUsersAccount = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminOrdersActivity.this, AdminOrdersActivity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
 
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
@@ -75,7 +87,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                     notFoundText.setText("Orders " + order);
                 } else {
                     notFoundImage.setVisibility(View.VISIBLE);
-                    notFoundText.setText("No orders received yet!");
+                    notFoundText.setText("No orders!");
                 }
             }
 
@@ -105,6 +117,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                 holder.userDate.setText(model.getDate());
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
+                holder.status.setVisibility(View.GONE);
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -133,7 +146,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (i == 0){
                                     final String uID = getRef(position).getKey();
-                                    RemoveOrder(uID);
+
 
                                     final HashMap<String, Object> cartMap = new HashMap<>();
                                     cartMap.put("orderId", holder.orderId.getText().toString());
@@ -154,8 +167,13 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()){
-                                                moveRecord(updateSalesProducts.child(uID), updateSalesOrders.child(holder.orderId.getText().toString()).child("sold items"));
+                                                moveRecord(updateSalesProducts.child(uID).child("cart"), updateSalesOrders.child(holder.orderId.getText().toString()).child("sold items"));
+                                                moveRecord(updateSalesOrders.child(holder.orderId.getText().toString()), updateUsersAccount.child(holder.userName.getText().toString()).child("orders").child(holder.orderId.getText().toString()));
                                                 Toast.makeText(AdminOrdersActivity.this, uID + "'s order shipped successfully!", Toast.LENGTH_SHORT).show();
+                                                RemoveOrder(uID);
+                                                Intent intent = new Intent(AdminOrdersActivity.this, AdminOrdersActivity.class);
+                                                finish();
+                                                startActivity(intent);
                                             }
                                         }
                                     });
@@ -181,7 +199,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder{
-        public TextView userName, userPhoneNumber, userTotalAmount, userDate, userShippingAddress, orderId, userTime, approvedBy;
+        public TextView userName, userPhoneNumber, userTotalAmount, userDate, userShippingAddress, orderId, userTime, approvedBy, status;
         public Button showOrder;
         public AdminOrdersViewHolder(View itemView){
             super(itemView);
@@ -195,6 +213,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
             showOrder = itemView.findViewById(R.id.show_all_products);
             orderId = itemView.findViewById(R.id.order_id);
             approvedBy = itemView.findViewById(R.id.approved_admin);
+            status = itemView.findViewById(R.id.shipping_status);
 
         }
     }
@@ -213,7 +232,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isComplete()){
-                            fromPath.removeValue();
+//                            fromPath.removeValue();
                         }
                         else {
                             Toast.makeText(AdminOrdersActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();

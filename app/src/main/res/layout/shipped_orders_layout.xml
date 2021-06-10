@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="#F6F7F8"
+    app:cardElevation="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/buttonwhite">
+
+        <TextView
+            android:id="@+id/show_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_number"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="-19dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/order_number"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="right"
+            android:text="Status: Shipped"
+            android:textColor="#131313"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/cart_items_productimage"
+            android:layout_width="162dp"
+            android:layout_height="154dp"
+            android:layout_marginTop="0dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/cart_items_product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_number"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="center"
+            android:text="Product Price"
+            android:textColor="#131313"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/billing_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cart_items_product_price"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text="Billing address: No. 647, 1/1, Aluthmawatha road, Mattakulliya, Colombo - 001500."
+            android:textColor="#636262"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cart_items_productimage"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-142dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="REF4512365874589652"
+            android:textColor="#4E0D9E"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_number"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="date and time placed"
+            android:textColor="#414042"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/order_delivered"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_below="@id/billing_address"
+            android:layout_marginStart="150dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/show_products_items"
+            android:background="@drawable/button_cart_delete_item"
+            android:text="Received"
+            android:textAllCaps="false"
+            android:textColor="#AE0707"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/remove_order_from_list"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_below="@id/billing_address"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/show_products_items"
+            android:padding="10dp"
+            android:text="Remove"
+            android:textAllCaps="false"
+            android:textColor="#E32727"
+            android:textSize="12dp"
+            app:fontFamily="@font/poppins_medium" />
+
+        <Button
+            android:id="@+id/show_products_items"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_below="@id/billing_address"
+            android:layout_marginStart="15dp"
+            android:text="Manage"
+            android:textColor="#083C8C"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_cart_edit_item" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
