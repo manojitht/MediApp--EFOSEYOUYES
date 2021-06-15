@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".MainHomeActivity">
+
+    <RelativeLayout
+        android:id="@+id/home_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#fff"
+        android:layout_alignParentTop="true"
+        >
+
+        <TextView
+            android:id="@+id/search_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="MediApp"
+            android:padding="5dp"
+            android:layout_toRightOf="@id/home_bar_title_image"
+            android:textColorHint="#0B0B0B"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/home_bar_title_image"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/title_image_home_bar" />
+
+        <TextView
+            android:id="@+id/search_link_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="2dp"
+            android:hint=" Click here to search for a product "
+            android:textColorHint="#0754A1"
+            android:textSize="13dp"
+            android:padding="1dp"
+            android:background="@drawable/button_cart_edit_item"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold"
+            android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:id="@+id/total_cart_items_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@id/search_product_name"
+            android:text="Show cart"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/cart_button_image_home"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/search_product_name"
+            android:src="@drawable/my_cart" />
+
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/show_home_products"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/home_top_bar"
+        android:layout_above="@id/home_Bottom_bar"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <RelativeLayout
+        android:id="@+id/home_Bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bottom_home_bar_background"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+            android:id="@+id/my_account"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_home_bottom_bar"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="2dp"
+            android:text="My account"
+            android:textColor="@color/colorBlack"
+            android:textAllCaps="false"
+            android:textSize="11dp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/my_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_home_bottom_bar"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="2dp"
+            android:text="Orders"
+            android:layout_toRightOf="@id/my_account"
+            android:textColor="@color/colorBlack"
+            android:textAllCaps="false"
+            android:textSize="11dp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/my_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_home_bottom_bar"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="2dp"
+            android:text="Categories"
+            android:layout_toRightOf="@id/my_orders"
+            android:textColor="@color/colorBlack"
+            android:textAllCaps="false"
+            android:textSize="11dp"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:id="@+id/my_logout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/my_categories"
+            android:src="@drawable/my_logout" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

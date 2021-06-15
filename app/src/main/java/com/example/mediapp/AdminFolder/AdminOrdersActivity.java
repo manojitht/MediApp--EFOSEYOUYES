@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,18 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mediapp.GetData.GetData;
-import com.example.mediapp.HomeActivity;
-import com.example.mediapp.LoginActivity;
 import com.example.mediapp.Model.AdminOrders;
 import com.example.mediapp.ProductDetailAdminActivity;
 import com.example.mediapp.R;
-import com.example.mediapp.ViewDetailActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.transition.Hold;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,7 +33,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.util.HashMap;
-import java.util.Map;
 
 public class AdminOrdersActivity extends AppCompatActivity {
 
@@ -169,6 +162,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                             if (task.isSuccessful()){
                                                 moveRecord(updateSalesProducts.child(uID).child("cart"), updateSalesOrders.child(holder.orderId.getText().toString()).child("sold items"));
                                                 moveRecord(updateSalesOrders.child(holder.orderId.getText().toString()), updateUsersAccount.child(holder.userName.getText().toString()).child("orders").child(holder.orderId.getText().toString()));
+                                                updateUsersAccount.child(holder.userName.getText().toString()).child("message").setValue("Hi, your order #" + holder.orderId.getText().toString() + " is shipped successfully!");
                                                 Toast.makeText(AdminOrdersActivity.this, uID + "'s order shipped successfully!", Toast.LENGTH_SHORT).show();
                                                 RemoveOrder(uID);
                                                 Intent intent = new Intent(AdminOrdersActivity.this, AdminOrdersActivity.class);

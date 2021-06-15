@@ -17,11 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.Products;
@@ -37,129 +39,79 @@ import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private Button searchButton;
-    private EditText searchText;
+    private AutoCompleteTextView searchText;
     private RecyclerView searchList;
     private String SearchInput;
     private ImageView noProductFoundImage;
     private TextView noProductFoundText;
-    Dialog dialog;
-    ArrayList<String> categoryList;
+    DatabaseReference getAllProducts;
+    List<String> productNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        searchButton = (Button) findViewById(R.id.search_button);
-        searchText = (EditText) findViewById(R.id.search_product_name);
+        searchText = (AutoCompleteTextView) findViewById(R.id.search_product_name);
         searchList = (RecyclerView) findViewById(R.id.search_list);
         noProductFoundImage = findViewById(R.id.no_search_image_product);
         noProductFoundText = findViewById(R.id.text_message_search);
         noProductFoundImage.setVisibility(View.GONE);
         noProductFoundText.setVisibility(View.GONE);
-        searchList.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+        productNames = new ArrayList<>();
 
-        categoryList = new ArrayList<>();
-        categoryList.add("Anti-acids for gastritis");
-        categoryList.add("Ayurveda products");
-        categoryList.add("Baby care");
-        categoryList.add("Baby diapers");
-        categoryList.add("Beauty care");
-        categoryList.add("Body care");
-        categoryList.add("Food and beverages");
-        categoryList.add("Glucose monitors and splits");
-        categoryList.add("Hair care");
-        categoryList.add("Household cleaners");
-        categoryList.add("Mask");
-        categoryList.add("Medical devices");
-        categoryList.add("Mens grooming");
-        categoryList.add("Mosquito repellents");
-        categoryList.add("Nutrition and supplements");
-        categoryList.add("Oral care");
-        categoryList.add("Orthopedic items");
-        categoryList.add("Pain killer");
-        categoryList.add("Skin care");
-        categoryList.add("Thermometer");
-        categoryList.add("Vaccine");
-        categoryList.add("Wet wipes");
-        categoryList.add("Wound care");
-
-
-        searchText.setOnClickListener(new View.OnClickListener() {
+        getAllProducts = FirebaseDatabase.getInstance().getReference().child("Products");
+        getAllProducts.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                dialog = new Dialog(SearchActivity.this);
-                dialog.setContentView(R.layout.dialog_searchable_spinner);
-                dialog.getWindow().setLayout(1050,1600);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-
-                EditText editText = dialog.findViewById(R.id.edit_text);
-                ListView listView = dialog.findViewById(R.id.list_view);
-
-                final ArrayAdapter<String> adapter = new ArrayAdapter<>(SearchActivity.this, android.R.layout.simple_list_item_1, categoryList);
-                listView.setAdapter(adapter);
-
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        adapter.getFilter().filter(charSequence);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-
-                    }
-                });
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot childSnapShot: dataSnapshot.getChildren()){
+                    String autoTextProducts = childSnapShot.child("productName").getValue(String.class);
+                    productNames.add(autoTextProducts);
+                }
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(SearchActivity.this, android.R.layout.simple_dropdown_item_1line,productNames);
+                searchText.setThreshold(1);
+                searchText.setAdapter(arrayAdapter);
+                searchText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        searchText.setText(adapter.getItem(i));
-                        dialog.dismiss();
+                        SearchInput = searchText.getText().toString();
+                        onStart();
                     }
                 });
             }
-        });
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                SearchInput = searchText.getText().toString();
-//                String Names = SearchInput;
-//                Names.replaceAll("\\s", ""); // replaces all the spaces from the string
-                onStart();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products");
 
-        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(reference.orderByChild("category").startAt(SearchInput).endAt(SearchInput), Products.class).build();
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>().setQuery(getAllProducts.orderByChild("productName").startAt(SearchInput).endAt(SearchInput), Products.class).build();
 
-        reference.orderByChild("category").startAt(SearchInput).endAt(SearchInput).addValueEventListener(new ValueEventListener() {
+        getAllProducts.orderByChild("productName").startAt(SearchInput).endAt(SearchInput).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
-                    noProductFoundImage.setVisibility(View.VISIBLE);
-                    noProductFoundText.setVisibility(View.VISIBLE);
-                    noProductFoundText.setText("Oops! No products found.");
-                }else {
+                if (dataSnapshot.exists()){
                     noProductFoundImage.setVisibility(View.GONE);
                     noProductFoundText.setVisibility(View.GONE);
+                }
+                else if (!dataSnapshot.exists())
+                {
+                    noProductFoundImage.setVisibility(View.VISIBLE);
+                    noProductFoundText.setVisibility(View.VISIBLE);
+                    noProductFoundText.setText("Search for products!");
                 }
             }
 
@@ -173,7 +125,9 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                 holder.txtProductName.setText(model.getProductName());
-                holder.productPrice.setText("Price "+model.getPrice()+" LKR");
+                holder.productCategory.setText("Category: " + model.getCategory());
+                holder.productCardName.setText(model.getProductName());
+                holder.productPrice.setText("Price "+model.getPrice()+" lkr");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -197,6 +151,7 @@ public class SearchActivity extends AppCompatActivity {
         };
 
         searchList.setAdapter(adapter);
+        searchList.setLayoutManager(new LinearLayoutManager(this));
         adapter.startListening();
     }
 }

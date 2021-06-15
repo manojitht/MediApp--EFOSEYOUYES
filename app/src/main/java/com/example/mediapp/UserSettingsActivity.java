@@ -79,7 +79,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserSettingsActivity.this, HomeActivity.class);
+                Intent intent = new Intent(UserSettingsActivity.this, MainHomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -136,7 +136,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
 
         HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("name", userName.getText().toString());
+//        userMap.put("name", userName.getText().toString());
         userMap.put("email", eMail.getText().toString());
         userMap.put("address", homeAddress.getText().toString());
         userMap.put("phone", phoneNumber.getText().toString());
@@ -192,7 +192,7 @@ public class UserSettingsActivity extends AppCompatActivity {
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
 
                         HashMap<String, Object> userMap = new HashMap<>();
-                        userMap.put("name", userName.getText().toString());
+//                        userMap.put("name", userName.getText().toString());
                         userMap.put("email", eMail.getText().toString());
                         userMap.put("address", homeAddress.getText().toString());
                         userMap.put("phone", phoneNumber.getText().toString());

@@ -10,7 +10,6 @@
     app:cardCornerRadius="15dp"
     app:cardBackgroundColor="#F6F7F8"
     app:cardElevation="15dp"
-    tools:context=".ui.home.HomeFragment"
     >
 
 
@@ -38,7 +37,7 @@
             android:id="@+id/product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#8433E6"
+            android:background="#BA99E3"
             android:fontFamily="@font/nunito_extrabold"
             android:text="Product Name"
             android:textAlignment="center"

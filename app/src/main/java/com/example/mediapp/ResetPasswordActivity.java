@@ -122,7 +122,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
                                                         Toast.makeText(ResetPasswordActivity.this, "Password reset successfully!", Toast.LENGTH_SHORT).show();
-                                                        Intent intent = new Intent(ResetPasswordActivity.this, HomeActivity.class);
+                                                        Intent intent = new Intent(ResetPasswordActivity.this, MainHomeActivity.class);
                                                         startActivity(intent);
                                                     }
                                                 }

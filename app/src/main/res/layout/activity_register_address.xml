@@ -51,7 +51,7 @@
         android:background="@drawable/custom_input"
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
-        android:hint="Place (e.g Wellawatta)"
+        android:hint="Place"
         android:textColorHint="#6C6969"
         android:inputType="textPersonName"
         android:padding="15dp"

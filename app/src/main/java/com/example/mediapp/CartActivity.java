@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mediapp.AdminFolder.AdminOrdersActivity;
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.Model.Cart;
 import com.example.mediapp.ViewHolder.CartViewHolder;
@@ -44,31 +45,52 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button CalculateTotal;
-    private TextView totalAmountTxt, textMessage;
+    private TextView cartItemsCount, textMessage;
     private ImageView front_image1;
     private int overTotalPrice;
     String formattedPrice;
+    int cartItems = 0;
+    private DatabaseReference countOfCartItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-
         recyclerView = findViewById(R.id.cart_list);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         CalculateTotal = (Button) findViewById(R.id.calculate_process_button);
-        totalAmountTxt = (TextView) findViewById(R.id.total_price_text);
         textMessage = (TextView) findViewById(R.id.text_message);
         front_image1 = (ImageView) findViewById(R.id.front_image1);
+        cartItemsCount = findViewById(R.id.cart_activity_item_count);
+
+        countOfCartItems = FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View").child(GetData.superOnlineUsers.getName()).child("Products");
+        countOfCartItems.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    cartItems = (int) snapshot.getChildrenCount();
+                    cartItemsCount.setText("Cart items: " + cartItems);
+                } else {
+                    cartItemsCount.setText("Cart items: 0");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+
+        });
 
         CalculateTotal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 formattedPrice = NumberFormat.getInstance().format(overTotalPrice);
-                CalculateTotal.setVisibility(View.INVISIBLE);
+//                CalculateTotal.setVisibility(View.INVISIBLE);
 
                 final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                         CartActivity.this, R.style.BottomSheetDialogTheme
@@ -148,6 +170,9 @@ public class CartActivity extends AppCompatActivity {
                                     final DatabaseReference soldProducts = FirebaseDatabase.getInstance().getReference().child("Sold products"); // declaring the child of Sold products
                                     soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(model.getPid()).removeValue();// removes product from sold products
                                     Toast.makeText(CartActivity.this, model.getPname() + " removed successfully!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(CartActivity.this, CartActivity.class);
+                                    finish();
+                                    startActivity(intent);
                                 }
                             }
                         });
@@ -181,26 +206,21 @@ public class CartActivity extends AppCompatActivity {
                     String userName = dataSnapshot.child("Cname").getValue().toString();
 
                     if (shippingState.equals("Shipped")){
-                        totalAmountTxt.setText("Dear " + userName + "\n order is shipped successfully!");
                         recyclerView.setVisibility(View.GONE);
                         textMessage.setVisibility(View.VISIBLE);
                         textMessage.setText("We received your order successfully. Please wait until we process the order to your home address Thank you!");
                         front_image1.setVisibility(View.VISIBLE);
-                        Toast.makeText(CartActivity.this, "Once your order approved you can make orders!", Toast.LENGTH_SHORT).show();
                     }
                     else if (shippingState.equals("Not Shipped")){
-                        totalAmountTxt.setText("Not Shipped yet!");
                         recyclerView.setVisibility(View.GONE);
                         textMessage.setVisibility(View.VISIBLE);
                         front_image1.setVisibility(View.VISIBLE);
-                        Toast.makeText(CartActivity.this, "Once your order approved you can make orders!", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         recyclerView.setVisibility(View.GONE);
                         textMessage.setVisibility(View.VISIBLE);
                         front_image1.setVisibility(View.VISIBLE);
                         textMessage.setText("Sorry you didn't purchase any items yet!");
-                        totalAmountTxt.setVisibility(View.GONE);
                     }
                 }
             }

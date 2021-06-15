@@ -8,25 +8,50 @@
     tools:context=".CartActivity">
 
     <RelativeLayout
-        android:id="@+id/lay"
+        android:id="@+id/cart_view_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:layout_alignParentTop="true">
+        android:layout_height="70dp"
+        android:background="#fff"
+        android:layout_alignParentTop="true"
+        >
 
         <TextView
-            android:id="@+id/total_price_text"
-            android:layout_width="match_parent"
+            android:id="@+id/cart_activity_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/buttonknightblue"
-            android:fontFamily="@font/nunito_extrabold"
-            android:paddingTop="25dp"
-            android:paddingBottom="8dp"
-            android:text="Cart items"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20dp" />
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:hint="My Cart"
+            android:padding="5dp"
+            android:textColorHint="#0B0B0B"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold" />
+
+
+        <TextView
+            android:id="@+id/cart_activity_item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@id/cart_activity_title"
+            android:text="Cart items: 0"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/cart_button_image_home"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/cart_activity_title"
+            android:src="@drawable/my_cart" />
+
 
     </RelativeLayout>
 
@@ -40,7 +65,7 @@
         android:fontFamily="@font/poppins_medium"
         android:text="Your order has been received to us please wait until we approve the order Thank you!"
         android:textAlignment="center"
-        android:textColor="@color/colorLightGreen"
+        android:textColor="#292929"
         android:textSize="15dp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -69,7 +94,7 @@
         android:id="@+id/cart_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/lay"
+        android:layout_below="@+id/cart_view_top_bar"
         android:layout_above="@id/calculate_process_button">
     </androidx.recyclerview.widget.RecyclerView>
 

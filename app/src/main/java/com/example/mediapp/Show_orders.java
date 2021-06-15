@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,10 +43,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Show_orders extends AppCompatActivity {
 
     private DatabaseReference ordersCancel, ordersCancelAdmin, salesDataRemove, salesProductsRemove;
-    private TextView Username, Contact, Address, Price, Date, popMessage, DescriptionDate, OrderId, titleText;
+    private TextView Username, Contact, Address, Price, Date, DescriptionDate, OrderId, titleText;
     private Button viewOrder, cancelOrder, showOrderHistory;
     private RelativeLayout order_card;
-    private ImageView popup_image;
+    private ImageView popup_image, orderProcessingImage;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,23 +61,25 @@ public class Show_orders extends AppCompatActivity {
         Address = (TextView) findViewById(R.id.order_address_city);
         Price = (TextView) findViewById(R.id.order_total_price);
         Date = (TextView) findViewById(R.id.order_date_time);
-        popMessage = (TextView) findViewById(R.id.popup_message);
         order_card = (RelativeLayout) findViewById(R.id.order_card);
         popup_image = (ImageView) findViewById(R.id.popup_order_image);
         DescriptionDate = (TextView) findViewById(R.id.description_date);
         OrderId = (TextView) findViewById(R.id.order_id);
         showOrderHistory = findViewById(R.id.take_to_order_history);
         titleText = findViewById(R.id.order_in_process_txt);
+        progressBar = findViewById(R.id.progressBar);
+        orderProcessingImage = findViewById(R.id.order_process_image);
 
         ordersCancel = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
         salesDataRemove = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(GetData.superOnlineUsers.getName());
         ordersCancelAdmin = FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View").child(GetData.superOnlineUsers.getName());
         salesProductsRemove = FirebaseDatabase.getInstance().getReference().child("Sold products").child("customers").child(GetData.superOnlineUsers.getName());
+        orderProcessingImage.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
+        titleText.setVisibility(View.GONE);
         order_card.setVisibility(View.GONE);
         popup_image.setVisibility(View.VISIBLE);// sets default in invisible mode.
-        popMessage.setVisibility(View.VISIBLE);
         OrderId.setVisibility(View.GONE);
-        titleText.setVisibility(View.GONE);
 
         orderInfoDisplay(Username, Contact, Address, Price, DescriptionDate, Date, OrderId);
 
@@ -103,7 +107,7 @@ public class Show_orders extends AppCompatActivity {
                 salesDataRemove.removeValue();
                 salesProductsRemove.removeValue();
                 Toast.makeText(Show_orders.this, "Your order has been cancelled!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Show_orders.this, HomeActivity.class);
+                Intent intent = new Intent(Show_orders.this, MainHomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -120,11 +124,12 @@ public class Show_orders extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     if (dataSnapshot.child("Cname").exists()){
+                        orderProcessingImage.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.VISIBLE);
                         OrderId.setVisibility(View.VISIBLE);
                         order_card.setVisibility(View.VISIBLE);
                         titleText.setVisibility(View.VISIBLE);
                         popup_image.setVisibility(View.GONE);
-                        popMessage.setVisibility(View.GONE);
                         //String image = dataSnapshot.child("image").getValue().toString(); // This works on the real physical device
                         String name = dataSnapshot.child("Cname").getValue().toString();
                         String contact = dataSnapshot.child("phone").getValue().toString();
@@ -142,6 +147,7 @@ public class Show_orders extends AppCompatActivity {
                         DescriptionDate.setText("Dear customer you have placed the order in the following date and time that was provided below.");
                         Date.setText("Date: " + date + ", Time: " + time);
                     }
+
                 }
             }
 

@@ -117,6 +117,8 @@ public class ViewDetailActivity extends AppCompatActivity {
 //                            }
 //                        }
 //                    });
+                    Intent intent = new Intent(ViewDetailActivity.this, MainHomeActivity.class);
+                    startActivity(intent);
                     Toast.makeText(ViewDetailActivity.this, "Added to cart successfully!", Toast.LENGTH_SHORT).show();
                 }
             }

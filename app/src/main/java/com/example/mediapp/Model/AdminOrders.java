@@ -1,11 +1,11 @@
 package com.example.mediapp.Model;
 
 public class AdminOrders {
-    private String Cname, address, city, date, phone, status, time, totalAmount, orderId, approvedBy;
+    private String Cname, address, city, date, phone, status, time, totalAmount, orderId, approvedBy, Username;
     public AdminOrders(){
     }
 
-    public AdminOrders(String cname, String address, String city, String date, String phone, String status, String time, String totalAmount, String orderId, String approvedBy) {
+    public AdminOrders(String cname, String address, String city, String date, String phone, String status, String time, String totalAmount, String orderId, String approvedBy, String Username) {
         Cname = cname;
         this.address = address;
         this.city = city;
@@ -16,6 +16,7 @@ public class AdminOrders {
         this.totalAmount = totalAmount;
         this.orderId = orderId;
         this.approvedBy = approvedBy;
+        this.Username = Username;
     }
 
     public String getCname() {
@@ -96,5 +97,13 @@ public class AdminOrders {
 
     public void setApprovedBy(String approvedBy) {
         this.approvedBy = approvedBy;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String Username) {
+        this.Username = Username;
     }
 }

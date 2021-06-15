@@ -1,10 +1,12 @@
 package com.example.mediapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -114,8 +116,23 @@ public class MyOrderHistory extends AppCompatActivity {
                             holder.txtRemoveOrder.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    DatabaseReference removeOrder = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders");
-                                    removeOrder.child(model.getOrderId()).removeValue();
+                                    CharSequence options[] = new CharSequence[]{
+                                            "Yes, Remove",
+                                            "Cancel"
+                                    };
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(MyOrderHistory.this);
+                                    builder.setTitle("Do you want to remove this order?");
+
+                                    builder.setItems(options, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            if (i == 0){
+                                                DatabaseReference removeOrder = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders");
+                                                removeOrder.child(model.getOrderId()).removeValue();
+                                            }
+                                        }
+                                    });
+                                    builder.show();
                                 }
                             });
                         }
@@ -124,14 +141,29 @@ public class MyOrderHistory extends AppCompatActivity {
                             holder.setDeliver.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    DatabaseReference updateDeliver = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders").child(model.getOrderId()).child("status");
-                                    final DatabaseReference updateDeliverOnSalesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(model.getOrderId()).child("status");
-                                    updateDeliver.setValue("Delivered").addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    CharSequence options[] = new CharSequence[]{
+                                            "Yes, I received.",
+                                            "Not received yet."
+                                    };
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(MyOrderHistory.this);
+                                    builder.setTitle("Did you receive this order?");
+
+                                    builder.setItems(options, new DialogInterface.OnClickListener() {
                                         @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            updateDeliverOnSalesData.setValue("Delivered");
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            if (i == 0){
+                                                DatabaseReference updateDeliver = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders").child(model.getOrderId()).child("status");
+                                                final DatabaseReference updateDeliverOnSalesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(model.getOrderId()).child("status");
+                                                updateDeliver.setValue("Delivered").addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        updateDeliverOnSalesData.setValue("Delivered");
+                                                    }
+                                                });
+                                            }
                                         }
                                     });
+                                    builder.show();
                                 }
                             });
                         }

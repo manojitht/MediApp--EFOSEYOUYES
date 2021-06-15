@@ -152,12 +152,10 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                      public void onComplete(@NonNull Task<Void> task) {
                          if (task.isSuccessful()){
                              moveRecord(getProducts.child(GetData.superOnlineUsers.getName()).child("Products"), ordersRef.child("cart"));
-                             Toast.makeText(ConfirmOrderActivity.this,  "Item done.", Toast.LENGTH_SHORT).show();
                              FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View").child(GetData.superOnlineUsers.getName()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                  @Override
                                  public void onComplete(@NonNull Task<Void> task) {
                                      if (task.isSuccessful()){
-                                         Toast.makeText(ConfirmOrderActivity.this, "You've confirmed the order!", Toast.LENGTH_SHORT).show();
                                          Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
                                          intent.putExtra("OrderIdMigrate", orderId);
 

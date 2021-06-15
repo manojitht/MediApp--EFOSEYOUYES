@@ -11,44 +11,46 @@
         android:id="@+id/laysearch"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPurple"
+        android:background="#fff"
         android:layout_alignParentTop="true"
         >
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/search_product_name"
-            android:layout_width="245dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:background="@drawable/custom_input"
             android:fontFamily="@font/poppins_light"
-            android:hint="Search here..."
+            android:hint="Search MediApp..."
             android:padding="12dp"
             android:drawablePadding="12dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textColorHint="@color/colorPurple"
+            android:ems="10"
+            android:textColorHint="#2D2D2E"
             android:textSize="14dp"
             android:textStyle="bold"
-            android:drawableStart="@drawable/ic_baseline_search_24"/>
+            android:drawableEnd="@drawable/ic_baseline_search_24"/>
 
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/search_product_name"
-            android:background="@drawable/buttonsyello"
-            android:fontFamily="@font/poppins_medium"
-            android:padding="7dp"
-            android:text="Search"
-            android:textColor="@color/colorBlack"
-            android:textAllCaps="false"
-            android:textSize="13dp"
-            android:textStyle="bold"
-            />
+<!--        <Button-->
+<!--            android:id="@+id/search_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_toRightOf="@id/search_product_name"-->
+<!--            android:background="@drawable/buttonsyello"-->
+<!--            android:fontFamily="@font/poppins_medium"-->
+<!--            android:padding="7dp"-->
+<!--            android:text="Search"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textSize="13dp"-->
+<!--            android:textStyle="bold"-->
+<!--            />-->
 
     </RelativeLayout>
 
@@ -77,6 +79,7 @@
         android:id="@+id/no_search_image_product"
         android:layout_width="wrap_content"
         android:layout_height="286dp"
+        android:visibility="invisible"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="150dp"
         android:layout_marginRight="20dp"

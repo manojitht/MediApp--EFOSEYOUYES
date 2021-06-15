@@ -11,24 +11,33 @@
     <RelativeLayout
         android:id="@+id/lay_out_orders"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:background="#fff"
         android:layout_alignParentTop="true"
-        android:background="@drawable/buttonknightblue"
-        tools:ignore="MissingConstraints">
+        >
 
         <TextView
-            android:id="@+id/show_text"
-            android:layout_width="match_parent"
+            android:id="@+id/my_orders_history_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/nunito_extrabold"
-            android:gravity="center"
-            android:text="My orders"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="25sp"
-            tools:ignore="RtlCompat" />
+            android:layout_centerVertical="true"
+            android:hint="Orders history"
+            android:padding="5dp"
+            android:textColorHint="#0B0B0B"
+            android:textSize="27dp"
+            android:layout_toRightOf="@id/title_image_orders_history"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/title_image_orders_history"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/orders_history_image" />
+
+
     </RelativeLayout>
 
     <TextView

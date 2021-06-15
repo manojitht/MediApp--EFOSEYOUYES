@@ -28,7 +28,8 @@ import java.util.Objects;
 public class ShowCategoryList extends AppCompatActivity {
 
     ListView categoryListView;
-    Button viewCart;
+    ImageView viewCart;
+    TextView searchLinkFromCategory, cartItemsShow;
 
     int[] images = {R.drawable.antiacids_for_gastritis, R.drawable.ayurveda_products, R.drawable.baby_care, R.drawable.baby_diapers, R.drawable.beauty_care, R.drawable.body_care,
             R.drawable.food_and_beverages, R.drawable.glucose_monitors_and_splits, R.drawable.hair_care, R.drawable.house_hold_cleaners, R.drawable.mask, R.drawable.medical_devices,
@@ -72,7 +73,9 @@ public class ShowCategoryList extends AppCompatActivity {
         setContentView(R.layout.activity_show_category_list);
 
         categoryListView = findViewById(R.id.listView_categories);
-        viewCart = findViewById(R.id.go_to_cart_from_category);
+        viewCart = findViewById(R.id.cart_button_image_category);
+        cartItemsShow = findViewById(R.id.total_cart_items_count_category);
+        searchLinkFromCategory = findViewById(R.id.search_link_line_category);
         ShowCategoryList.CustomAdapter customAdapter = new ShowCategoryList.CustomAdapter();
         categoryListView.setAdapter(customAdapter);
         final DatabaseReference accessForUsers = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -81,6 +84,8 @@ public class ShowCategoryList extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     viewCart.setVisibility(View.VISIBLE);
+                    searchLinkFromCategory.setVisibility(View.VISIBLE);
+                    cartItemsShow.setVisibility(View.VISIBLE);
                     viewCart.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -88,9 +93,19 @@ public class ShowCategoryList extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
+                    searchLinkFromCategory.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(ShowCategoryList.this, SearchActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
                 else {
                     viewCart.setVisibility(View.GONE);
+                    cartItemsShow.setVisibility(View.GONE);
+                    searchLinkFromCategory.setVisibility(View.GONE);
                 }
             }
 

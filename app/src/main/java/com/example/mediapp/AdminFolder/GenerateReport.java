@@ -94,7 +94,7 @@ public class GenerateReport extends AppCompatActivity {
         BarData theData = new BarData(theWeeks, barDataSet);
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         barchart.setData(theData);
-        barchart.animateY(3000);
+        barchart.animateY(2000);
 
         barchart.setTouchEnabled(true);
         barchart.setDragEnabled(true);

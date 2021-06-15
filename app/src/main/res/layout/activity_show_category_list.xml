@@ -7,41 +7,73 @@
     tools:context=".ShowCategoryList">
 
     <RelativeLayout
-        android:id="@+id/lay_out_categories"
+        android:id="@+id/home_top_category_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="80dp"
         android:background="#fff"
-        tools:ignore="MissingConstraints">
-
-        <Button
-            android:id="@+id/go_to_cart_from_category"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/button_cart_edit_item"
-            android:layout_marginStart="145dp"
-            android:layout_marginEnd="15dp"
-            android:fontFamily="@font/nunito_extrabold"
-            android:text="View cart"
-            android:textAllCaps="false"
-            android:layout_marginTop="10dp"
-            android:textColor="#083883"
-            android:layout_toEndOf="@+id/title"
-             />
+        android:layout_alignParentTop="true"
+        >
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/category_title_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="Categories"
+            android:layout_toRightOf="@id/category_title_image"
+            android:padding="5dp"
+            android:textColorHint="#0B0B0B"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/category_title_image"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/nunito_extrabold"
-            android:gravity="left"
-            android:text="Categories"
+            android:src="@drawable/category_title_image" />
+
+        <TextView
+            android:id="@+id/search_link_line_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:textColor="#515050"
-            android:textSize="22sp"
-            tools:ignore="RtlCompat" />
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="2dp"
+            android:hint=" Click here to search for a product "
+            android:textColorHint="#0754A1"
+            android:textSize="13dp"
+            android:padding="1dp"
+            android:background="@drawable/button_cart_edit_item"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold"
+            android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:id="@+id/total_cart_items_count_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@id/category_title_name"
+            android:text="Show cart"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/cart_button_image_category"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/category_title_name"
+            android:src="@drawable/my_cart" />
+
     </RelativeLayout>
 
 
@@ -49,11 +81,11 @@
         android:id="@+id/listView_categories"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/lay_out_categories"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/home_top_category_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lay_out_categories" />
+        app:layout_constraintTop_toBottomOf="@+id/home_top_category_bar" />
 
 </RelativeLayout>

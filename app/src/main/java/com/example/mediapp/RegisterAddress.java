@@ -75,7 +75,7 @@ public class RegisterAddress extends AppCompatActivity {
             UserAddress.child("address").setValue(addressOne.getText().toString() + ", " + addressTwo.getText().toString() + ", " + addressThree.getText().toString() + ", " + addressFour.getText().toString() + ", " + addressFive.getText().toString() + ".");
             UserAddress.child("customerStatus").setValue("existing");
             Toast.makeText(RegisterAddress.this, "Address entered successfully!",  Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(RegisterAddress.this, HomeActivity.class);
+            Intent intent = new Intent(RegisterAddress.this, MainHomeActivity.class);
             startActivity(intent);
             finish();
         }

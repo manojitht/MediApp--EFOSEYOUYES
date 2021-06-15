@@ -34,25 +34,42 @@ import com.squareup.picasso.Picasso;
 public class ViewOrderCx extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private Button checkOut, makeOrder;
-    private TextView cart;
-
-    private int overTotalPrice = 0;
+    private TextView cartItemsCountListener;
+    int cartItemsCounts = 0;
+    private DatabaseReference takeCountItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_view_order_cx);
 
-        recyclerView = findViewById(R.id.cart_list);
-        checkOut = findViewById(R.id.calculate_process_button);
-        cart = findViewById(R.id.total_price_text);
+        recyclerView = findViewById(R.id.view_cart_list);
+        cartItemsCountListener = findViewById(R.id.view_cart_activity_item_count);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        checkOut.setVisibility(View.GONE);
-        cart.setText("Purchased items");
+        onStart();
+
+        takeCountItems = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName()).child("cart");
+        takeCountItems.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    cartItemsCounts = (int) snapshot.getChildrenCount();
+                    cartItemsCountListener.setText("Cart items: " + cartItemsCounts);
+                } else {
+                    cartItemsCountListener.setText("Cart items: 0");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+
+        });
 
     }
 

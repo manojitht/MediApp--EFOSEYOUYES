@@ -185,13 +185,24 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "existing")){
-//                                            Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
-                                            loadingDialog.dismissDialog();
-                                            InputLoginName.setText("");
-                                            InputLoginPassword.setText("");
-                                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                            GetData.superOnlineUsers = usersData;
-                                            startActivity(intent);
+                                            if (dataSnapshot.child("message").exists()){
+                                                loadingDialog.dismissDialog();
+                                                InputLoginName.setText("");
+                                                InputLoginPassword.setText("");
+                                                Intent intent = new Intent(LoginActivity.this, OrderShippedMessage.class);
+                                                GetData.superOnlineUsers = usersData;
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                            else {
+                                                loadingDialog.dismissDialog();
+                                                InputLoginName.setText("");
+                                                InputLoginPassword.setText("");
+                                                Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
+                                                GetData.superOnlineUsers = usersData;
+                                                startActivity(intent);
+                                                finish();
+                                            }
                                         }
                                         else if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "new")){
                                             Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
@@ -200,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
                                             InputLoginPassword.setText("");
                                             Intent intent = new Intent(LoginActivity.this, WelcomeMessage.class);
                                             GetData.superOnlineUsers = usersData;
-                                            startActivity(intent);;
+                                            startActivity(intent);
                                         }
 
                                     }
@@ -249,7 +260,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (usersData.getName().equals(Name)){
                         if (usersData.getPassword().equals(Password)){
                             loadingBar.dismiss();
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
                             GetData.superOnlineUsers = usersData;
                             startActivity(intent);
                         }else {

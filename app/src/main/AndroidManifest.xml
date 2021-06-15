@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShippedOrderProducts"></activity>
+        <activity android:name=".OrderShippedMessage"></activity>
+        <activity android:name=".MainHomeActivity" />
+        <activity android:name=".ShippedOrderProducts" />
         <activity android:name=".MyOrderHistory" />
         <activity android:name=".AdminFolder.AdminShopManager" />
         <activity android:name=".AdminFolder.ProductMessage" />
@@ -41,10 +43,6 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AdminFolder.AdminCategoryActivity" />
         <activity android:name=".AdminFolder.AdminProductActivity" />
         <activity android:name=".RegisterActivity" />
