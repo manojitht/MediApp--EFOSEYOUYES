@@ -37,6 +37,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
+import io.paperdb.Paper;
+
 public class MainHomeActivity extends AppCompatActivity {
 
     private RecyclerView productContainer;
@@ -115,8 +117,9 @@ public class MainHomeActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (i == 0){
                             Intent intent = new Intent(MainHomeActivity.this, LoginActivity.class);
-                            finish();
                             startActivity(intent);
+                            Paper.book().destroy();
+                            finish();
                         }
                     }
                 });

@@ -3,9 +3,15 @@ package com.example.mediapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -112,32 +118,47 @@ public class LoginActivity extends AppCompatActivity {
         String UserNameKey = Paper.book().read(GetData.UserNamekey);
         String UserPasswordKey = Paper.book().read(GetData.UserPasswordKey);
 
-        if (UserNameKey != "" && UserPasswordKey != ""){
-            if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)){
-                GiveAccess(UserNameKey, UserPasswordKey);
+        if (!notConnectedToInternet(this)){
+            showCustomDialog();
+        }
+        else
+        {
+            if (UserNameKey != "" && UserPasswordKey != ""){
+                if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)){
+                    GiveAccess(UserNameKey, UserPasswordKey);
 
-                loadingBar.setTitle("Opening!");
-                loadingBar.setMessage("Please wait...");
-                loadingBar.setCanceledOnTouchOutside(false);
-                loadingBar.show();
+                    loadingBar.setTitle("Opening!");
+                    loadingBar.setMessage("Please wait...");
+                    loadingBar.setCanceledOnTouchOutside(false);
+                    loadingBar.show();
+                }
             }
         }
     }
 
     private void LoginUser() {
-        String Name = InputLoginName.getText().toString();
-        String Password = InputLoginPassword.getText().toString();
 
-        if (TextUtils.isEmpty((CharSequence) Name)) {
-            Toast.makeText(this, "username cannot be empty", Toast.LENGTH_SHORT).show();
+        if (!notConnectedToInternet(this)){
+            showCustomDialog();
         }
-        else if (TextUtils.isEmpty((CharSequence) Password)){
-            Toast.makeText(this, "password cannot be empty", Toast.LENGTH_SHORT).show();
-        }else {
-            loadingDialog.startLoadingDialog();
-            AllowUserToLoginAccount(Name, Password);
+        else {
+            String Name = InputLoginName.getText().toString();
+            String Password = InputLoginPassword.getText().toString();
+
+            if (TextUtils.isEmpty((CharSequence) Name)) {
+                Toast.makeText(this, "username cannot be empty", Toast.LENGTH_SHORT).show();
+            }
+            else if (TextUtils.isEmpty((CharSequence) Password)){
+                Toast.makeText(this, "password cannot be empty", Toast.LENGTH_SHORT).show();
+            }else {
+                loadingDialog.startLoadingDialog();
+                AllowUserToLoginAccount(Name, Password);
+            }
         }
+
     }
+
+
 
     private void AllowUserToLoginAccount(final String Name, final String Password) {
 
@@ -248,21 +269,44 @@ public class LoginActivity extends AppCompatActivity {
 
     private void GiveAccess(final String Name, final String Password) {
 
-        final DatabaseReference RootRef;
+        final DatabaseReference RootRef, checkMessage;
         RootRef = FirebaseDatabase.getInstance().getReference();
+        checkMessage = FirebaseDatabase.getInstance().getReference().child("Users");
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child("Users").child(Name).exists()){
-                    Users usersData = snapshot.child("Users").child(Name).getValue(Users.class);
+                    final Users usersData = snapshot.child("Users").child(Name).getValue(Users.class);
 
                     if (usersData.getName().equals(Name)){
                         if (usersData.getPassword().equals(Password)){
-                            loadingBar.dismiss();
-                            Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
-                            GetData.superOnlineUsers = usersData;
-                            startActivity(intent);
+                            checkMessage.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.child(Name).child("message").exists()){
+                                        loadingBar.dismiss();
+                                        Intent intent = new Intent(LoginActivity.this, OrderShippedMessage.class);
+                                        GetData.superOnlineUsers = usersData;
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                    else {
+                                        loadingBar.dismiss();
+                                        Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
+                                        GetData.superOnlineUsers = usersData;
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
                         }else {
                             Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
@@ -280,5 +324,37 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private boolean notConnectedToInternet(LoginActivity loginActivity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) loginActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileNetwork = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if (wifi != null && wifi.isConnected() || (mobileNetwork != null && mobileNetwork.isConnected())){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showCustomDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setMessage("Network error occurred! please connect to the internet!").setCancelable(false).setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

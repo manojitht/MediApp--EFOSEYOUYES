@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.mediapp.GetData.GetData;
 import com.example.mediapp.LoginActivity;
+import com.example.mediapp.MainHomeActivity;
 import com.example.mediapp.R;
 import com.example.mediapp.ShowCategoryList;
 import com.google.firebase.database.DataSnapshot;
@@ -22,10 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import io.paperdb.Paper;
+
 public class AdminDecisionActivity extends AppCompatActivity {
 
     private Button CheckOrders, AdminLogoff,MaintainItems, AddProducts, ShowGraph;
     private TextView WelcomeMessage;
+    private DatabaseReference LastLogin;
 
 
     @Override
@@ -72,7 +76,6 @@ public class AdminDecisionActivity extends AppCompatActivity {
                 Intent intent = new Intent(AdminDecisionActivity.this, ShowCategoryList.class);
                 intent.putExtra("Admin", "Admin");
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -80,9 +83,9 @@ public class AdminDecisionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminDecisionActivity.this, LoginActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                //LogoutSession();
+//                LogoutSession();
+                Paper.book().destroy();
                 finish();
             }
         });
@@ -119,7 +122,7 @@ public class AdminDecisionActivity extends AppCompatActivity {
         LastLoginDate = currentDate.format(callForDate.getTime());
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
         LastLoginTime = currentTime.format(callForDate.getTime());
-        DatabaseReference LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
+        LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
         LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
     }
 

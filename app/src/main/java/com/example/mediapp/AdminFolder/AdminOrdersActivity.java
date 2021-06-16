@@ -162,7 +162,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                             if (task.isSuccessful()){
                                                 moveRecord(updateSalesProducts.child(uID).child("cart"), updateSalesOrders.child(holder.orderId.getText().toString()).child("sold items"));
                                                 moveRecord(updateSalesOrders.child(holder.orderId.getText().toString()), updateUsersAccount.child(holder.userName.getText().toString()).child("orders").child(holder.orderId.getText().toString()));
-                                                updateUsersAccount.child(holder.userName.getText().toString()).child("message").setValue("Hi, your order #" + holder.orderId.getText().toString() + " is shipped successfully!");
+                                                updateUsersAccount.child(holder.userName.getText().toString()).child("message").setValue("Hi, your order #" + holder.orderId.getText().toString() + " was shipped successfully!");
                                                 Toast.makeText(AdminOrdersActivity.this, uID + "'s order shipped successfully!", Toast.LENGTH_SHORT).show();
                                                 RemoveOrder(uID);
                                                 Intent intent = new Intent(AdminOrdersActivity.this, AdminOrdersActivity.class);
