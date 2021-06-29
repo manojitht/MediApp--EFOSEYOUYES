@@ -157,7 +157,20 @@ public class MyOrderHistory extends AppCompatActivity {
                                                 updateDeliver.setValue("Delivered").addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
-                                                        updateDeliverOnSalesData.setValue("Delivered");
+                                                        updateDeliverOnSalesData.addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                                if (dataSnapshot.exists()){
+                                                                    updateDeliverOnSalesData.setValue("Delivered");
+                                                                }
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                            }
+                                                        });
+
                                                     }
                                                 });
                                             }

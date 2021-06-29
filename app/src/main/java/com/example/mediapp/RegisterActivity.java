@@ -164,8 +164,8 @@ public class RegisterActivity extends AppCompatActivity {
     //Trying to add the mail services
 
 //    private void SendMail(){
-//        final String username = "bigbangcoder8@gmail.com";
-//        final String password = "BigBang@password";
+//        final String username = "manojithtjmkm@gmail.com";
+//        final String password = "***********************";
 //        String sendMessage =  "Hi " + InputName.getText().toString() + ", welcome to the MediApp!";
 //        Properties properties = new Properties();
 //        properties.put("mail.smtp.auth", "true");
