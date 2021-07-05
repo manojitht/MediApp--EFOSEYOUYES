@@ -46,7 +46,6 @@ public class OrderShippedMessage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OrderShippedMessage.this, MainHomeActivity.class);
-                finish();
                 startActivity(intent);
                 getTheMessage.removeValue();
             }

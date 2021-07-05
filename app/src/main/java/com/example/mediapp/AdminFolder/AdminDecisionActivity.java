@@ -115,15 +115,15 @@ public class AdminDecisionActivity extends AppCompatActivity {
         });
     }
 
-    private void LogoutSession(){
-        final String LastLoginDate, LastLoginTime;
-        Calendar callForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd");
-        LastLoginDate = currentDate.format(callForDate.getTime());
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
-        LastLoginTime = currentTime.format(callForDate.getTime());
-        LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
-        LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
-    }
+//    private void LogoutSession(){
+//        final String LastLoginDate, LastLoginTime;
+//        Calendar callForDate = Calendar.getInstance();
+//        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd");
+//        LastLoginDate = currentDate.format(callForDate.getTime());
+//        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm a");
+//        LastLoginTime = currentTime.format(callForDate.getTime());
+//        LastLogin = FirebaseDatabase.getInstance().getReference("Admins").child(GetData.superOnlineUsers.getName());
+//        LastLogin.child("lastLogin").setValue(LastLoginDate + ", " + LastLoginTime);
+//    }
 
 }

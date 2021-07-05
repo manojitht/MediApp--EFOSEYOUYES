@@ -41,6 +41,7 @@ public class MyOrderHistory extends AppCompatActivity {
     private ImageView validatorImage;
     private TextView validatorText;
     private RecyclerView.LayoutManager layoutManager;
+    DatabaseReference updateDeliver, updateDeliverOnSalesData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,27 +153,28 @@ public class MyOrderHistory extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
                                             if (i == 0){
-                                                DatabaseReference updateDeliver = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders").child(model.getOrderId()).child("status");
-                                                final DatabaseReference updateDeliverOnSalesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(model.getOrderId()).child("status");
-                                                updateDeliver.setValue("Delivered").addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        updateDeliverOnSalesData.addValueEventListener(new ValueEventListener() {
-                                                            @Override
-                                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                                if (dataSnapshot.exists()){
-                                                                    updateDeliverOnSalesData.setValue("Delivered");
-                                                                }
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                                            }
-                                                        });
-
-                                                    }
-                                                });
+                                                updateDeliver = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders").child(model.getOrderId()).child("status");
+                                                updateDeliverOnSalesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(model.getOrderId()).child("status");
+                                                updateDeliver.setValue("Delivered");
+//                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                                    @Override
+//                                                    public void onComplete(@NonNull Task<Void> task) {
+//                                                        updateDeliverOnSalesData.addValueEventListener(new ValueEventListener() {
+//                                                            @Override
+//                                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                                                if (dataSnapshot.exists()){
+//                                                                    updateDeliverOnSalesData.setValue("Delivered");
+//                                                                }
+//                                                            }
+//
+//                                                            @Override
+//                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                                                            }
+//                                                        });
+//
+//                                                    }
+//                                                });
                                             }
                                         }
                                     });
