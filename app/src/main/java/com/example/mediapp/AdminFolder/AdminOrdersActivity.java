@@ -41,6 +41,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
     private ImageView notFoundImage;
     private TextView notFoundText;
     private Button refreshButton;
+    String nameOfAdmin = GetData.superOnlineUsers.getName();
     int order = 0;
 
     @Override
@@ -101,7 +102,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
-                holder.userName.setText("" + model.getCname());
+                holder.customerName.setText("" + model.getCname());
                 holder.userPhoneNumber.setText("" + model.getPhone());
                 holder.orderId.setText(model.getOrderId());
                 int formattedPrice = Integer.parseInt(model.getTotalAmount());
@@ -110,6 +111,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                 holder.userDate.setText(model.getDate());
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
+                holder.username.setText(model.getUsername());
                 holder.status.setVisibility(View.GONE);
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +145,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
                                     final HashMap<String, Object> cartMap = new HashMap<>();
                                     cartMap.put("orderId", holder.orderId.getText().toString());
-                                    cartMap.put("Cname", holder.userName.getText().toString().replace("Name: ", ""));
+                                    cartMap.put("Cname", holder.customerName.getText().toString().replace("Name: ", ""));
                                     cartMap.put("phone", holder.userPhoneNumber.getText().toString().replace("Contact: ", ""));
                                     String totalPrice = holder.userTotalAmount.getText().toString().replace("Cost of price: ", "");
                                     String formattedPrice = totalPrice.replace(" LKR", "");
@@ -153,7 +155,8 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                     cartMap.put("date", holder.userDate.getText().toString());
                                     cartMap.put("time", holder.userTime.getText().toString().replace("Time: ", ""));
                                     cartMap.put("status", "Shipped");
-                                    cartMap.put("approvedBy", GetData.superOnlineUsers.getName());
+                                    cartMap.put("approvedBy", nameOfAdmin);
+                                    cartMap.put("username", holder.username.getText().toString());
                                     cartMap.put("sold items", "");
 
                                     updateSalesOrders.child(holder.orderId.getText().toString()).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -161,8 +164,8 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()){
                                                 moveRecord(updateSalesProducts.child(uID).child("cart"), updateSalesOrders.child(holder.orderId.getText().toString()).child("sold items"));
-                                                moveRecord(updateSalesOrders.child(holder.orderId.getText().toString()), updateUsersAccount.child(holder.userName.getText().toString()).child("orders").child(holder.orderId.getText().toString()));
-                                                updateUsersAccount.child(holder.userName.getText().toString()).child("message").setValue("Hi, your order #" + holder.orderId.getText().toString() + " was shipped successfully!");
+                                                //moveRecord(updateSalesOrders.child(holder.orderId.getText().toString()), updateUsersAccount.child(holder.customerName.getText().toString()).child("orders").child(holder.orderId.getText().toString()));
+                                                //updateUsersAccount.child(holder.customerName.getText().toString()).child("message").setValue("Hi, your order #" + holder.orderId.getText().toString() + " was shipped successfully!");
                                                 Toast.makeText(AdminOrdersActivity.this, uID + "'s order shipped successfully!", Toast.LENGTH_SHORT).show();
                                                 RemoveOrder(uID);
                                                 Intent intent = new Intent(AdminOrdersActivity.this, AdminOrdersActivity.class);
@@ -193,12 +196,12 @@ public class AdminOrdersActivity extends AppCompatActivity {
 
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder{
-        public TextView userName, userPhoneNumber, userTotalAmount, userDate, userShippingAddress, orderId, userTime, approvedBy, status;
+        public TextView customerName, userPhoneNumber, userTotalAmount, userDate, userShippingAddress, orderId, userTime, approvedBy, status, username;
         public Button showOrder;
         public AdminOrdersViewHolder(View itemView){
             super(itemView);
 
-            userName = itemView.findViewById(R.id.order_cart_items_username);
+            customerName = itemView.findViewById(R.id.order_cart_items_username);
             userPhoneNumber = itemView.findViewById(R.id.phone_number_order);
             userTotalAmount = itemView.findViewById(R.id.order_total_price);
             userTime = itemView.findViewById(R.id.order_time);
@@ -208,6 +211,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
             orderId = itemView.findViewById(R.id.order_id);
             approvedBy = itemView.findViewById(R.id.approved_admin);
             status = itemView.findViewById(R.id.shipping_status);
+            username = itemView.findViewById(R.id.username_of_customer);
 
         }
     }

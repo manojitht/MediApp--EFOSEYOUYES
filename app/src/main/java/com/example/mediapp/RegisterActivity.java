@@ -93,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
         else if (Name.length() <= 4){
             Toast.makeText(this, "Username must be at least 5 characters!", Toast.LENGTH_SHORT).show();
         }
-        else if (Password.length() <= 8){
+        else if (Password.length() <= 7){
             Toast.makeText(this, "Password should be at least 8 characters long!", Toast.LENGTH_SHORT).show();
         }
         else{

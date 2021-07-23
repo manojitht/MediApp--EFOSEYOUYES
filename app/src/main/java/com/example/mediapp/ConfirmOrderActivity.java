@@ -35,6 +35,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private EditText ShipName, ShipAddress, ShipCity, ShipPhone;
     private Button ShipConfirm;
     private String totalAmount = "";
+    private String username = GetData.superOnlineUsers.getName();
 
 
     @Override
@@ -128,13 +129,14 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         getCurrentRefTime = RefTime.format(callForDate.getTime());
         orderId= "REF" + number + getCurrentRefTime;
 
-        final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName()); //creation of the "Orders" child
+        final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(orderId); //creation of the "Orders" child
         final DatabaseReference getProducts = FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View");
 
         final HashMap<String, Object> ordersMap = new HashMap<>(); ///creating the object as hash map
         ordersMap.put("orderId", orderId);
         totalAmount.replace(" LKR", "");
         ordersMap.put("totalAmount", totalAmount);
+        ordersMap.put("username", username);
         ordersMap.put("Cname", ShipName.getText().toString());
         ordersMap.put("phone", ShipPhone.getText().toString());
         ordersMap.put("address", ShipAddress.getText().toString());

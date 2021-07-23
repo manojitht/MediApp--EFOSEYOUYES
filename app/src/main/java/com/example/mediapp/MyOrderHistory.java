@@ -16,8 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mediapp.AdminFolder.AdminSoldProducts;
 import com.example.mediapp.AdminFolder.GenerateReport;
 import com.example.mediapp.GetData.GetData;
+import com.example.mediapp.Model.AdminOrders;
 import com.example.mediapp.Model.Cart;
 import com.example.mediapp.Model.CustomerOrder;
 import com.example.mediapp.ViewHolder.CartViewHolder;
@@ -42,6 +44,7 @@ public class MyOrderHistory extends AppCompatActivity {
     private TextView validatorText;
     private RecyclerView.LayoutManager layoutManager;
     DatabaseReference updateDeliver, updateDeliverOnSalesData;
+    private String username = GetData.superOnlineUsers.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +61,41 @@ public class MyOrderHistory extends AppCompatActivity {
         validatorImage.setVisibility(View.GONE);
         validatorText.setVisibility(View.GONE);
 
-        DatabaseReference accessForOrdersHistory = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders");
-        accessForOrdersHistory.addValueEventListener(new ValueEventListener() {
+//        DatabaseReference accessForOrdersHistory = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders");
+//        accessForOrdersHistory.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (!dataSnapshot.exists()){
+//
+//                }
+//                else {
+//                    onStart();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Sales Data");
+
+        FirebaseRecyclerOptions<CustomerOrder> options = new FirebaseRecyclerOptions.Builder<CustomerOrder>().setQuery(ordersRef.orderByChild("username").startAt(username).endAt(username), CustomerOrder.class).build();
+        ordersRef.orderByChild("username").startAt(username).endAt(username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
                     validatorImage.setVisibility(View.VISIBLE);
                     validatorText.setVisibility(View.VISIBLE);
                     validatorText.setText("No orders history found!");
-                }
-                else {
-                    onStart();
+                }else {
+
                 }
             }
 
@@ -77,15 +104,6 @@ public class MyOrderHistory extends AppCompatActivity {
 
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference();
-        FirebaseRecyclerOptions<CustomerOrder> options = new FirebaseRecyclerOptions.Builder<CustomerOrder>().setQuery(cartListRef.child("Users")
-                .child(GetData.superOnlineUsers.getName()).child("orders"), CustomerOrder.class).build();
 
         FirebaseRecyclerAdapter<CustomerOrder, MyOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<CustomerOrder, MyOrdersViewHolder>(options) {
             @Override
@@ -101,96 +119,11 @@ public class MyOrderHistory extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         String getKeyId = model.getOrderId();
-                        Intent intent = new Intent(getApplicationContext(), ShippedOrderProducts.class);
-                        intent.putExtra("getKey", getKeyId);
+                        Intent intent = new Intent(getApplicationContext(), AdminSoldProducts.class);
+                        intent.putExtra("uid", getKeyId);
                         startActivity(intent);
                     }
                 });
-
-                DatabaseReference verifyDelivered = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders").child(model.getOrderId()).child("status");
-                verifyDelivered.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (Objects.equals(dataSnapshot.getValue(), "Delivered")){
-                            holder.setDeliver.setVisibility(View.GONE);
-                            holder.txtRemoveOrder.setVisibility(View.VISIBLE);
-                            holder.txtRemoveOrder.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    CharSequence options[] = new CharSequence[]{
-                                            "Yes, Remove",
-                                            "Cancel"
-                                    };
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(MyOrderHistory.this);
-                                    builder.setTitle("Do you want to remove this order?");
-
-                                    builder.setItems(options, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            if (i == 0){
-                                                DatabaseReference removeOrder = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders");
-                                                removeOrder.child(model.getOrderId()).removeValue();
-                                            }
-                                        }
-                                    });
-                                    builder.show();
-                                }
-                            });
-                        }
-                        else if (Objects.equals(dataSnapshot.getValue(), "Shipped")){
-                            holder.txtRemoveOrder.setVisibility(View.GONE);
-                            holder.setDeliver.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    CharSequence options[] = new CharSequence[]{
-                                            "Yes, I received.",
-                                            "Not received yet."
-                                    };
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(MyOrderHistory.this);
-                                    builder.setTitle("Did you receive this order?");
-
-                                    builder.setItems(options, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            if (i == 0){
-                                                updateDeliver = FirebaseDatabase.getInstance().getReference().child("Users").child(GetData.superOnlineUsers.getName()).child("orders").child(model.getOrderId()).child("status");
-                                                updateDeliverOnSalesData = FirebaseDatabase.getInstance().getReference().child("Sales Data").child(model.getOrderId()).child("status");
-                                                updateDeliver.setValue("Delivered");
-//                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                                    @Override
-//                                                    public void onComplete(@NonNull Task<Void> task) {
-//                                                        updateDeliverOnSalesData.addValueEventListener(new ValueEventListener() {
-//                                                            @Override
-//                                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                                                if (dataSnapshot.exists()){
-//                                                                    updateDeliverOnSalesData.setValue("Delivered");
-//                                                                }
-//                                                            }
-//
-//                                                            @Override
-//                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                                            }
-//                                                        });
-//
-//                                                    }
-//                                                });
-                                            }
-                                        }
-                                    });
-                                    builder.show();
-                                }
-                            });
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-
             }
 
             @NonNull

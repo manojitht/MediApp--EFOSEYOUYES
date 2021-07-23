@@ -15,7 +15,7 @@
         android:layout_marginEnd="15dp"
         android:gravity="left"
         android:text="You can view the status on the Orders history option. ThankYou!"
-        android:textColor="#4F8E19"
+        android:textColor="#5CAA19"
         android:textSize="16dp"
         app:fontFamily="@font/nunito_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintVertical_bias="0.732" />
 
     <TextView
         android:id="@+id/message_order_shipped"
@@ -37,9 +37,10 @@
         app:fontFamily="@font/nunito_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintVertical_bias="0.046" />
 
     <Button
         android:id="@+id/go_for_shopping"
@@ -57,18 +58,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.883" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_order_shipped_success_message"
-        android:layout_width="413dp"
-        android:layout_height="210dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="425dp"
+        android:layout_height="319dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.374"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="order_deliveriying.json"
-        app:lottie_loop="true"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.359"
+        app:srcCompat="@drawable/order_receive" />
+
+    <!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/lottie_order_shipped_success_message"-->
+<!--        android:layout_width="413dp"-->
+<!--        android:layout_height="210dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.374"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_fileName="order_deliveriying.json"-->
+<!--        app:lottie_loop="true"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

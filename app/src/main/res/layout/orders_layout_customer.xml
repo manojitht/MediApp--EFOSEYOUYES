@@ -21,7 +21,7 @@
             android:id="@+id/show_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/order_number"
+            android:layout_below="@id/order_reference_number"
             android:layout_marginStart="1dp"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="-19dp"
@@ -29,7 +29,7 @@
             android:layout_toEndOf="@+id/order_number"
             android:fontFamily="@font/nunito_extrabold"
             android:gravity="right"
-            android:text="Status: Processed"
+            android:text="Status: Processing"
             android:textColor="#131313"
             android:textSize="12dp"
             android:textStyle="bold" />
@@ -42,10 +42,10 @@
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/cart_items_product_price"
+            android:id="@+id/order_total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/order_number"
+            android:layout_below="@id/order_reference_number"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="20dp"
@@ -58,23 +58,43 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/billing_address"
+            android:id="@+id/order_address_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cart_items_product_price"
+            android:layout_below="@id/order_total_price"
             android:layout_marginStart="15dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/nunito_semibold"
-            android:gravity="center"
+            android:gravity="left"
             android:text="Billing address: No. 647, 1/1, Aluthmawatha road, Mattakulliya, Colombo - 001500."
-            android:textColor="#636262"
+            android:textColor="#323131"
             android:textSize="12dp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/order_process_image"
+            android:layout_width="wrap_content"
+            android:layout_height="81dp"
+            android:layout_below="@id/order_address_city"
+            app:srcCompat="@drawable/order_process" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:max="100"
+            android:progress="50"
+            android:progressTint="#9876E8"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_below="@id/order_process_image" />
+
+
         <TextView
-            android:id="@+id/order_number"
+            android:id="@+id/order_reference_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/cart_items_productimage"
@@ -88,10 +108,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/date_time"
+            android:id="@+id/order_date_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/order_number"
+            android:layout_below="@id/order_reference_number"
             android:layout_marginStart="15dp"
             android:layout_marginTop="1dp"
             android:fontFamily="@font/nunito_extrabold"
@@ -102,19 +122,52 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/show_products_items"
-            android:layout_width="match_parent"
+            android:id="@+id/cancel_order"
+            android:layout_width="wrap_content"
             android:layout_height="34dp"
-            android:layout_below="@id/billing_address"
-            android:layout_marginStart="15dp"
+            android:layout_below="@id/progressBar"
+            android:layout_marginStart="150dp"
             android:layout_marginEnd="15dp"
-            android:text="View order products"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/view_order"
+            android:background="@drawable/button_cart_delete_item"
+            android:text="Cancel Order"
+            android:textAllCaps="false"
+            android:textColor="#AE0707"
+            android:textSize="12dp" />
+
+
+        <Button
+            android:id="@+id/view_order"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_below="@id/progressBar"
+            android:layout_marginStart="15dp"
+            android:text="View Products"
             android:textColor="#083C8C"
             android:textSize="12dp"
             android:textAllCaps="false"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/button_cart_edit_item" />
+
+        <TextView
+            android:id="@+id/pay_by_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_order"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text="Paying cash on delivery..."
+            android:textColor="#191919"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 

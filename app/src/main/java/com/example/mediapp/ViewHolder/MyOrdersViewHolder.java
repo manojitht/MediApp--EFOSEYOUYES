@@ -25,8 +25,6 @@ public class MyOrdersViewHolder extends RecyclerView.ViewHolder implements View.
         txtAddress = itemView.findViewById(R.id.billing_address);
         txtPrice = itemView.findViewById(R.id.cart_items_product_price);
         showItems = itemView.findViewById(R.id.show_products_items);
-        setDeliver = itemView.findViewById(R.id.order_delivered);
-        txtRemoveOrder = itemView.findViewById(R.id.remove_order_from_list);
     }
 
     @Override

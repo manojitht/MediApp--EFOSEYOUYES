@@ -197,6 +197,20 @@
             android:textAllCaps="false"
             android:textColor="#F3F0F0" />
 
+        <TextView
+            android:id="@+id/username_of_customer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/show_all_products"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#D3D3D3"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 

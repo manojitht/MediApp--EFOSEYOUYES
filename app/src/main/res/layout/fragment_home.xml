@@ -40,6 +40,7 @@
             android:background="#BA99E3"
             android:fontFamily="@font/nunito_extrabold"
             android:text="Product Name"
+            android:padding= "5dp"
             android:textAlignment="center"
             android:textColor="#F1EEEE"
             android:textSize="16dp"

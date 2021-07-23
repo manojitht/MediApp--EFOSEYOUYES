@@ -48,7 +48,7 @@ public class ShippedOrderProducts extends AppCompatActivity {
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference();
         Intent intent = getIntent();
         String getKeyId = intent.getStringExtra("getKey");
-        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>().setQuery(cartListRef.child("Users").child(GetData.superOnlineUsers.getName()).child("orders").child(getKeyId).child("sold items"), Cart.class).build();
+        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>().setQuery(cartListRef.child("Orders").child(getKeyId).child("cart"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
