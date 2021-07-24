@@ -90,11 +90,11 @@ public class MyOrderHistory extends AppCompatActivity {
         ordersRef.orderByChild("username").startAt(username).endAt(username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     validatorImage.setVisibility(View.VISIBLE);
                     validatorText.setVisibility(View.VISIBLE);
                     validatorText.setText("No orders history found!");
-                }else {
+                } else {
 
                 }
             }
@@ -110,7 +110,7 @@ public class MyOrderHistory extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull final MyOrdersViewHolder holder, int position, @NonNull final CustomerOrder model) {
                 holder.txtOrderId.setText("#" + model.getOrderId());
                 holder.txtStatus.setText("Status: " + model.getStatus());
-                holder.txtDate.setText("Placed on "+ model.getDate() + ", " + model.getTime());
+                holder.txtDate.setText("Placed on " + model.getDate() + ", " + model.getTime());
                 holder.txtAddress.setText("Address: " + model.getAddress());
                 int formattedPrice = Integer.parseInt(model.getTotalAmount());
                 String orderHistoryPrice = NumberFormat.getInstance().format(formattedPrice);

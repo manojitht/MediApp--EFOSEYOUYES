@@ -41,7 +41,7 @@ public class AdminProductActivity extends AppCompatActivity {
     private Button EnterProduct;
     private static int TakeGallery = 1;
     private Uri imageUri;
-    private String  productRandomKey, downloadUrl;
+    private String productRandomKey, downloadUrl;
     private StorageReference ProductImageRef;
     private DatabaseReference ProductsRef;
     private ProgressDialog loadingBar;
@@ -93,19 +93,15 @@ public class AdminProductActivity extends AppCompatActivity {
         Price = ProductPrice.getText().toString();
         Description = ProductDescription.getText().toString();
 
-        if (imageUri == null){
+        if (imageUri == null) {
             Toast.makeText(this, "Image is not selected!", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(Description)){
+        } else if (TextUtils.isEmpty(Description)) {
             Toast.makeText(this, "Please describe about the product...", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(Price)){
+        } else if (TextUtils.isEmpty(Price)) {
             Toast.makeText(this, "You've missed to enter the price!", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(ProductName)){
+        } else if (TextUtils.isEmpty(ProductName)) {
             Toast.makeText(this, "Write the Product Name..", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             SaveProductDetails();
         }
 
@@ -147,7 +143,7 @@ public class AdminProductActivity extends AppCompatActivity {
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
                     public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if (!task.isSuccessful()){
+                        if (!task.isSuccessful()) {
                             throw task.getException();
                         }
 
@@ -157,7 +153,7 @@ public class AdminProductActivity extends AppCompatActivity {
                 }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
                             downloadUrl = task.getResult().toString();
 
@@ -187,15 +183,14 @@ public class AdminProductActivity extends AppCompatActivity {
         ProductsRef.child(productRandomKey).updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
 
                     Intent intent = new Intent(AdminProductActivity.this, AdminCategoryActivity.class);
                     startActivity(intent);
 
                     loadingBar.dismiss();
                     Toast.makeText(AdminProductActivity.this, "Product added successfully!", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     loadingBar.dismiss();
                     String message = task.getException().toString();
                     Toast.makeText(AdminProductActivity.this, "Error found! " + message, Toast.LENGTH_SHORT).show();
@@ -208,7 +203,7 @@ public class AdminProductActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==TakeGallery && resultCode==RESULT_OK && data!= null){
+        if (requestCode == TakeGallery && resultCode == RESULT_OK && data != null) {
             imageUri = data.getData();
             AddNewProduct.setImageURI(imageUri);
         }

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="#F6F7F8"
+    app:cardElevation="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/buttonwhite">
+
+        <TextView
+            android:id="@+id/phone_number_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_id"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="-19dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/order_number"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="right"
+            android:text="Contact: 0775214862"
+            android:textColor="#131313"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/cart_items_productimage"
+            android:layout_width="162dp"
+            android:layout_height="154dp"
+            android:layout_marginTop="0dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/order_cart_items_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_id"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="center"
+            android:text="Mr. Manojith Thiyageswarakumar"
+            android:textColor="#131313"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_address_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_cart_items_username"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text="Billing address: No. 647, 1/1, Aluthmawatha road, Mattakulliya, Colombo - 001500."
+            android:textColor="#131313"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/approved_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_address_city"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="center"
+            android:text="Approved by: James andre"
+            android:textColor="#131313"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/shipping_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="center"
+            android:text="Order processed and completed !"
+            android:textColor="#2F8833"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_below="@id/approved_admin" />
+
+
+        <TextView
+            android:id="@+id/order_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cart_items_productimage"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-142dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="REF4512365874589652"
+            android:textColor="#4E0D9E"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_id"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="date and time placed"
+            android:textColor="#414042"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_id"
+            android:layout_toEndOf="@+id/order_date"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="left"
+            android:text="date and time placed"
+            android:textColor="#414042"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/order_total_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shipping_status"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Cost of price: 5,000 LKR"
+            android:fontFamily="@font/nunito_extrabold"
+            android:gravity="center"
+            android:textColor="#131313"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/show_all_products"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_below="@id/order_total_price"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="View order"
+            android:textColor="#5A3BA3"
+            android:textSize="16dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_order_admin" />
+
+        <TextView
+            android:id="@+id/username_of_customer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/show_all_products"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#D3D3D3"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

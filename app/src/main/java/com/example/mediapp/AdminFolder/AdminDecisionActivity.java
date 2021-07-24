@@ -27,7 +27,7 @@ import io.paperdb.Paper;
 
 public class AdminDecisionActivity extends AppCompatActivity {
 
-    private Button CheckOrders, AdminLogoff,MaintainItems, AddProducts, ShowGraph;
+    private Button CheckOrders, AdminLogoff, MaintainItems, AddProducts, ShowGraph;
     private TextView WelcomeMessage;
     private DatabaseReference LastLogin;
 
@@ -54,11 +54,10 @@ public class AdminDecisionActivity extends AppCompatActivity {
         LastLoginMessage.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("lastLogin").exists()){
+                if (dataSnapshot.child("lastLogin").exists()) {
                     String LoginAtLast = dataSnapshot.child("lastLogin").getValue().toString();
                     WelcomeMessage.setText("Hi " + admin + ", Last logout at " + LoginAtLast);
-                }
-                else {
+                } else {
                     WelcomeMessage.setText("Hi " + admin + ", Welcome to Mediapp as Admin");
                 }
 

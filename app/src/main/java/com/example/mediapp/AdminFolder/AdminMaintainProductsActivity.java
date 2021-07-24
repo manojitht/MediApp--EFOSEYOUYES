@@ -93,16 +93,16 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         final String mName = mtnName.getText().toString();
         String mPrice = mtnPrice.getText().toString();
         String mDescription = mtnDescription.getText().toString();
-        pointedButton  = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
+        pointedButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
         String getStockStatus = pointedButton.getText().toString();
 
-        if (mName.equals("")){
+        if (mName.equals("")) {
             Toast.makeText(AdminMaintainProductsActivity.this, "Enter the product name..", Toast.LENGTH_SHORT).show();
-        }else if (mPrice.equals("")){
+        } else if (mPrice.equals("")) {
             Toast.makeText(AdminMaintainProductsActivity.this, "Enter the price ..", Toast.LENGTH_SHORT).show();
-        }else if (mDescription.equals("")){
+        } else if (mDescription.equals("")) {
             Toast.makeText(AdminMaintainProductsActivity.this, "Enter the description ..", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             HashMap<String, Object> productMap = new HashMap<>();
             productMap.put("pid", productId);
             productMap.put("description", mDescription);
@@ -114,7 +114,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Intent intent = new Intent(getApplicationContext(), ProductMessage.class);
                         intent.putExtra("ProductName", mName);
                         startActivity(intent);
@@ -131,7 +131,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     String mName = dataSnapshot.child("productName").getValue().toString();
                     String mPrice = dataSnapshot.child("price").getValue().toString();
                     String mDescription = dataSnapshot.child("description").getValue().toString();
@@ -142,7 +142,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                     mtnPrice.setText(mPrice);
                     mtnDescription.setText(mDescription);
                     Picasso.get().load(mImage).into(mtnImageView);
-                    lastUpdatedBy.setText("Last updated by: " +  lastlyUpdatedBy);
+                    lastUpdatedBy.setText("Last updated by: " + lastlyUpdatedBy);
 
                 }
             }

@@ -107,13 +107,13 @@ public class CartActivity extends AppCompatActivity {
                 bottomSheetView.findViewById(R.id.checkout_proceed).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (overTotalPrice == 0){
+                        if (overTotalPrice == 0) {
                             textMessage.setText("Cart is empty can't go further..");
                             front_image1.setVisibility(View.VISIBLE);
                             textMessage.setTextColor(Color.DKGRAY);
                             textMessage.setVisibility(View.VISIBLE);
                             Toast.makeText(CartActivity.this, "Your cart is empty, please add some products!", Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
                             Intent intent = new Intent(CartActivity.this, ConfirmOrderActivity.class);
                             intent.putExtra("Total Price", String.valueOf(formattedPrice));
                             startActivity(intent);
@@ -141,7 +141,7 @@ public class CartActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
-                holder.txtProductQuantity.setText("Quantity "+model.getQuantity() + " Pcs");
+                holder.txtProductQuantity.setText("Quantity " + model.getQuantity() + " Pcs");
                 holder.txtProductCategory.setText("Category: " + model.getCategory());
                 holder.txtProductPrice.setText("Rs. " + model.getPrice() + " lkr");
                 holder.txtProductname.setText(model.getPname());
@@ -165,7 +165,7 @@ public class CartActivity extends AppCompatActivity {
                         cartListRef.child("User View").child(GetData.superOnlineUsers.getName()).child("Products").child(model.getPid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     cartListRef.child("Admin View").child(GetData.superOnlineUsers.getName()).child("Products").child(model.getPid()).removeValue();
                                     final DatabaseReference soldProducts = FirebaseDatabase.getInstance().getReference().child("Sold products"); // declaring the child of Sold products
                                     soldProducts.child("customers").child(GetData.superOnlineUsers.getName()).child("products").child(model.getPid()).removeValue();// removes product from sold products
@@ -193,30 +193,28 @@ public class CartActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
-    private void checkOrder(){
+    private void checkOrder() {
         DatabaseReference ordersRef;
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
 
         ordersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     String shippingState = dataSnapshot.child("status").getValue().toString();
                     DatabaseReference userStatus = FirebaseDatabase.getInstance().getReference().child("User View");
                     String userName = dataSnapshot.child("Cname").getValue().toString();
 
-                    if (shippingState.equals("Shipped")){
+                    if (shippingState.equals("Shipped")) {
                         recyclerView.setVisibility(View.GONE);
                         textMessage.setVisibility(View.VISIBLE);
                         textMessage.setText("We received your order successfully. Please wait until we process the order to your home address Thank you!");
                         front_image1.setVisibility(View.VISIBLE);
-                    }
-                    else if (shippingState.equals("Not Shipped")){
+                    } else if (shippingState.equals("Not Shipped")) {
                         recyclerView.setVisibility(View.GONE);
                         textMessage.setVisibility(View.VISIBLE);
                         front_image1.setVisibility(View.VISIBLE);
-                    }
-                    else {
+                    } else {
                         recyclerView.setVisibility(View.GONE);
                         textMessage.setVisibility(View.VISIBLE);
                         front_image1.setVisibility(View.VISIBLE);

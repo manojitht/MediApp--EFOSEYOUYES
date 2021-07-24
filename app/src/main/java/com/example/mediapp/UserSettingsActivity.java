@@ -50,7 +50,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     private StorageReference storageProfileImageRef;
     private StorageTask uploadTask;
     private String checker = "";
-//    private static int TakeGallery = 1;
+    //    private static int TakeGallery = 1;
     public CustomAllSetDialog AllSetTick = new CustomAllSetDialog(UserSettingsActivity.this);
 
     @Override
@@ -87,17 +87,17 @@ public class UserSettingsActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(userName.getText().toString())){
+                if (TextUtils.isEmpty(userName.getText().toString())) {
                     Toast.makeText(UserSettingsActivity.this, "Username is empty..", Toast.LENGTH_SHORT).show();
-                }else if (TextUtils.isEmpty(eMail.getText().toString())){
+                } else if (TextUtils.isEmpty(eMail.getText().toString())) {
                     Toast.makeText(UserSettingsActivity.this, "Email is empty..", Toast.LENGTH_SHORT).show();
-                }else if (TextUtils.isEmpty(homeAddress.getText().toString())){
+                } else if (TextUtils.isEmpty(homeAddress.getText().toString())) {
                     Toast.makeText(UserSettingsActivity.this, "Address is empty..", Toast.LENGTH_SHORT).show();
-                }else if (TextUtils.isEmpty(phoneNumber.getText().toString())){
+                } else if (TextUtils.isEmpty(phoneNumber.getText().toString())) {
                     Toast.makeText(UserSettingsActivity.this, "Phone number is empty..", Toast.LENGTH_SHORT).show();
-                }else if(checker.equals("clicked")){
+                } else if (checker.equals("clicked")) {
                     uploadImage();
-                }else {
+                } else {
                     AllSetTick.startAllSetDialog();
                     updateDataOfUser();
                 }
@@ -124,7 +124,7 @@ public class UserSettingsActivity extends AppCompatActivity {
                 imageIntent.setType("image/*");
 //                startActivityForResult(imageIntent, TakeGallery);
 
-                CropImage.activity(imageUri).setAspectRatio(1,1)
+                CropImage.activity(imageUri).setAspectRatio(1, 1)
                         .start(UserSettingsActivity.this);
             }
         });
@@ -147,19 +147,18 @@ public class UserSettingsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode== CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode==RESULT_OK && data!=null){
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
 
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             imageUri = result.getUri();
 
             settingsProfileImage.setImageURI(imageUri);
-        }else {
-            Toast.makeText(this,"Try Again...", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Try Again...", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(UserSettingsActivity.this, UserSettingsActivity.class));
             finish();
         }
     }
-
 
 
     private void uploadImage() {
@@ -169,7 +168,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
-        if (imageUri != null){
+        if (imageUri != null) {
             final StorageReference fileRef = storageProfileImageRef.child(GetData.superOnlineUsers.getName() + ".jpg");
 
             uploadTask = fileRef.putFile(imageUri);
@@ -177,7 +176,7 @@ public class UserSettingsActivity extends AppCompatActivity {
             uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
-                    if (!task.isSuccessful()){
+                    if (!task.isSuccessful()) {
                         throw task.getException();
                     }
                     return fileRef.getDownloadUrl();
@@ -185,7 +184,7 @@ public class UserSettingsActivity extends AppCompatActivity {
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Uri downloadUrl = task.getResult();
                         pictureUrl = downloadUrl.toString();
 
@@ -201,17 +200,16 @@ public class UserSettingsActivity extends AppCompatActivity {
 
 
                         //startActivity(new Intent(UserSettingsActivity.this, UserSettingsActivity.class));
-                        Toast.makeText(UserSettingsActivity.this, "Updated successfully !",  Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserSettingsActivity.this, "Updated successfully !", Toast.LENGTH_SHORT).show();
                         finish();
-                    }else {
+                    } else {
                         progressDialog.dismiss();
-                        Toast.makeText(UserSettingsActivity.this, "SomeThing Wrong Check Again !",  Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserSettingsActivity.this, "SomeThing Wrong Check Again !", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-        }
-        else {
-            Toast.makeText(this, "Sorry! Image isn't selected..",  Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Sorry! Image isn't selected..", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -222,15 +220,15 @@ public class UserSettingsActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    if (dataSnapshot.child("name").exists()){
+                if (dataSnapshot.exists()) {
+                    if (dataSnapshot.child("name").exists()) {
                         String name = dataSnapshot.child("name").getValue().toString();
                         String email = dataSnapshot.child("email").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
-                        if (dataSnapshot.child("phone").exists()){
+                        if (dataSnapshot.child("phone").exists()) {
                             String phone = dataSnapshot.child("phone").getValue().toString();
                             phoneNumber.setText(phone);
-                        }else {
+                        } else {
                             phoneNumber.setText("");
                         }
                         Picasso.get().load(GetData.superOnlineUsers.getImage()).placeholder(R.drawable.undraw_male_avatar).into(settingsProfileImage); // This works on the real physical device

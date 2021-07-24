@@ -25,8 +25,7 @@ import java.util.Map;
 
 public class ReportDecision extends AppCompatActivity {
     private Button ShowSalesReport, PointOutGraph, SystemInfo;
-    private TextView getOne, getTwo, getThree, getFour, getFive, monthOne, antiAcidsForGastritis, ayurvedaProducts, babyCare, babyDiapers, beautyCare, bodyCare, foodAndBeverages, glucoseAndSpills, hairCare, houseHoldCleaners
-            , mask, medicalDevices, mensGrooming, mosquitoRepellents, nutrientAndSupplements, oralCare, orthopedicItems, painKiller, skinCare, thermometer, vaccine, wetWipes, woundCare;
+    private TextView getOne, getTwo, getThree, getFour, getFive, monthOne, antiAcidsForGastritis, ayurvedaProducts, babyCare, babyDiapers, beautyCare, bodyCare, foodAndBeverages, glucoseAndSpills, hairCare, houseHoldCleaners, mask, medicalDevices, mensGrooming, mosquitoRepellents, nutrientAndSupplements, oralCare, orthopedicItems, painKiller, skinCare, thermometer, vaccine, wetWipes, woundCare;
     DatabaseReference productManagerInfo, getSalesOfWeek;
     int totalNumberOfProducts = 0;
 
@@ -73,19 +72,16 @@ public class ReportDecision extends AppCompatActivity {
         productManagerInfo = FirebaseDatabase.getInstance().getReference().child("Products");
 
 
-
-
         getSalesOfWeek.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     getOne.setText(String.valueOf(0));
                     getTwo.setText(String.valueOf(0));
                     getThree.setText(String.valueOf(0));
                     getFour.setText(String.valueOf(0));
                     getFive.setText(String.valueOf(0));
-                }
-                else {
+                } else {
                     final String saveCurrentMonth, saveCurrentYear;
                     Calendar callForDate = Calendar.getInstance();
                     SimpleDateFormat currentMonth = new SimpleDateFormat("MMM");
@@ -93,23 +89,23 @@ public class ReportDecision extends AppCompatActivity {
                     saveCurrentMonth = currentMonth.format(callForDate.getTime());
                     saveCurrentYear = currentYear.format(callForDate.getTime());
 
-                    String firstFrom = saveCurrentMonth  + " 01, " + saveCurrentYear;
-                    String firstTo = saveCurrentMonth  + " 07, " + saveCurrentYear;
-                    String secondFrom = saveCurrentMonth  + " 08, " + saveCurrentYear;
-                    String secondTo = saveCurrentMonth  + " 14, " + saveCurrentYear;
-                    String thirdFrom = saveCurrentMonth  + " 15, " + saveCurrentYear;
-                    String thirdTo = saveCurrentMonth  + " 21, " + saveCurrentYear;
-                    String fourthFrom = saveCurrentMonth  + " 22, " + saveCurrentYear;
-                    String fourthTo = saveCurrentMonth  + " 28, " + saveCurrentYear;
-                    String fifthFrom = saveCurrentMonth  + " 29, " + saveCurrentYear;
-                    String fifthTo = saveCurrentMonth  + " 31, " + saveCurrentYear;
+                    String firstFrom = saveCurrentMonth + " 01, " + saveCurrentYear;
+                    String firstTo = saveCurrentMonth + " 07, " + saveCurrentYear;
+                    String secondFrom = saveCurrentMonth + " 08, " + saveCurrentYear;
+                    String secondTo = saveCurrentMonth + " 14, " + saveCurrentYear;
+                    String thirdFrom = saveCurrentMonth + " 15, " + saveCurrentYear;
+                    String thirdTo = saveCurrentMonth + " 21, " + saveCurrentYear;
+                    String fourthFrom = saveCurrentMonth + " 22, " + saveCurrentYear;
+                    String fourthTo = saveCurrentMonth + " 28, " + saveCurrentYear;
+                    String fifthFrom = saveCurrentMonth + " 29, " + saveCurrentYear;
+                    String fifthTo = saveCurrentMonth + " 31, " + saveCurrentYear;
                     monthOne.setText(saveCurrentMonth);
                     getSalesOfWeek.orderByChild("date").startAt(firstFrom).endAt(firstTo).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (!dataSnapshot.exists()){
+                            if (!dataSnapshot.exists()) {
                                 getOne.setText(String.valueOf(0));
-                            }else {
+                            } else {
                                 int sum = 0;
 
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -131,9 +127,9 @@ public class ReportDecision extends AppCompatActivity {
                     getSalesOfWeek.orderByChild("date").startAt(secondFrom).endAt(secondTo).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (!dataSnapshot.exists()){
+                            if (!dataSnapshot.exists()) {
                                 getTwo.setText(String.valueOf(0));
-                            }else {
+                            } else {
                                 int sum = 0;
 
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -155,9 +151,9 @@ public class ReportDecision extends AppCompatActivity {
                     getSalesOfWeek.orderByChild("date").startAt(thirdFrom).endAt(thirdTo).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (!dataSnapshot.exists()){
+                            if (!dataSnapshot.exists()) {
                                 getThree.setText(String.valueOf(0));
-                            }else {
+                            } else {
                                 int sum = 0;
 
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -179,9 +175,9 @@ public class ReportDecision extends AppCompatActivity {
                     getSalesOfWeek.orderByChild("date").startAt(fourthFrom).endAt(fourthTo).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (!dataSnapshot.exists()){
+                            if (!dataSnapshot.exists()) {
                                 getFour.setText(String.valueOf(0));
-                            }else {
+                            } else {
                                 int sum = 0;
 
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -203,9 +199,9 @@ public class ReportDecision extends AppCompatActivity {
                     getSalesOfWeek.orderByChild("date").startAt(fifthFrom).endAt(fifthTo).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (!dataSnapshot.exists()){
+                            if (!dataSnapshot.exists()) {
                                 getFive.setText(String.valueOf(0));
-                            }else {
+                            } else {
                                 int sum = 0;
 
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -530,8 +526,6 @@ public class ReportDecision extends AppCompatActivity {
 
             }
         });
-
-
 
 
         ShowSalesReport.setOnClickListener(new View.OnClickListener() {

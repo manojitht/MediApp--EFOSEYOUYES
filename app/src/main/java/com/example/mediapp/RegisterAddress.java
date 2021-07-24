@@ -48,37 +48,32 @@ public class RegisterAddress extends AppCompatActivity {
         Button registerAddress = findViewById(R.id.submit_address);
 
 
-        message.setText("Hello " + GetData.superOnlineUsers.getName() +  ", please register your address for the future order deliveries!");
+        message.setText("Hello " + GetData.superOnlineUsers.getName() + ", please register your address for the future order deliveries!");
 
 
         registerAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-        if (TextUtils.isEmpty((CharSequence) addressOne.getText().toString())){
-            Toast.makeText(RegisterAddress.this, "1st field cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty((CharSequence) addressTwo.getText().toString())){
-            Toast.makeText(RegisterAddress.this, "2nd field cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty((CharSequence) addressThree.getText().toString())){
-            Toast.makeText(RegisterAddress.this, "3rd field cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty((CharSequence) addressFour.getText().toString())){
-            Toast.makeText(RegisterAddress.this, "District cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty((CharSequence) addressFive.getText().toString())){
-            Toast.makeText(RegisterAddress.this, "Postal cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            DatabaseReference UserAddress = FirebaseDatabase.getInstance().getReference("Users").child(GetData.superOnlineUsers.getName());
-            UserAddress.child("address").setValue(addressOne.getText().toString() + ", " + addressTwo.getText().toString() + ", " + addressThree.getText().toString() + ", " + addressFour.getText().toString() + ", " + addressFive.getText().toString() + ".");
-            UserAddress.child("customerStatus").setValue("existing");
-            Toast.makeText(RegisterAddress.this, "Address entered successfully!",  Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(RegisterAddress.this, MainHomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
+                if (TextUtils.isEmpty((CharSequence) addressOne.getText().toString())) {
+                    Toast.makeText(RegisterAddress.this, "1st field cannot be empty", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty((CharSequence) addressTwo.getText().toString())) {
+                    Toast.makeText(RegisterAddress.this, "2nd field cannot be empty", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty((CharSequence) addressThree.getText().toString())) {
+                    Toast.makeText(RegisterAddress.this, "3rd field cannot be empty", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty((CharSequence) addressFour.getText().toString())) {
+                    Toast.makeText(RegisterAddress.this, "District cannot be empty", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty((CharSequence) addressFive.getText().toString())) {
+                    Toast.makeText(RegisterAddress.this, "Postal cannot be empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    DatabaseReference UserAddress = FirebaseDatabase.getInstance().getReference("Users").child(GetData.superOnlineUsers.getName());
+                    UserAddress.child("address").setValue(addressOne.getText().toString() + ", " + addressTwo.getText().toString() + ", " + addressThree.getText().toString() + ", " + addressFour.getText().toString() + ", " + addressFive.getText().toString() + ".");
+                    UserAddress.child("customerStatus").setValue("existing");
+                    Toast.makeText(RegisterAddress.this, "Address entered successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterAddress.this, MainHomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

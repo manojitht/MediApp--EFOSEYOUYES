@@ -15,12 +15,21 @@
         android:layout_alignParentTop="true"
         >
 
+        <ImageView
+            android:id="@+id/category_title_image"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/cart_image_title" />
+
         <TextView
             android:id="@+id/cart_activity_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
+            android:layout_toRightOf="@id/category_title_image"
             android:hint="My Cart"
             android:padding="5dp"
             android:textColorHint="#0B0B0B"
@@ -34,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="135dp"
+            android:layout_marginLeft="120dp"
             android:layout_marginTop="50dp"
             android:layout_toRightOf="@id/cart_activity_title"
             android:text="Cart items: 0"
@@ -46,7 +55,7 @@
             android:id="@+id/cart_button_image_home"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="145dp"
+            android:layout_marginLeft="135dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/cart_activity_title"

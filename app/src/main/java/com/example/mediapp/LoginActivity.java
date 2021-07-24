@@ -118,13 +118,11 @@ public class LoginActivity extends AppCompatActivity {
         String UserNameKey = Paper.book().read(GetData.UserNamekey);
         String UserPasswordKey = Paper.book().read(GetData.UserPasswordKey);
 
-        if (!notConnectedToInternet(this)){
+        if (!notConnectedToInternet(this)) {
             showCustomDialog();
-        }
-        else
-        {
-            if (UserNameKey != "" && UserPasswordKey != ""){
-                if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)){
+        } else {
+            if (UserNameKey != "" && UserPasswordKey != "") {
+                if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)) {
                     GiveAccess(UserNameKey, UserPasswordKey);
 
                     loadingBar.setTitle("Opening!");
@@ -138,19 +136,17 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginUser() {
 
-        if (!notConnectedToInternet(this)){
+        if (!notConnectedToInternet(this)) {
             showCustomDialog();
-        }
-        else {
+        } else {
             String Name = InputLoginName.getText().toString();
             String Password = InputLoginPassword.getText().toString();
 
             if (TextUtils.isEmpty((CharSequence) Name)) {
                 Toast.makeText(this, "username cannot be empty", Toast.LENGTH_SHORT).show();
-            }
-            else if (TextUtils.isEmpty((CharSequence) Password)){
+            } else if (TextUtils.isEmpty((CharSequence) Password)) {
                 Toast.makeText(this, "password cannot be empty", Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 loadingDialog.startLoadingDialog();
                 AllowUserToLoginAccount(Name, Password);
             }
@@ -159,10 +155,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
     private void AllowUserToLoginAccount(final String Name, final String Password) {
 
-        if (checkboxRemember.isChecked()){
+        if (checkboxRemember.isChecked()) {
             Paper.book().write(GetData.UserNamekey, Name);
             Paper.book().write(GetData.UserPasswordKey, Password);
         }
@@ -173,12 +168,12 @@ public class LoginActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child(DatabaseName).child(Name).exists()){
+                if (snapshot.child(DatabaseName).child(Name).exists()) {
                     final Users usersData = snapshot.child(DatabaseName).child(Name).getValue(Users.class);
 
-                    if (usersData.getName().equals(Name)){
-                        if (usersData.getPassword().equals(Password)){
-                            if (DatabaseName.equals("Admins")){
+                    if (usersData.getName().equals(Name)) {
+                        if (usersData.getPassword().equals(Password)) {
+                            if (DatabaseName.equals("Admins")) {
 
                                 DatabaseReference GetAddress = FirebaseDatabase.getInstance().getReference().child("Admins").child(Name);
                                 GetAddress.addValueEventListener(new ValueEventListener() {
@@ -199,14 +194,13 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
 
-                            }
-                            else if (DatabaseName.equals("Users")){
+                            } else if (DatabaseName.equals("Users")) {
                                 DatabaseReference GetAddress = FirebaseDatabase.getInstance().getReference().child("Users").child(Name);
                                 GetAddress.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "existing")){
-                                            if (dataSnapshot.child("message").exists()){
+                                        if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "existing")) {
+                                            if (dataSnapshot.child("message").exists()) {
                                                 loadingDialog.dismissDialog();
                                                 InputLoginName.setText("");
                                                 InputLoginPassword.setText("");
@@ -214,8 +208,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 GetData.superOnlineUsers = usersData;
                                                 startActivity(intent);
                                                 finish();
-                                            }
-                                            else {
+                                            } else {
                                                 loadingDialog.dismissDialog();
                                                 InputLoginName.setText("");
                                                 InputLoginPassword.setText("");
@@ -224,8 +217,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 startActivity(intent);
                                                 finish();
                                             }
-                                        }
-                                        else if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "new")){
+                                        } else if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "new")) {
                                             Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
                                             loadingDialog.dismissDialog();
                                             InputLoginName.setText("");
@@ -243,16 +235,15 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                             }
-                        }else {
-                            Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Oops! " + Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
                             loadingDialog.dismissDialog();
                             InputLoginName.setText("");
                             InputLoginPassword.setText("");
                         }
                     }
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Your name doesn't exists.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Oops! " + Name + ", Your name doesn't exists.", Toast.LENGTH_SHORT).show();
                     loadingDialog.dismissDialog();
                     InputLoginName.setText("");
                     InputLoginPassword.setText("");
@@ -276,22 +267,21 @@ public class LoginActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child("Users").child(Name).exists()){
+                if (snapshot.child("Users").child(Name).exists()) {
                     final Users usersData = snapshot.child("Users").child(Name).getValue(Users.class);
 
-                    if (usersData.getName().equals(Name)){
-                        if (usersData.getPassword().equals(Password)){
+                    if (usersData.getName().equals(Name)) {
+                        if (usersData.getPassword().equals(Password)) {
                             checkMessage.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if (dataSnapshot.child(Name).child("message").exists()){
+                                    if (dataSnapshot.child(Name).child("message").exists()) {
                                         loadingBar.dismiss();
                                         Intent intent = new Intent(LoginActivity.this, OrderShippedMessage.class);
                                         GetData.superOnlineUsers = usersData;
                                         startActivity(intent);
                                         finish();
-                                    }
-                                    else {
+                                    } else {
                                         loadingBar.dismiss();
                                         Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
                                         GetData.superOnlineUsers = usersData;
@@ -307,14 +297,13 @@ public class LoginActivity extends AppCompatActivity {
                             });
 
 
-                        }else {
-                            Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Oops! " + Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                         }
                     }
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Oops! "+ Name + ", Your name doesn't exists.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Oops! " + Name + ", Your name doesn't exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }
             }
@@ -332,10 +321,9 @@ public class LoginActivity extends AppCompatActivity {
         NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileNetwork = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if (wifi != null && wifi.isConnected() || (mobileNetwork != null && mobileNetwork.isConnected())){
+        if (wifi != null && wifi.isConnected() || (mobileNetwork != null && mobileNetwork.isConnected())) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

@@ -34,6 +34,7 @@ public class AdminShopManager extends AppCompatActivity {
     int products = 0;
     int users = 0;
     int admins = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,11 +106,10 @@ public class AdminShopManager extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     totalSalesAmount.setText("0 LKR");
                     totalNumberOfOrders.setText("Number of orders handled: 0");
-                }
-                else if (dataSnapshot.exists()){
+                } else if (dataSnapshot.exists()) {
 
                     order = (int) dataSnapshot.getChildrenCount();
                     totalNumberOfOrders.setText("Number of orders handled: " + order);
@@ -117,8 +117,8 @@ public class AdminShopManager extends AppCompatActivity {
 
                     int sum = 0;
 
-                    for (DataSnapshot ds : dataSnapshot.getChildren()){
-                        Map<String, Object> map = (Map<String, Object>)ds.getValue();
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Map<String, Object> map = (Map<String, Object>) ds.getValue();
                         Object price = map.get("totalAmount");
                         int totalPrice = Integer.parseInt(String.valueOf(price));
                         sum += totalPrice;
@@ -139,10 +139,9 @@ public class AdminShopManager extends AppCompatActivity {
         getValuesOfProducts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     totalNumberOfProducts.setText("Products in show: 0");
-                }
-                else if (dataSnapshot.exists()){
+                } else if (dataSnapshot.exists()) {
                     products = (int) dataSnapshot.getChildrenCount();
                     String formattedProductsCount = NumberFormat.getInstance().format(products);
                     totalNumberOfProducts.setText("Products in show: " + formattedProductsCount);
@@ -158,10 +157,9 @@ public class AdminShopManager extends AppCompatActivity {
         getValuesOfAdmins.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     totalNumberOfAdmins.setText("Number of admins: 0");
-                }
-                else if (dataSnapshot.exists()){
+                } else if (dataSnapshot.exists()) {
                     admins = (int) dataSnapshot.getChildrenCount();
                     String formattedAdminsCount = NumberFormat.getInstance().format(admins);
                     totalNumberOfAdmins.setText("Number of admins: " + formattedAdminsCount);
@@ -177,10 +175,9 @@ public class AdminShopManager extends AppCompatActivity {
         getValuesOfUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     totalNumberOfUsers.setText("Number of users: 0");
-                }
-                else if (dataSnapshot.exists()){
+                } else if (dataSnapshot.exists()) {
                     users = (int) dataSnapshot.getChildrenCount();
                     String formattedUsersCount = NumberFormat.getInstance().format(users);
                     totalNumberOfUsers.setText("Number of users: " + formattedUsersCount);
@@ -200,10 +197,10 @@ public class AdminShopManager extends AppCompatActivity {
                 "Skin care", "Thermometer", "Vaccine", "Wet wipes", "Wound care"};
 
         int[] noOfItems = {antiAcidsValue, ayurvedaValue, babyCaresValue, babyDiaperValue, beautyCaresValue, bodyCaresValue, foodAndBeverageValue, glucoseAndSpillValue, hairCaresValue, houseHoldCleanerValue,
-        masksValue, medicalDeviceValue, mensGroomingsValue, mosquitoRepellentValue, nutrientAndSupplementValue, oralCaresValue, orthopedicItemValue, painKillersValue, skinCaresValue, thermometersValue, vaccinesValue,
-        wetWipeValue, woundCaresValue};
+                masksValue, medicalDeviceValue, mensGroomingsValue, mosquitoRepellentValue, nutrientAndSupplementValue, oralCaresValue, orthopedicItemValue, painKillersValue, skinCaresValue, thermometersValue, vaccinesValue,
+                wetWipeValue, woundCaresValue};
 
-        for (int i = 0; i < Names.length; i++){
+        for (int i = 0; i < Names.length; i++) {
             dataEntries.add(new ValueDataEntry(Names[i], noOfItems[i]));
         }
         pie.data(dataEntries);

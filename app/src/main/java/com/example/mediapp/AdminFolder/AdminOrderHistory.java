@@ -72,16 +72,16 @@ public class AdminOrderHistory extends AppCompatActivity {
             public void onClick(View view) {
                 TextMessage.setVisibility(View.GONE);
                 noSearchFound.setVisibility(View.GONE);
-                String monthFromValidator = DateFrom.getText().toString().substring(0,3);
-                String monthToValidator = DateTo.getText().toString().substring(0,3);
-                String yearFromValidator = DateFrom.getText().toString().substring(8,12);
-                String yearToValidator = DateTo.getText().toString().substring(8,12);
-                if (monthFromValidator.equals(monthToValidator) && yearFromValidator.equals(yearToValidator)){
+                String monthFromValidator = DateFrom.getText().toString().substring(0, 3);
+                String monthToValidator = DateTo.getText().toString().substring(0, 3);
+                String yearFromValidator = DateFrom.getText().toString().substring(8, 12);
+                String yearToValidator = DateTo.getText().toString().substring(8, 12);
+                if (monthFromValidator.equals(monthToValidator) && yearFromValidator.equals(yearToValidator)) {
                     searchList.setVisibility(View.VISIBLE);
                     dateFromInput = DateFrom.getText().toString();
                     dateToInput = DateTo.getText().toString();
                     onStart();
-                }else {
+                } else {
                     searchList.setVisibility(View.GONE);
                     TextMessage.setVisibility(View.VISIBLE);
                     TextMessage.setText("Invalid months that couldn't match!");
@@ -109,13 +109,13 @@ public class AdminOrderHistory extends AppCompatActivity {
         ordersRef.orderByChild("date").startAt(dateFromInput).endAt(dateToInput).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     TotalOrderCount.setText("");
                     TotalAmountOfPeriod.setText("");
                     noSearchFound.setVisibility(View.VISIBLE);
                     TextMessage.setVisibility(View.VISIBLE);
                     TextMessage.setText("No orders found for the period!");
-                }else {
+                } else {
                     int sum = 0;
                     orders = (int) dataSnapshot.getChildrenCount();
 
@@ -141,9 +141,9 @@ public class AdminOrderHistory extends AppCompatActivity {
         FirebaseRecyclerAdapter<AdminOrders, AdminOrdersActivity.AdminOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersActivity.AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersActivity.AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
-                holder.customerName.setText("" + model.getCname());
+                holder.customerName.setText("Name: " + model.getCname());
                 holder.orderId.setText(model.getOrderId());
-                holder.userPhoneNumber.setText("" + model.getPhone());
+                holder.userPhoneNumber.setText("Contact: " + model.getPhone());
                 int formattedPrice = Integer.parseInt(model.getTotalAmount());
                 String orderHistoryPrice = NumberFormat.getInstance().format(formattedPrice);
                 holder.userTotalAmount.setText("Cost of price: " + orderHistoryPrice + " LKR");
@@ -151,9 +151,9 @@ public class AdminOrderHistory extends AppCompatActivity {
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
                 holder.approvedBy.setText("Approved by: " + model.getApprovedBy());
-                if (model.getStatus().equals("Shipped")){
+                if (model.getStatus().equals("Shipped")) {
                     holder.status.setText("Order packed & completed!");
-                }else {
+                } else {
                     holder.status.setText("Status: " + model.getStatus());
                 }
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
@@ -173,7 +173,7 @@ public class AdminOrderHistory extends AppCompatActivity {
             @NonNull
             @Override
             public AdminOrdersActivity.AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout_admin, parent, false);
                 return new AdminOrdersActivity.AdminOrdersViewHolder(view);
             }
         };
@@ -181,7 +181,7 @@ public class AdminOrderHistory extends AppCompatActivity {
         adapter.startListening();
     }
 
-    private void initDatePickerDateFrom(){
+    private void initDatePickerDateFrom() {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int date) {
@@ -204,7 +204,7 @@ public class AdminOrderHistory extends AppCompatActivity {
 
     }
 
-    private void initDatePickerDateTo(){
+    private void initDatePickerDateTo() {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int date) {
@@ -231,7 +231,7 @@ public class AdminOrderHistory extends AppCompatActivity {
 
         String dates = "";
         if (date < 10) {
-            dates = "0"+String.valueOf(date);
+            dates = "0" + String.valueOf(date);
         } else {
             dates = String.valueOf(date);
         }
@@ -242,40 +242,40 @@ public class AdminOrderHistory extends AppCompatActivity {
 
     private String getMonthFormat(int month) {
 
-        if (month == 1){
+        if (month == 1) {
             return "Jan";
         }
-        if (month == 2){
+        if (month == 2) {
             return "Feb";
         }
-        if (month == 3){
+        if (month == 3) {
             return "Mar";
         }
-        if (month == 4){
+        if (month == 4) {
             return "Apr";
         }
-        if (month == 5){
+        if (month == 5) {
             return "May";
         }
-        if (month == 6){
+        if (month == 6) {
             return "Jun";
         }
-        if (month == 7){
+        if (month == 7) {
             return "Jul";
         }
-        if (month == 8){
+        if (month == 8) {
             return "Aug";
         }
-        if (month == 9){
+        if (month == 9) {
             return "Sep";
         }
-        if (month == 10){
+        if (month == 10) {
             return "Oct";
         }
-        if (month == 11){
+        if (month == 11) {
             return "Nov";
         }
-        if (month == 12){
+        if (month == 12) {
             return "Dec";
         }
         return "Jan";

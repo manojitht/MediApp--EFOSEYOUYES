@@ -9,11 +9,11 @@ public class CustomAllSetDialog {
     private Activity activity;
     private AlertDialog dialog;
 
-    public CustomAllSetDialog(Activity myActivity){
+    public CustomAllSetDialog(Activity myActivity) {
         activity = myActivity;
     }
 
-    public void startAllSetDialog(){
+    public void startAllSetDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = activity.getLayoutInflater();
@@ -24,7 +24,7 @@ public class CustomAllSetDialog {
         dialog.show();
     }
 
-    public void dismissAllSetDialog(){
+    public void dismissAllSetDialog() {
         dialog.dismiss();
     }
 }

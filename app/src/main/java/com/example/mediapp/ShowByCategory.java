@@ -60,7 +60,7 @@ public class ShowByCategory extends AppCompatActivity {
                 holder.txtProductName.setText(model.getProductName());
                 holder.productCategory.setText("Category: " + model.getCategory());
                 holder.productCardName.setText(model.getProductName());
-                holder.productPrice.setText("Price "+model.getPrice()+" lkr");
+                holder.productPrice.setText("Price " + model.getPrice() + " lkr");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -73,13 +73,12 @@ public class ShowByCategory extends AppCompatActivity {
                         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.child("Admins").child(GetData.superOnlineUsers.getName()).exists()){
+                                if (snapshot.child("Admins").child(GetData.superOnlineUsers.getName()).exists()) {
                                     Intent intent = new Intent(ShowByCategory.this, AdminMaintainProductsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     intent.putExtra("category", model.getCategory());
                                     startActivity(intent);
-                                }
-                                else {
+                                } else {
                                     Intent intent = new Intent(ShowByCategory.this, ViewDetailActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     intent.putExtra("category", model.getCategory());

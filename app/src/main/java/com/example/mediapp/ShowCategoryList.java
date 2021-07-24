@@ -82,7 +82,7 @@ public class ShowCategoryList extends AppCompatActivity {
         accessForUsers.child(GetData.superOnlineUsers.getName()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     viewCart.setVisibility(View.VISIBLE);
                     searchLinkFromCategory.setVisibility(View.VISIBLE);
                     cartItemsShow.setVisibility(View.VISIBLE);
@@ -101,8 +101,7 @@ public class ShowCategoryList extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-                }
-                else {
+                } else {
                     viewCart.setVisibility(View.GONE);
                     cartItemsShow.setVisibility(View.GONE);
                     searchLinkFromCategory.setVisibility(View.GONE);
@@ -122,112 +121,91 @@ public class ShowCategoryList extends AppCompatActivity {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Anti-acids for gastritis");
                     startActivity(intent);
-                }else if (position == 1) {
+                } else if (position == 1) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Ayurveda products");
                     startActivity(intent);
-                }
-                else if (position == 2) {
+                } else if (position == 2) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Baby care");
                     startActivity(intent);
-                }
-                else if (position == 3) {
+                } else if (position == 3) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Baby diapers");
                     startActivity(intent);
-                }
-                else if (position == 4) {
+                } else if (position == 4) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Beauty care");
                     startActivity(intent);
-                }
-                else if (position == 5) {
+                } else if (position == 5) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Body care");
                     startActivity(intent);
-                }
-                else if (position == 6) {
+                } else if (position == 6) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Food and beverages");
                     startActivity(intent);
-                }
-                else if (position == 7) {
+                } else if (position == 7) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Glucose monitors and splits");
                     startActivity(intent);
-                }
-                else if (position == 8) {
+                } else if (position == 8) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Hair care");
                     startActivity(intent);
-                }
-                else if (position == 9) {
+                } else if (position == 9) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Household cleaners");
                     startActivity(intent);
-                }
-                else if (position == 10) {
+                } else if (position == 10) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Mask");
                     startActivity(intent);
-                }
-                else if (position == 11) {
+                } else if (position == 11) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Medical devices");
                     startActivity(intent);
-                }
-                else if (position == 12) {
+                } else if (position == 12) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Mens grooming");
                     startActivity(intent);
-                }
-                else if (position == 13) {
+                } else if (position == 13) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Mosquito repellents");
                     startActivity(intent);
-                }
-                else if (position == 14) {
+                } else if (position == 14) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Nutrition and supplements");
                     startActivity(intent);
-                }
-                else if (position == 15) {
+                } else if (position == 15) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Oral care");
                     startActivity(intent);
-                }
-                else if (position == 16) {
+                } else if (position == 16) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Orthopedic items");
                     startActivity(intent);
-                }
-                else if (position == 17) {
+                } else if (position == 17) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Pain killer");
                     startActivity(intent);
-                }
-                else if (position == 18) {
+                } else if (position == 18) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Skin care");
                     startActivity(intent);
-                }
-                else if (position == 19) {
+                } else if (position == 19) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Thermometer");
                     startActivity(intent);
-                }
-                else if (position == 20) {
+                } else if (position == 20) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Vaccine");
                     startActivity(intent);
-                }
-                else if (position == 21) {
+                } else if (position == 21) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Wet wipes");
                     startActivity(intent);
-                }
-                else if (position == 22) {
+                } else if (position == 22) {
                     intent = new Intent(ShowCategoryList.this, ShowByCategory.class);
                     intent.putExtra("category", "Wound care");
                     startActivity(intent);

@@ -40,6 +40,7 @@ public class GenerateReport extends AppCompatActivity {
     TextView monthStatus, totalSalesOfMonth, totalSalesAmount;
     DatabaseReference getValuesfromDB;
     int totalNumberOfOrders = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +103,7 @@ public class GenerateReport extends AppCompatActivity {
 
     }
 
-    private void getTotalOrdersForMonth(){
+    private void getTotalOrdersForMonth() {
         final String saveCurrentMonth, saveCurrentYear;
         Calendar callForDate = Calendar.getInstance();
         SimpleDateFormat currentMonth = new SimpleDateFormat("MMM");
@@ -110,8 +111,8 @@ public class GenerateReport extends AppCompatActivity {
         saveCurrentMonth = currentMonth.format(callForDate.getTime());
         saveCurrentYear = currentYear.format(callForDate.getTime());
 
-        String dateFrom = saveCurrentMonth  + " 01, " + saveCurrentYear;
-        String dateTo = saveCurrentMonth  + " 31, " + saveCurrentYear;
+        String dateFrom = saveCurrentMonth + " 01, " + saveCurrentYear;
+        String dateTo = saveCurrentMonth + " 31, " + saveCurrentYear;
 
         System.out.println(dateFrom + " to " + dateTo);
 

@@ -70,15 +70,15 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    if (dataSnapshot.child("name").exists()){
+                if (dataSnapshot.exists()) {
+                    if (dataSnapshot.child("name").exists()) {
                         String name = dataSnapshot.child("name").getValue().toString();
                         //String email = dataSnapshot.child("email").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
-                        if (dataSnapshot.child("phone").exists()){
+                        if (dataSnapshot.child("phone").exists()) {
                             String phone = dataSnapshot.child("phone").getValue().toString();
                             shipPhone.setText(phone);
-                        }else {
+                        } else {
                             shipPhone.setText("");
                         }
                         ShipName.setText(name);
@@ -97,19 +97,15 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
     private void Check() {
 
-        if (TextUtils.isEmpty(ShipName.getText().toString())){
+        if (TextUtils.isEmpty(ShipName.getText().toString())) {
             Toast.makeText(ConfirmOrderActivity.this, "Please provide your name!", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(ShipCity.getText().toString())){
+        } else if (TextUtils.isEmpty(ShipCity.getText().toString())) {
             Toast.makeText(ConfirmOrderActivity.this, "Please provide your city!", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(ShipPhone.getText().toString())){
+        } else if (TextUtils.isEmpty(ShipPhone.getText().toString())) {
             Toast.makeText(ConfirmOrderActivity.this, "Please provide your phone number!", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(ShipAddress.getText().toString())){
+        } else if (TextUtils.isEmpty(ShipAddress.getText().toString())) {
             Toast.makeText(ConfirmOrderActivity.this, "Please provide your address!", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             ConfirmOrder();
 
         }
@@ -127,7 +123,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(callForDate.getTime());
         SimpleDateFormat RefTime = new SimpleDateFormat("HHmmss");
         getCurrentRefTime = RefTime.format(callForDate.getTime());
-        orderId= "REF" + number + getCurrentRefTime;
+        orderId = "REF" + number + getCurrentRefTime;
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(orderId); //creation of the "Orders" child
         final DatabaseReference getProducts = FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View");
@@ -148,33 +144,33 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-             if (task.isSuccessful()){
-                 ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                     @Override
-                     public void onComplete(@NonNull Task<Void> task) {
-                         if (task.isSuccessful()){
-                             moveRecord(getProducts.child(GetData.superOnlineUsers.getName()).child("Products"), ordersRef.child("cart"));
-                             FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View").child(GetData.superOnlineUsers.getName()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                 @Override
-                                 public void onComplete(@NonNull Task<Void> task) {
-                                     if (task.isSuccessful()){
-                                         Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
-                                         intent.putExtra("OrderIdMigrate", orderId);
+                if (task.isSuccessful()) {
+                    ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                moveRecord(getProducts.child(GetData.superOnlineUsers.getName()).child("Products"), ordersRef.child("cart"));
+                                FirebaseDatabase.getInstance().getReference().child("Cart List").child("User View").child(GetData.superOnlineUsers.getName()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Intent intent = new Intent(getApplicationContext(), OrderConfirmMessage.class);
+                                            intent.putExtra("OrderIdMigrate", orderId);
 
-                                         startActivity(intent);
-                                         ShipAddress.setText("");
-                                         ShipName.setText("");
-                                         ShipPhone.setText("");
-                                         ShipCity.setText("");
-                                         finish();
-                                     }
-                                 }
-                             });
-                         }
-                     }
-                 });
+                                            startActivity(intent);
+                                            ShipAddress.setText("");
+                                            ShipName.setText("");
+                                            ShipPhone.setText("");
+                                            ShipCity.setText("");
+                                            finish();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
 
-             }
+                }
             }
         });
 
@@ -187,9 +183,8 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                 toPath.setValue(dataSnapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isComplete()){
-                        }
-                        else {
+                        if (task.isComplete()) {
+                        } else {
                             Toast.makeText(ConfirmOrderActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
                         }
                     }

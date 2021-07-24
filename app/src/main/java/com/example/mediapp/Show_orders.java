@@ -81,9 +81,9 @@ public class Show_orders extends AppCompatActivity {
         ordersRef.orderByChild("username").startAt(username).endAt(username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
+                if (!dataSnapshot.exists()) {
                     noOrder.setVisibility(View.VISIBLE);
-                }else {
+                } else {
 
                 }
             }
@@ -96,7 +96,7 @@ public class Show_orders extends AppCompatActivity {
         FirebaseRecyclerAdapter<AdminOrders, CustomerOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<AdminOrders, CustomerOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CustomerOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
-                holder.referenceId.setText("#"+ model.getOrderId());
+                holder.referenceId.setText("#" + model.getOrderId());
                 holder.dateAndTime.setText("Date: " + model.getDate() + ", " + "time: " + model.getTime());
                 holder.deliveryAddress.setText("Delivery address: " + model.getCname() + ", \n" + model.getAddress() + " \n" + "Contact no: " + model.getPhone() + ".");
                 int formattedPrice = Integer.parseInt(model.getTotalAmount());
@@ -120,12 +120,12 @@ public class Show_orders extends AppCompatActivity {
                                 "No"
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(Show_orders.this);
-                        builder.setTitle("Do you want to cancel the order "+ model.getOrderId() + " ?");
+                        builder.setTitle("Do you want to cancel the order " + model.getOrderId() + " ?");
 
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                if (i == 0){
+                                if (i == 0) {
                                     String uID = getRef(position).getKey();
                                     ordersRef.child(uID).removeValue();
                                     Toast.makeText(Show_orders.this, uID + " cancelled successfully!", Toast.LENGTH_SHORT).show();
@@ -153,10 +153,11 @@ public class Show_orders extends AppCompatActivity {
     }
 
 
-    public static class CustomerOrdersViewHolder extends RecyclerView.ViewHolder{
+    public static class CustomerOrdersViewHolder extends RecyclerView.ViewHolder {
         public TextView referenceId, dateAndTime, deliveryAddress, price;
         public Button viewOrder, cancelOrder;
-        public CustomerOrdersViewHolder(View itemView){
+
+        public CustomerOrdersViewHolder(View itemView) {
             super(itemView);
 
             referenceId = itemView.findViewById(R.id.order_reference_number);

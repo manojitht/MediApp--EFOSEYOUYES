@@ -72,31 +72,23 @@ public class RegisterActivity extends AppCompatActivity {
         String ConfirmPassword = InputConfirmPassword.getText().toString();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-        if (TextUtils.isEmpty((CharSequence) Name)){
+        if (TextUtils.isEmpty((CharSequence) Name)) {
             Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-        else if (!Password.equals(ConfirmPassword)){
+        } else if (!Password.equals(ConfirmPassword)) {
             Toast.makeText(this, "Confirm password doesn't matches", Toast.LENGTH_SHORT).show();
-        }
-        else if (!Email.matches(emailPattern) || TextUtils.isEmpty((CharSequence) Email)){
+        } else if (!Email.matches(emailPattern) || TextUtils.isEmpty((CharSequence) Email)) {
             Toast.makeText(this, "Invalid email address given!", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty((CharSequence) Password)){
+        } else if (TextUtils.isEmpty((CharSequence) Password)) {
             Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
-        }
-        else if (Name.length() > 30){
+        } else if (Name.length() > 30) {
             Toast.makeText(this, "Name can't be more than 30 characters", Toast.LENGTH_SHORT).show();
-        }
-        else if (Password.length() > 30){
+        } else if (Password.length() > 30) {
             Toast.makeText(this, "Password can't be more than 30 characters", Toast.LENGTH_SHORT).show();
-        }
-        else if (Name.length() <= 4){
+        } else if (Name.length() <= 4) {
             Toast.makeText(this, "Username must be at least 5 characters!", Toast.LENGTH_SHORT).show();
-        }
-        else if (Password.length() <= 7){
+        } else if (Password.length() <= 7) {
             Toast.makeText(this, "Password should be at least 8 characters long!", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        } else {
             loadingDialog.startLoadingDialog();
             ValidateEmail(Email, Name, Password);
         }
@@ -109,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!(snapshot.child("Users").child(String.valueOf(Name)).exists())){
+                if (!(snapshot.child("Users").child(String.valueOf(Name)).exists())) {
                     HashMap<String, Object> userdataMap = new HashMap<>();
                     userdataMap.put("name", Name);
                     userdataMap.put("email", Email);
@@ -119,8 +111,8 @@ public class RegisterActivity extends AppCompatActivity {
                     RootRef.child("Users").child(String.valueOf(Name)).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(RegisterActivity.this, Name +" your account created successfully!", Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                Toast.makeText(RegisterActivity.this, Name + " your account created successfully!", Toast.LENGTH_SHORT).show();
 //                                loadingBar.dismiss();
                                 loadingDialog.dismissDialog();
                                 InputName.setText("");
@@ -129,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 InputPassword.setText("");
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
-                            }else {
+                            } else {
 //                                loadingBar.dismiss();
                                 loadingDialog.dismissDialog();
                                 Toast.makeText(RegisterActivity.this, "Check your Network connection!", Toast.LENGTH_SHORT).show();
@@ -140,8 +132,8 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }else {
-                    Toast.makeText(RegisterActivity.this, "Username '"+Name+"' already exists!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Username '" + Name + "' already exists!", Toast.LENGTH_SHORT).show();
                     loadingDialog.dismissDialog();
 //                    loadingBar.dismiss();
                     Toast.makeText(RegisterActivity.this, "Try with other username (eg. Steve123)", Toast.LENGTH_SHORT).show();
@@ -151,7 +143,6 @@ public class RegisterActivity extends AppCompatActivity {
                     InputPassword.setText("");
                 }
             }
-
 
 
             @Override

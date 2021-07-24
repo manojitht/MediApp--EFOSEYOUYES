@@ -25,7 +25,6 @@ import com.squareup.picasso.Picasso;
 public class ShippedOrderProducts extends AppCompatActivity {
     private RecyclerView shippedProductRecyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private TextView titleShowProductList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,6 @@ public class ShippedOrderProducts extends AppCompatActivity {
         setContentView(R.layout.activity_shipped_order_products);
 
         shippedProductRecyclerView = findViewById(R.id.shipped_order_products_list);
-        titleShowProductList = findViewById(R.id.shipped_products_title);
         shippedProductRecyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         shippedProductRecyclerView.setLayoutManager(layoutManager);
@@ -53,7 +51,7 @@ public class ShippedOrderProducts extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
-                holder.txtProductQuantity.setText("Quantity = "+model.getQuantity() + " Pcs");
+                holder.txtProductQuantity.setText("Quantity = " + model.getQuantity() + " Pcs");
                 holder.txtProductCategory.setText("Category: " + model.getCategory());
                 holder.txtProductPrice.setText("Price " + model.getPrice() + " lkr");
                 holder.editIcon.setVisibility(View.GONE);

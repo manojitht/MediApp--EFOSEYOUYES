@@ -102,17 +102,18 @@ public class AdminOrdersActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder> adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
-                holder.customerName.setText("" + model.getCname());
-                holder.userPhoneNumber.setText("" + model.getPhone());
+                holder.customerName.setText("Name: " + model.getCname());
+                holder.userPhoneNumber.setText("Contact: " + model.getPhone());
                 holder.orderId.setText(model.getOrderId());
                 int formattedPrice = Integer.parseInt(model.getTotalAmount());
                 String orderHistoryPrice = NumberFormat.getInstance().format(formattedPrice);
                 holder.userTotalAmount.setText("Cost of price: " + orderHistoryPrice + " LKR");
-                holder.userDate.setText(model.getDate());
+                holder.userDate.setText("Date: " + model.getDate());
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
                 holder.username.setText(model.getUsername());
                 holder.status.setVisibility(View.GONE);
+                holder.approvedBy.setVisibility(View.GONE);
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -139,7 +140,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                if (i == 0){
+                                if (i == 0) {
                                     final String uID = getRef(position).getKey();
 
 
@@ -152,7 +153,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                     String finalPrice = formattedPrice.replace(",", "");
                                     cartMap.put("totalAmount", finalPrice);
                                     cartMap.put("address", holder.userShippingAddress.getText().toString().replace("Shipping Address: ", ""));
-                                    cartMap.put("date", holder.userDate.getText().toString());
+                                    cartMap.put("date", holder.userDate.getText().toString().replace("Date: ", ""));
                                     cartMap.put("time", holder.userTime.getText().toString().replace("Time: ", ""));
                                     cartMap.put("status", "Shipped");
                                     cartMap.put("approvedBy", nameOfAdmin);
@@ -162,7 +163,7 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                     updateSalesOrders.child(holder.orderId.getText().toString()).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()){
+                                            if (task.isSuccessful()) {
                                                 moveRecord(updateSalesProducts.child(uID).child("cart"), updateSalesOrders.child(holder.orderId.getText().toString()).child("sold items"));
                                                 //moveRecord(updateSalesOrders.child(holder.orderId.getText().toString()), updateUsersAccount.child(holder.customerName.getText().toString()).child("orders").child(holder.orderId.getText().toString()));
                                                 //updateUsersAccount.child(holder.customerName.getText().toString()).child("message").setValue("Hi, your order #" + holder.orderId.getText().toString() + " was shipped successfully!");
@@ -185,8 +186,8 @@ public class AdminOrdersActivity extends AppCompatActivity {
             @NonNull
             @Override
             public AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-               View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout, parent, false);
-               return new AdminOrdersViewHolder(view);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout_admin, parent, false);
+                return new AdminOrdersViewHolder(view);
             }
         };
         ordersList.setAdapter(adapter);
@@ -194,11 +195,11 @@ public class AdminOrdersActivity extends AppCompatActivity {
     }
 
 
-
-    public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder{
+    public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
         public TextView customerName, userPhoneNumber, userTotalAmount, userDate, userShippingAddress, orderId, userTime, approvedBy, status, username;
         public Button showOrder;
-        public AdminOrdersViewHolder(View itemView){
+
+        public AdminOrdersViewHolder(View itemView) {
             super(itemView);
 
             customerName = itemView.findViewById(R.id.order_cart_items_username);
@@ -229,10 +230,9 @@ public class AdminOrdersActivity extends AppCompatActivity {
                 toPath.setValue(dataSnapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isComplete()){
+                        if (task.isComplete()) {
 //                            fromPath.removeValue();
-                        }
-                        else {
+                        } else {
                             Toast.makeText(AdminOrdersActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
                         }
                     }

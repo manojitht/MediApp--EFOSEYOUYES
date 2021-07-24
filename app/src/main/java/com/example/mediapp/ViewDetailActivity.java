@@ -67,13 +67,11 @@ public class ViewDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                addingToCart();
-                if (status.equals("Order placed") || status.equals("Order Shipped")){
+                if (status.equals("Order placed") || status.equals("Order Shipped")) {
                     Toast.makeText(ViewDetailActivity.this, "You can purchase once your order approved! Thanks..", Toast.LENGTH_SHORT).show();
-                }
-                else if (StockStatus.getText().toString().equals("Out of stock")){
+                } else if (StockStatus.getText().toString().equals("Out of stock")) {
                     Toast.makeText(ViewDetailActivity.this, "Sorry, this product is unavailable.", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     addingToCart();
                 }
             }
@@ -107,7 +105,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         cartListRef.child("User View").child(GetData.superOnlineUsers.getName()).child("Products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
 //                    cartListRef.child("Admin View").child(GetData.superOnlineUsers.getName()).child("Products").child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
 //                        @Override
 //                        public void onComplete(@NonNull Task<Void> task) {
@@ -132,7 +130,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         productRef.child(productId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     Products products = dataSnapshot.getValue(Products.class);
 
                     productOfName.setText(products.getProductName());
@@ -142,7 +140,7 @@ public class ViewDetailActivity extends AppCompatActivity {
                     Picasso.get().load(products.getImage()).into(ProductImage);
                     ImageUrl.setText(products.getImage());
                     StockStatus.setText(products.getStock());
-                    if (StockStatus.getText().toString().equals("Out of stock")){
+                    if (StockStatus.getText().toString().equals("Out of stock")) {
                         StockStatus.setTextColor(Color.RED);
                     }
                 }
@@ -155,22 +153,22 @@ public class ViewDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void checkOrder(){
+    private void checkOrder() {
         DatabaseReference ordersRef;
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(GetData.superOnlineUsers.getName());
 
         ordersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     String shippingState = dataSnapshot.child("status").getValue().toString();
 
 
-                    if (shippingState.equals("Shipped")){
+                    if (shippingState.equals("Shipped")) {
 
                         status = "Order Shipped";
 
-                    }else if (shippingState.equals("Not Shipped")){
+                    } else if (shippingState.equals("Not Shipped")) {
 
                         status = "Order placed";
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,33 +8,46 @@
     tools:context=".AdminFolder.AdminCategoryActivity"
     >
 
-    <TextView
-        android:id="@+id/slogan"
+    <RelativeLayout
+        android:id="@+id/home_top_category_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:background="#fff"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/poppins_light"
-        android:text="Choose product"
-        android:layout_marginTop="22dp"
-        android:layout_marginStart="22dp"
-        android:textColor="#9172DD"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        >
+
+        <TextView
+            android:id="@+id/category_title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="Choose categories"
+            android:layout_toRightOf="@id/category_title_image"
+            android:padding="5dp"
+            android:textColorHint="#0B0B0B"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/category_title_image"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/category_title_image" />
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/ListView"
-        android:layout_width="wrap_content"
-        android:layout_height="608dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/home_top_category_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan" />
+        app:layout_constraintTop_toBottomOf="@+id/home_top_category_bar" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

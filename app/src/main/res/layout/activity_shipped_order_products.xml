@@ -7,33 +7,41 @@
     tools:context=".ShippedOrderProducts">
 
     <RelativeLayout
-        android:id="@+id/lay_out_products"
+        android:id="@+id/home_top_products_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:background="#fff"
         android:layout_alignParentTop="true"
-        android:background="@drawable/buttonknightblue"
-        tools:ignore="MissingConstraints">
+        >
 
         <TextView
-            android:id="@+id/shipped_products_title"
-            android:layout_width="match_parent"
+            android:id="@+id/category_title_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="Ordered products"
+            android:layout_toRightOf="@id/category_title_image"
+            android:padding="5dp"
+            android:textColorHint="#0B0B0B"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_extrabold" />
+
+        <ImageView
+            android:id="@+id/category_title_image"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/nunito_extrabold"
-            android:gravity="center"
-            android:text="My orders"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            tools:ignore="RtlCompat" />
+            android:src="@drawable/view_products_image" />
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shipped_order_products_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/lay_out_products"
+        android:layout_below="@+id/home_top_products_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

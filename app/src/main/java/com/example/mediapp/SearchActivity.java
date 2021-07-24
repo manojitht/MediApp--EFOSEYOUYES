@@ -69,11 +69,11 @@ public class SearchActivity extends AppCompatActivity {
         getAllProducts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot childSnapShot: dataSnapshot.getChildren()){
+                for (DataSnapshot childSnapShot : dataSnapshot.getChildren()) {
                     String autoTextProducts = childSnapShot.child("productName").getValue(String.class);
                     productNames.add(autoTextProducts);
                 }
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(SearchActivity.this, android.R.layout.simple_dropdown_item_1line,productNames);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(SearchActivity.this, android.R.layout.simple_dropdown_item_1line, productNames);
                 searchText.setThreshold(1);
                 searchText.setAdapter(arrayAdapter);
                 searchText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -103,12 +103,10 @@ public class SearchActivity extends AppCompatActivity {
         getAllProducts.orderByChild("productName").startAt(SearchInput).endAt(SearchInput).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     noProductFoundImage.setVisibility(View.GONE);
                     noProductFoundText.setVisibility(View.GONE);
-                }
-                else if (!dataSnapshot.exists())
-                {
+                } else if (!dataSnapshot.exists()) {
                     noProductFoundImage.setVisibility(View.VISIBLE);
                     noProductFoundText.setVisibility(View.VISIBLE);
                     noProductFoundText.setText("Search for products!");
@@ -127,7 +125,7 @@ public class SearchActivity extends AppCompatActivity {
                 holder.txtProductName.setText(model.getProductName());
                 holder.productCategory.setText("Category: " + model.getCategory());
                 holder.productCardName.setText(model.getProductName());
-                holder.productPrice.setText("Price "+model.getPrice()+" lkr");
+                holder.productPrice.setText("Price " + model.getPrice() + " lkr");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {

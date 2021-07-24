@@ -42,7 +42,7 @@ import io.paperdb.Paper;
 public class MainHomeActivity extends AppCompatActivity {
 
     private RecyclerView productContainer;
-    private Button  myAccount, myOrders, myCategories;
+    private Button myAccount, myOrders, myCategories;
     private ImageView cartImage, logout;
     private TextView searchLink, cartItemsIndicator;
 
@@ -115,7 +115,7 @@ public class MainHomeActivity extends AppCompatActivity {
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (i == 0){
+                        if (i == 0) {
                             Intent intent = new Intent(MainHomeActivity.this, LoginActivity.class);
                             startActivity(intent);
                             Paper.book().destroy();
@@ -142,7 +142,7 @@ public class MainHomeActivity extends AppCompatActivity {
                 holder.txtProductName.setText(model.getProductName());
                 holder.productCategory.setText("Category: " + model.getCategory());
                 holder.productCardName.setText(model.getProductName());
-                holder.productPrice.setText("Price "+model.getPrice()+" lkr");
+                holder.productPrice.setText("Price " + model.getPrice() + " lkr");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -155,10 +155,10 @@ public class MainHomeActivity extends AppCompatActivity {
                         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    Intent intent = new Intent(MainHomeActivity.this, ViewDetailActivity.class);
-                                    intent.putExtra("pid", model.getPid());
-                                    intent.putExtra("category", model.getCategory());
-                                    startActivity(intent);
+                                Intent intent = new Intent(MainHomeActivity.this, ViewDetailActivity.class);
+                                intent.putExtra("pid", model.getPid());
+                                intent.putExtra("category", model.getCategory());
+                                startActivity(intent);
                             }
 
                             @Override
