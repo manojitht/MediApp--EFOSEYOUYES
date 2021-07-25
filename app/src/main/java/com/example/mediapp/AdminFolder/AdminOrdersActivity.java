@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mediapp.GetData.GetData;
+import com.example.mediapp.JavaMailAPI;
 import com.example.mediapp.Model.AdminOrders;
 import com.example.mediapp.ProductDetailAdminActivity;
 import com.example.mediapp.R;
@@ -112,8 +113,8 @@ public class AdminOrdersActivity extends AppCompatActivity {
                 holder.userTime.setText("Time: " + model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: " + model.getAddress());
                 holder.username.setText(model.getUsername());
+                holder.approvedBy.setText("E-mail: " + model.getEmail());
                 holder.status.setVisibility(View.GONE);
-                holder.approvedBy.setVisibility(View.GONE);
 
                 holder.showOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -164,9 +165,11 @@ public class AdminOrdersActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
+                                                final String email = holder.approvedBy.getText().toString().replace("E-mail: ", "");
+                                                final String orderId = holder.orderId.getText().toString();
+                                                final String customerName = holder.customerName.getText().toString().replace("Name: ", "");
+                                                sendEmail(email, orderId, customerName);
                                                 moveRecord(updateSalesProducts.child(uID).child("cart"), updateSalesOrders.child(holder.orderId.getText().toString()).child("sold items"));
-                                                //moveRecord(updateSalesOrders.child(holder.orderId.getText().toString()), updateUsersAccount.child(holder.customerName.getText().toString()).child("orders").child(holder.orderId.getText().toString()));
-                                                //updateUsersAccount.child(holder.customerName.getText().toString()).child("message").setValue("Hi, your order #" + holder.orderId.getText().toString() + " was shipped successfully!");
                                                 Toast.makeText(AdminOrdersActivity.this, uID + "'s order shipped successfully!", Toast.LENGTH_SHORT).show();
                                                 RemoveOrder(uID);
                                                 Intent intent = new Intent(AdminOrdersActivity.this, AdminOrdersActivity.class);
@@ -215,6 +218,15 @@ public class AdminOrdersActivity extends AppCompatActivity {
             username = itemView.findViewById(R.id.username_of_customer);
 
         }
+    }
+
+    private void sendEmail(String email, String orderId, String customerName) {
+        String mEmail = email;
+        String mSubject = "From MediApp, order reference #" + orderId;
+        String mMessage = "Hi " + customerName + ",\n Your order #" + orderId + " has been processed and shipped successfully!\n Thank you for " +
+                "purchasing our products.\n If you have any queries, please reach out us with contact number: 0777548623\n Welcome you again!\n From, \n MediApp team.";
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this, mEmail, mSubject, mMessage);
+        javaMailAPI.execute();
     }
 
 

@@ -36,6 +36,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private Button ShipConfirm;
     private String totalAmount = "";
     private String username = GetData.superOnlineUsers.getName();
+    private String email = GetData.superOnlineUsers.getEmail();
 
 
     @Override
@@ -132,6 +133,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("orderId", orderId);
         totalAmount.replace(" LKR", "");
         ordersMap.put("totalAmount", totalAmount);
+        ordersMap.put("email", email);
         ordersMap.put("username", username);
         ordersMap.put("Cname", ShipName.getText().toString());
         ordersMap.put("phone", ShipPhone.getText().toString());
