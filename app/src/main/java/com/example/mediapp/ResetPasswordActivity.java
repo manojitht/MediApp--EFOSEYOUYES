@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
@@ -30,6 +35,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private TextView showText;
     private EditText secureUsername, questionOne, questionTwo, questionThree;
     private Button verify;
+    String outputPassword;
+    String encryptedPassword;
+    String AES = "AES";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +125,18 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         if (!newPassword.getText().toString().equals("")) {
-                                            ref.child("password").setValue(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            try {
+                                                outputPassword = encrypt(newPassword.getText().toString(), newPassword.getText().toString());
+                                                encryptedPassword = outputPassword;
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                            ref.child("password").setValue(encryptedPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
                                                         Toast.makeText(ResetPasswordActivity.this, "Password reset successfully!", Toast.LENGTH_SHORT).show();
-                                                        Intent intent = new Intent(ResetPasswordActivity.this, MainHomeActivity.class);
+                                                        Intent intent = new Intent(ResetPasswordActivity.this, LoginActivity.class);
                                                         startActivity(intent);
                                                     }
                                                 }
@@ -213,5 +227,23 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private String encrypt(String data, String password) throws Exception {
+        SecretKeySpec key = generateKey(password);
+        Cipher c = Cipher.getInstance(AES);
+        c.init(Cipher.ENCRYPT_MODE, key);
+        byte[] encVal = c.doFinal(data.getBytes());
+        String encryptedValue = Base64.encodeToString(encVal, Base64.DEFAULT);
+        return encryptedValue;
+    }
+
+    private SecretKeySpec generateKey(String password) throws Exception {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] bytes = password.getBytes("UTF-8");
+        digest.update(bytes, 0, bytes.length);
+        byte[] key = digest.digest();
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
+        return secretKeySpec;
     }
 }

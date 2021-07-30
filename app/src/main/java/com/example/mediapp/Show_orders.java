@@ -120,7 +120,7 @@ public class Show_orders extends AppCompatActivity {
                                 "No"
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(Show_orders.this);
-                        builder.setTitle("Do you want to cancel the order " + model.getOrderId() + " ?");
+                        builder.setTitle("Do you want to cancel this order #" + model.getOrderId() + " ?");
 
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override

@@ -7,7 +7,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +26,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.Key;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.Security;
 import java.util.HashMap;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 public class RegisterActivity extends AppCompatActivity {
     private Button registernow;
@@ -31,6 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private LottieAnimationView lottieAnimationView;
     private TextView text_click;
+    String outputPassword;
+    String encryptedPassword;
+    String AES = "AES";
 
     public LoadingDialog loadingDialog = new LoadingDialog(RegisterActivity.this);
 
@@ -90,6 +104,12 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Password should be at least 8 characters long!", Toast.LENGTH_SHORT).show();
         } else {
             loadingDialog.startLoadingDialog();
+            try {
+                outputPassword = encrypt(InputPassword.getText().toString(), InputConfirmPassword.getText().toString());
+                encryptedPassword = outputPassword;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             ValidateEmail(Email, Name, Password);
         }
     }
@@ -106,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                     userdataMap.put("name", Name);
                     userdataMap.put("email", Email);
                     userdataMap.put("customerStatus", "new");
-                    userdataMap.put("password", Password);
+                    userdataMap.put("password", encryptedPassword);
 
                     RootRef.child("Users").child(String.valueOf(Name)).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -152,36 +172,21 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    //Trying to add the mail services
+    private String encrypt(String data, String password) throws Exception {
+        SecretKeySpec key = generateKey(password);
+        Cipher c = Cipher.getInstance(AES);
+        c.init(Cipher.ENCRYPT_MODE, key);
+        byte[] encVal = c.doFinal(data.getBytes());
+        String encryptedValue = Base64.encodeToString(encVal, Base64.DEFAULT);
+        return encryptedValue;
+    }
 
-//    private void SendMail(){
-//        final String username = "manojithtjmkm@gmail.com";
-//        final String password = "***********************";
-//        String sendMessage =  "Hi " + InputName.getText().toString() + ", welcome to the MediApp!";
-//        Properties properties = new Properties();
-//        properties.put("mail.smtp.auth", "true");
-//        properties.put("mail.smtp.starttls.enable", "true");
-//        properties.put("mail.smtp.host", "smtp.gmail.com");
-//        properties.put("mail.smtp.port", "587");
-//        Session session = Session.getInstance(properties, new javax.mail.Authenticator(){
-//            @Override
-//            protected PasswordAuthentication getPasswordAuthentication(){
-//                return new PasswordAuthentication(username, password);
-//            }
-//        });
-//        try {
-//            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress(username));
-//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(InputEmail.getText().toString()));
-//            message.setSubject("Welcome to MediApp!");
-//            message.setText(sendMessage);
-//            Transport.send(message);
-//            Toast.makeText(getApplicationContext(), "Email sent successfully", Toast.LENGTH_LONG).show();
-//        }
-//        catch (MessagingException e ){
-//            throw new RuntimeException(e);
-//        }
-//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//        StrictMode.setThreadPolicy(policy);
-//    }
+    private SecretKeySpec generateKey(String password) throws Exception {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] bytes = password.getBytes("UTF-8");
+        digest.update(bytes, 0, bytes.length);
+        byte[] key = digest.digest();
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
+        return secretKeySpec;
+    }
 }

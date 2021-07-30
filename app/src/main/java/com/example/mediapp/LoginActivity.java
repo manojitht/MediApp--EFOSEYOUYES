@@ -13,6 +13,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -32,9 +33,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import io.paperdb.Paper;
 
@@ -49,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private String DatabaseName = "Users";
     private CheckBox checkboxRemember;
+    String outputPassword;
+    String encryptedPassword;
+    String AES = "AES";
 
     public LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
 
@@ -148,10 +156,34 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "password cannot be empty", Toast.LENGTH_SHORT).show();
             } else {
                 loadingDialog.startLoadingDialog();
+                try {
+                    outputPassword = encrypt(InputLoginPassword.getText().toString(), InputLoginPassword.getText().toString());
+                    encryptedPassword = outputPassword;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 AllowUserToLoginAccount(Name, Password);
             }
         }
 
+    }
+
+    private String encrypt(String data, String password) throws Exception {
+        SecretKeySpec key = generateKey(password);
+        Cipher c = Cipher.getInstance(AES);
+        c.init(Cipher.ENCRYPT_MODE, key);
+        byte[] encVal = c.doFinal(data.getBytes());
+        String encryptedValue = Base64.encodeToString(encVal, Base64.DEFAULT);
+        return encryptedValue;
+    }
+
+    private SecretKeySpec generateKey(String password) throws Exception {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] bytes = password.getBytes("UTF-8");
+        digest.update(bytes, 0, bytes.length);
+        byte[] key = digest.digest();
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
+        return secretKeySpec;
     }
 
 
@@ -159,7 +191,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkboxRemember.isChecked()) {
             Paper.book().write(GetData.UserNamekey, Name);
-            Paper.book().write(GetData.UserPasswordKey, Password);
+            Paper.book().write(GetData.UserPasswordKey, encryptedPassword);
         }
 
         final DatabaseReference RootRef;
@@ -193,22 +225,15 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
+                            }
 
-                            } else if (DatabaseName.equals("Users")) {
+                        } else if (usersData.getPassword().equals(encryptedPassword)) {
+                            if (DatabaseName.equals("Users")) {
                                 DatabaseReference GetAddress = FirebaseDatabase.getInstance().getReference().child("Users").child(Name);
                                 GetAddress.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "existing")) {
-                                            if (dataSnapshot.child("message").exists()) {
-                                                loadingDialog.dismissDialog();
-                                                InputLoginName.setText("");
-                                                InputLoginPassword.setText("");
-                                                Intent intent = new Intent(LoginActivity.this, OrderShippedMessage.class);
-                                                GetData.superOnlineUsers = usersData;
-                                                startActivity(intent);
-                                                finish();
-                                            } else {
                                                 loadingDialog.dismissDialog();
                                                 InputLoginName.setText("");
                                                 InputLoginPassword.setText("");
@@ -216,7 +241,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 GetData.superOnlineUsers = usersData;
                                                 startActivity(intent);
                                                 finish();
-                                            }
+
                                         } else if (Objects.equals(dataSnapshot.child("customerStatus").getValue(), "new")) {
                                             Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
                                             loadingDialog.dismissDialog();
@@ -262,7 +287,6 @@ public class LoginActivity extends AppCompatActivity {
 
         final DatabaseReference RootRef, checkMessage;
         RootRef = FirebaseDatabase.getInstance().getReference();
-        checkMessage = FirebaseDatabase.getInstance().getReference().child("Users");
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -272,30 +296,22 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (usersData.getName().equals(Name)) {
                         if (usersData.getPassword().equals(Password)) {
-                            checkMessage.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if (dataSnapshot.child(Name).child("message").exists()) {
-                                        loadingBar.dismiss();
-                                        Intent intent = new Intent(LoginActivity.this, OrderShippedMessage.class);
-                                        GetData.superOnlineUsers = usersData;
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        loadingBar.dismiss();
-                                        Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
-                                        GetData.superOnlineUsers = usersData;
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
-
+                            if (Objects.equals(snapshot.child("Users").child(Name).child("customerStatus").getValue(), "new")){
+                                Toast.makeText(LoginActivity.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+                                InputLoginName.setText("");
+                                InputLoginPassword.setText("");
+                                Intent intent = new Intent(LoginActivity.this, WelcomeMessage.class);
+                                GetData.superOnlineUsers = usersData;
+                                startActivity(intent);
+                            }
+                            else if (Objects.equals(snapshot.child("Users").child(Name).child("customerStatus").getValue(), "existing")){
+                                InputLoginName.setText("");
+                                InputLoginPassword.setText("");
+                                Intent intent = new Intent(LoginActivity.this, MainHomeActivity.class);
+                                GetData.superOnlineUsers = usersData;
+                                startActivity(intent);
+                                finish();
+                            }
 
                         } else {
                             Toast.makeText(LoginActivity.this, "Oops! " + Name + ", Entered credentials are invalid!", Toast.LENGTH_SHORT).show();

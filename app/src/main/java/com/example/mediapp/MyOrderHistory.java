@@ -109,7 +109,11 @@ public class MyOrderHistory extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull final MyOrdersViewHolder holder, int position, @NonNull final CustomerOrder model) {
                 holder.txtOrderId.setText("#" + model.getOrderId());
-                holder.txtStatus.setText("Status: " + model.getStatus());
+                if (model.getStatus().equals("Shipped")){
+                    holder.txtStatus.setText("Status: " + "Processed");
+                }else {
+                    holder.txtStatus.setText("Status: " + model.getStatus());
+                }
                 holder.txtDate.setText("Placed on " + model.getDate() + ", " + model.getTime());
                 holder.txtAddress.setText("Address: " + model.getAddress());
                 int formattedPrice = Integer.parseInt(model.getTotalAmount());
