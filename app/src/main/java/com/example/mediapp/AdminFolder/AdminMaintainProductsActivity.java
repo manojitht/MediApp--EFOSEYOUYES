@@ -19,6 +19,7 @@ import com.example.mediapp.LoadingDialog;
 import com.example.mediapp.Model.AdminOrders;
 import com.example.mediapp.OrderConfirmMessage;
 import com.example.mediapp.R;
+import com.example.mediapp.ShowCategoryList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -81,8 +82,8 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Intent intent = new Intent(getApplicationContext(), ProductMessage.class);
-                intent.putExtra("ProductName", "Item");
+                Toast.makeText(AdminMaintainProductsActivity.this, "Product deleted successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AdminMaintainProductsActivity.this, ShowCategoryList.class);
                 startActivity(intent);
                 finish();
             }

@@ -63,7 +63,7 @@
         android:background="@drawable/custom_input"
         android:drawablePadding="12dp"
         android:fontFamily="@font/poppins_medium"
-        android:hint="Product Price"
+        android:hint="Product description"
         android:inputType="textMultiLine"
         android:lines="5"
         android:overScrollMode="always"
